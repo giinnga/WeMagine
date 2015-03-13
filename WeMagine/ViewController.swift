@@ -30,10 +30,35 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         
         var barHeight:CGFloat = app.statusBarFrame.size.height
         
+        var topHeight = 40.0 * prop
+        
+//        Blue & Red rectangles
+        
+        badIdea = UIView(frame: CGRectMake(0, 0, sizeRect.size.width/2, sizeRect.size.height+barHeight))
+        badIdea.backgroundColor = UIColor(red: 0.9995, green: 0.4959, blue: 0.562, alpha: 1.0)
+        badIdea.userInteractionEnabled = true
+        self.view.addSubview(badIdea)
+        
+        let badVote = UITapGestureRecognizer(target: self, action:Selector("badVote:"))
+        badVote.delegate = self
+        badIdea.addGestureRecognizer(badVote)
+        
+        goodIdea = UIView(frame: CGRectMake(sizeRect.size.width/2, 0, sizeRect.size.width/2, sizeRect.size.height+barHeight))
+        goodIdea.backgroundColor = UIColor(red: 0.6192, green: 0.9166, blue: 1.0, alpha: 1.0)
+        goodIdea.userInteractionEnabled = true
+        self.view.addSubview(goodIdea)
+        
+        let goodVote = UITapGestureRecognizer(target: self, action:Selector("goodVote:"))
+        goodVote.delegate = self
+        goodIdea.addGestureRecognizer(goodVote)
+        
+        
 //        Top rectangle
         
+        var iconProp: CGFloat = 0.85
+        
         width = 375.0 * prop
-        height = (59.0 * prop) + barHeight
+        height = topHeight + barHeight
         x = 0.0
         y = 0.0
         
@@ -41,10 +66,10 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         topMenuRectangle.backgroundColor = UIColor.whiteColor()
         self.view.addSubview(topMenuRectangle)
         
-        width = 26.0 * prop
-        height = 23.0 * prop
+        width = 26.0 * prop * iconProp
+        height = 23.0 * prop * iconProp
         x = 12.0
-        y = ((59.0 * prop) - height)/2 + barHeight
+        y = (topHeight - height)/2 + barHeight
         
         var menuOpen:UIImage = UIImage(named: "MenuIcon@3x.png")!
         var menuOpenIcon: UIImageView = UIImageView(image: menuOpen)
@@ -57,10 +82,10 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         recognizer.delegate = self
         menuOpenIcon.addGestureRecognizer(recognizer)
         
-        width = 38.0 * prop
-        height = 35.0 * prop
+        width = 38.0 * prop * iconProp
+        height = 35.0 * prop * iconProp
         x = self.sizeRect.width - width - 8.0
-        y = ((59.0 * prop) - height)/2 + barHeight
+        y = (topHeight - height)/2 + barHeight
         
         var lampIcon:UIImage = UIImage(named: "LampIcon@3x.png")!
         var lampIconView:UIImageView = UIImageView(image: lampIcon)
@@ -72,35 +97,15 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         newIdea.delegate = self
         lampIconView.addGestureRecognizer(newIdea)
         
-        //        Blue & Red rectangles
-        
-        badIdea = UIView(frame: CGRectMake(0, (59.0 * prop) + barHeight, sizeRect.size.width/2, sizeRect.size.height+barHeight))
-        badIdea.backgroundColor = UIColor(red: 0.9995, green: 0.4959, blue: 0.562, alpha: 1.0)
-        badIdea.userInteractionEnabled = true
-        self.view.addSubview(badIdea)
-        
-        let badVote = UITapGestureRecognizer(target: self, action:Selector("badVote:"))
-        badVote.delegate = self
-        badIdea.addGestureRecognizer(badVote)
-        
-        goodIdea = UIView(frame: CGRectMake(sizeRect.size.width/2, (59.0 * prop) + barHeight, sizeRect.size.width/2, sizeRect.size.height+barHeight))
-        goodIdea.backgroundColor = UIColor(red: 0.6192, green: 0.9166, blue: 1.0, alpha: 1.0)
-        goodIdea.userInteractionEnabled = true
-        self.view.addSubview(goodIdea)
-        
-        let goodVote = UITapGestureRecognizer(target: self, action:Selector("goodVote:"))
-        goodVote.delegate = self
-        goodIdea.addGestureRecognizer(goodVote)
-        
 //        Cloud
         
         var totalHeight: CGFloat = (274.0 * prop) + (70.0 * prop) + (107.0 * prop)
-        var fullHeight: CGFloat = sizeRect.size.height - (59.0 * prop)
+        var fullHeight: CGFloat = sizeRect.size.height - topHeight
         
         width = 325.0 * prop
         height = 274.0 * prop
         x = (sizeRect.size.width - width)/2
-        y = ((fullHeight - totalHeight)/2) + (59.0 * prop) + barHeight
+        y = ((fullHeight - totalHeight)/2) + topHeight + barHeight
     
         var cloudImage: UIImage = UIImage(named: "Cloud@3x.png")!
         var cloudImageView: UIImageView = UIImageView(image: cloudImage)
