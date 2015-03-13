@@ -49,7 +49,7 @@ class ViewController: UIViewController {
         topMenuRectangle.backgroundColor = UIColor.whiteColor()
         self.view.addSubview(topMenuRectangle)
         
-        width = 34.0 * prop
+        width = 26.0 * prop
         height = 23.0 * prop
         x = 12.0
         y = ((59.0 * prop) - height)/2 + barHeight
@@ -71,7 +71,7 @@ class ViewController: UIViewController {
         
 //        Cloud
         
-        var totalHeight: CGFloat = (274.0 * prop) + (60.0 * prop) + (107.0 * prop)
+        var totalHeight: CGFloat = (274.0 * prop) + (70.0 * prop) + (107.0 * prop)
         var fullHeight: CGFloat = sizeRect.size.height - (59.0 * prop)
         
         width = 325.0 * prop
@@ -89,7 +89,7 @@ class ViewController: UIViewController {
         width = 104.0 * prop
         height = 107.0 * prop
         x = (((sizeRect.size.width/2) - width)/2) + sizeRect.size.width/2
-        y = y + (274.0 * prop) + (60.0 * prop)
+        y = y + (274.0 * prop) + (70.0 * prop)
         
         var goodFace:UIImage = UIImage(named: "HappyCloudButton@3x.png")!
         var goodImage:UIImageView = UIImageView(image: goodFace)
