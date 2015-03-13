@@ -24,10 +24,24 @@ class ViewController: UIViewController {
         var x: CGFloat
         var y:CGFloat
         
+        var barHeight:CGFloat = app.statusBarFrame.size.height
+        
+//        Blue & Red rectangles
+        
+        var badIdea: UIView = UIView(frame: CGRectMake(0, 0, sizeRect.size.width/2, sizeRect.size.height+barHeight))
+        badIdea.backgroundColor = UIColor(red: 0.9995, green: 0.4959, blue: 0.562, alpha: 1.0)
+        badIdea.userInteractionEnabled = true
+        self.view.addSubview(badIdea)
+        
+        var goodIdea: UIView = UIView(frame: CGRectMake(sizeRect.size.width/2, 0, sizeRect.size.width/2, sizeRect.size.height+barHeight))
+        goodIdea.backgroundColor = UIColor(red: 0.6192, green: 0.9166, blue: 1.0, alpha: 1.0)
+        goodIdea.userInteractionEnabled = true
+        self.view.addSubview(goodIdea)
+        
 //        Top rectangle
         
         width = 375.0 * prop
-        height = 59.0 * prop
+        height = (59.0 * prop) + barHeight
         x = 0.0
         y = 0.0
         
@@ -38,43 +52,33 @@ class ViewController: UIViewController {
         width = 34.0 * prop
         height = 23.0 * prop
         x = 12.0
-        y = ((59.0 * prop) - height)/2
+        y = ((59.0 * prop) - height)/2 + barHeight
         
         var menuOpen:UIImage = UIImage(named: "MenuIcon@3x.png")!
         var menuOpenIcon:UIImageView = UIImageView(image: menuOpen)
         menuOpenIcon.frame = CGRectMake(x, y, width, height)
-        topMenuRectangle.addSubview(menuOpenIcon)
+        self.view.addSubview(menuOpenIcon)
         
         width = 38.0 * prop
         height = 35.0 * prop
         x = self.sizeRect.width - width - 8.0
-        y = ((59.0 * prop) - height)/2
+        y = ((59.0 * prop) - height)/2 + barHeight
         
         var lampIcon:UIImage = UIImage(named: "LampIcon@3x.png")!
         var lampIconView:UIImageView = UIImageView(image: lampIcon)
         lampIconView.frame = CGRectMake(x, y, width, height)
-        topMenuRectangle.addSubview(lampIconView)
-        
-        
-//        Blue & Red rectangles
-        
-        var badIdea: UIView = UIView(frame: CGRect(x: 0, y: app.statusBarFrame.size.height + topMenuRectangle.frame.size.height, width: sizeRect.size.width/2, height: sizeRect.size.height))
-        badIdea.backgroundColor = UIColor(red: 0.9995, green: 0.4959, blue: 0.562, alpha: 1.0)
-        badIdea.userInteractionEnabled = true
-        self.view.addSubview(badIdea)
-        
-        var goodIdea: UIView = UIView(frame: CGRect(x: sizeRect.size.width/2, y: app.statusBarFrame.size.height + topMenuRectangle.frame.size.height, width: sizeRect.size.width/2, height: sizeRect.size.height))
-        goodIdea.backgroundColor = UIColor(red: 0.6192, green: 0.9166, blue: 1.0, alpha: 1.0)
-        goodIdea.userInteractionEnabled = true
-        self.view.addSubview(goodIdea)
+        self.view.addSubview(lampIconView)
         
 //        Cloud
+        
+        var totalHeight: CGFloat = (274.0 * prop) + (60.0 * prop) + (107.0 * prop)
+        var fullHeight: CGFloat = sizeRect.size.height - (59.0 * prop)
         
         width = 325.0 * prop
         height = 274.0 * prop
         x = (sizeRect.size.width - width)/2
-        y = (59.0 * prop) + (50.0 * prop)
-        
+        y = ((fullHeight - totalHeight)/2) + (59.0 * prop) + barHeight
+    
         var cloudImage: UIImage = UIImage(named: "Cloud@3x.png")!
         var cloudImageView: UIImageView = UIImageView(image: cloudImage)
         cloudImageView.frame = CGRectMake(x,y,width,height)
@@ -133,9 +137,9 @@ class ViewController: UIViewController {
         
     }
     
-    override func prefersStatusBarHidden() -> Bool {
-        return true
-    }
+//    override func prefersStatusBarHidden() -> Bool {
+//        return true
+//    }
 
 }
 
