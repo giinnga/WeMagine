@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     
     var sizeRect = UIScreen.mainScreen().applicationFrame;
     let app = UIApplication.sharedApplication()
+    var tap: UITapGestureRecognizer = UITapGestureRecognizer()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,10 +39,12 @@ class ViewController: UIViewController {
         
         var badIdea: UIView = UIView(frame: CGRect(x: 0, y: app.statusBarFrame.size.height + topMenuRectangle.frame.size.height, width: sizeRect.size.width/2, height: sizeRect.size.height))
         badIdea.backgroundColor = UIColor(red: 0.9995, green: 0.4959, blue: 0.562, alpha: 1.0)
+        badIdea.userInteractionEnabled = true
         self.view.addSubview(badIdea)
         
         var goodIdea: UIView = UIView(frame: CGRect(x: sizeRect.size.width/2, y: app.statusBarFrame.size.height + topMenuRectangle.frame.size.height, width: sizeRect.size.width/2, height: sizeRect.size.height))
         goodIdea.backgroundColor = UIColor(red: 0.6192, green: 0.9166, blue: 1.0, alpha: 1.0)
+        goodIdea.userInteractionEnabled = true
         self.view.addSubview(goodIdea)
         
 //        Sad & Happy images
@@ -73,7 +76,6 @@ class ViewController: UIViewController {
         textView.textAlignment = .Center
 //        textView.backgroundColor = UIColor.redColor()
         cloudImageView.addSubview(textView)
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -82,9 +84,20 @@ class ViewController: UIViewController {
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        <#code#>
+        let touch = touches.allObjects[0] as UITouch
+        let touchLocation = touch.locationInView(self.view)
+        println(touchLocation)
+        
+        if touchLocation.x < sizeRect.width/2
+        {
+            println("esquerda")
+        }
+        else
+        {
+            println("direita")
+        }
+        
     }
-
 
 }
 
