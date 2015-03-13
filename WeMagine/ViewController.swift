@@ -18,20 +18,41 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        var prop: CGFloat = sizeRect.size.width/375.0
+        var width: CGFloat
+        var height: CGFloat
+        var x: CGFloat
+        var y:CGFloat
+        
 //        Top rectangle
         
-        var topMenuRectangle:UIView = UIView(frame: CGRect(x: 0, y: app.statusBarFrame.size.height, width: sizeRect.size.width, height: sizeRect.size.height * 0.0825))
+        width = 375.0 * prop
+        height = 59.0 * prop
+        x = 0.0
+        y = 0.0
+        
+        var topMenuRectangle:UIView = UIView(frame: CGRectMake(x, y, width, height))
         topMenuRectangle.backgroundColor = UIColor.whiteColor()
         self.view.addSubview(topMenuRectangle)
         
+        width = 34.0 * prop
+        height = 23.0 * prop
+        x = 12.0
+        y = ((59.0 * prop) - height)/2
+        
         var menuOpen:UIImage = UIImage(named: "MenuIcon@3x.png")!
         var menuOpenIcon:UIImageView = UIImageView(image: menuOpen)
-        menuOpenIcon.frame = CGRect(x: 0.025 * sizeRect.size.width, y: topMenuRectangle.frame.size.height/2 - menuOpen.size.height/2, width: 0.0906666666666667 * sizeRect.size.width, height: 0.035548686244204 * sizeRect.size.height)
+        menuOpenIcon.frame = CGRectMake(x, y, width, height)
         topMenuRectangle.addSubview(menuOpenIcon)
+        
+        width = 38.0 * prop
+        height = 35.0 * prop
+        x = self.sizeRect.width - width - 8.0
+        y = ((59.0 * prop) - height)/2
         
         var lampIcon:UIImage = UIImage(named: "LampIcon@3x.png")!
         var lampIconView:UIImageView = UIImageView(image: lampIcon)
-        lampIconView.frame = CGRect(x: sizeRect.size.width - 1.2 * lampIcon.size.width, y: topMenuRectangle.frame.size.height/2 - lampIcon.size.height/2, width: 0.114666666666667 * sizeRect.size.width, height: 0.0556414219474498 * sizeRect.size.height)
+        lampIconView.frame = CGRectMake(x, y, width, height)
         topMenuRectangle.addSubview(lampIconView)
         
         
@@ -47,24 +68,37 @@ class ViewController: UIViewController {
         goodIdea.userInteractionEnabled = true
         self.view.addSubview(goodIdea)
         
-//        Sad & Happy images
-        
-        var goodFace:UIImage = UIImage(named: "HappyCloudButton@3x.png")!
-        var goodImage:UIImageView = UIImageView(image: goodFace)
-        goodImage.frame = CGRectMake(goodIdea.frame.size.width/2 - 0.277333333333333/2 * sizeRect.size.width, sizeRect.size.height * 0.7, 0.277333333333333 * sizeRect.size.width, 0.165378670788253 * sizeRect.size.height)
-        goodIdea.addSubview(goodImage)
-        
-        var badFace:UIImage = UIImage(named: "SadCloudButton@3x.png")!
-        var badImage:UIImageView = UIImageView(image: badFace)
-        badImage.frame = CGRectMake(badIdea.frame.size.width/2 - 0.277333333333333/2 * sizeRect.size.width, badIdea.frame.size.height * 0.7, 0.277333333333333 * sizeRect.size.width, 0.165378670788253 * sizeRect.size.height)
-        badIdea.addSubview(badImage)
-        
 //        Cloud
+        
+        width = 325.0 * prop
+        height = 274.0 * prop
+        x = (sizeRect.size.width - width)/2
+        y = (59.0 * prop) + (50.0 * prop)
         
         var cloudImage: UIImage = UIImage(named: "Cloud@3x.png")!
         var cloudImageView: UIImageView = UIImageView(image: cloudImage)
-        cloudImageView.frame = CGRect(x: sizeRect.size.width/2 - 0.866666666666667/2 * sizeRect.size.width, y: sizeRect.size.height/2 - 0.423493044822257/2 * sizeRect.size.height, width: 0.866666666666667 * sizeRect.size.width, height: 0.423493044822257 * sizeRect.size.height)
+        cloudImageView.frame = CGRectMake(x,y,width,height)
         self.view.addSubview(cloudImageView)
+        
+//        Sad & Happy images
+
+        width = 104.0 * prop
+        height = 107.0 * prop
+        x = (((sizeRect.size.width/2) - width)/2) + sizeRect.size.width/2
+        y = y + (274.0 * prop) + (60.0 * prop)
+        
+        var goodFace:UIImage = UIImage(named: "HappyCloudButton@3x.png")!
+        var goodImage:UIImageView = UIImageView(image: goodFace)
+        goodImage.frame = CGRectMake(x, y, width, height)
+        self.view.addSubview(goodImage)
+        
+        x = (((sizeRect.size.width/2) - width)/2)
+        
+        var badFace:UIImage = UIImage(named: "SadCloudButton@3x.png")!
+        var badImage:UIImageView = UIImageView(image: badFace)
+        badImage.frame = CGRectMake(x,y,width,height)
+        self.view.addSubview(badImage)
+        
         
 //        println(cloudImage.size.height/sizeRect.size.height)
         
@@ -97,6 +131,10 @@ class ViewController: UIViewController {
             println("direita")
         }
         
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
 
 }
