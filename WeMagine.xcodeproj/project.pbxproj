@@ -1,0 +1,476 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		94BF551E1AB22A3A00DA5CC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BF551D1AB22A3A00DA5CC0 /* AppDelegate.swift */; };
+		94BF55201AB22A3A00DA5CC0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BF551F1AB22A3A00DA5CC0 /* ViewController.swift */; };
+		94BF55251AB22A3A00DA5CC0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94BF55241AB22A3A00DA5CC0 /* Images.xcassets */; };
+		94BF55281AB22A3A00DA5CC0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94BF55261AB22A3A00DA5CC0 /* LaunchScreen.xib */; };
+		94BF55341AB22A3A00DA5CC0 /* WeMagineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BF55331AB22A3A00DA5CC0 /* WeMagineTests.swift */; };
+		94BF554C1AB2322000DA5CC0 /* Cloud.png in Resources */ = {isa = PBXBuildFile; fileRef = 94BF553D1AB2322000DA5CC0 /* Cloud.png */; };
+		94BF554D1AB2322000DA5CC0 /* Cloud@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94BF553E1AB2322000DA5CC0 /* Cloud@2x.png */; };
+		94BF554E1AB2322000DA5CC0 /* Cloud@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94BF553F1AB2322000DA5CC0 /* Cloud@3x.png */; };
+		94BF554F1AB2322000DA5CC0 /* HappyCloudButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 94BF55401AB2322000DA5CC0 /* HappyCloudButton.png */; };
+		94BF55501AB2322000DA5CC0 /* HappyCloudButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94BF55411AB2322000DA5CC0 /* HappyCloudButton@2x.png */; };
+		94BF55511AB2322000DA5CC0 /* HappyCloudButton@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94BF55421AB2322000DA5CC0 /* HappyCloudButton@3x.png */; };
+		94BF55521AB2322000DA5CC0 /* LampIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 94BF55431AB2322000DA5CC0 /* LampIcon.png */; };
+		94BF55531AB2322000DA5CC0 /* LampIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94BF55441AB2322000DA5CC0 /* LampIcon@2x.png */; };
+		94BF55541AB2322000DA5CC0 /* LampIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94BF55451AB2322000DA5CC0 /* LampIcon@3x.png */; };
+		94BF55551AB2322000DA5CC0 /* MenuIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 94BF55461AB2322000DA5CC0 /* MenuIcon.png */; };
+		94BF55561AB2322000DA5CC0 /* MenuIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94BF55471AB2322000DA5CC0 /* MenuIcon@2x.png */; };
+		94BF55571AB2322000DA5CC0 /* MenuIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94BF55481AB2322000DA5CC0 /* MenuIcon@3x.png */; };
+		94BF55581AB2322000DA5CC0 /* SadCloudButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 94BF55491AB2322000DA5CC0 /* SadCloudButton.png */; };
+		94BF55591AB2322000DA5CC0 /* SadCloudButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94BF554A1AB2322000DA5CC0 /* SadCloudButton@2x.png */; };
+		94BF555A1AB2322000DA5CC0 /* SadCloudButton@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94BF554B1AB2322000DA5CC0 /* SadCloudButton@3x.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		94BF552E1AB22A3A00DA5CC0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 94BF55101AB22A3A00DA5CC0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 94BF55171AB22A3A00DA5CC0;
+			remoteInfo = WeMagine;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		94BF55181AB22A3A00DA5CC0 /* WeMagine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeMagine.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		94BF551C1AB22A3A00DA5CC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		94BF551D1AB22A3A00DA5CC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		94BF551F1AB22A3A00DA5CC0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		94BF55241AB22A3A00DA5CC0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		94BF55271AB22A3A00DA5CC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		94BF552D1AB22A3A00DA5CC0 /* WeMagineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeMagineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		94BF55321AB22A3A00DA5CC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		94BF55331AB22A3A00DA5CC0 /* WeMagineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeMagineTests.swift; sourceTree = "<group>"; };
+		94BF553D1AB2322000DA5CC0 /* Cloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cloud.png; sourceTree = "<group>"; };
+		94BF553E1AB2322000DA5CC0 /* Cloud@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cloud@2x.png"; sourceTree = "<group>"; };
+		94BF553F1AB2322000DA5CC0 /* Cloud@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cloud@3x.png"; sourceTree = "<group>"; };
+		94BF55401AB2322000DA5CC0 /* HappyCloudButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HappyCloudButton.png; sourceTree = "<group>"; };
+		94BF55411AB2322000DA5CC0 /* HappyCloudButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HappyCloudButton@2x.png"; sourceTree = "<group>"; };
+		94BF55421AB2322000DA5CC0 /* HappyCloudButton@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HappyCloudButton@3x.png"; sourceTree = "<group>"; };
+		94BF55431AB2322000DA5CC0 /* LampIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LampIcon.png; sourceTree = "<group>"; };
+		94BF55441AB2322000DA5CC0 /* LampIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LampIcon@2x.png"; sourceTree = "<group>"; };
+		94BF55451AB2322000DA5CC0 /* LampIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LampIcon@3x.png"; sourceTree = "<group>"; };
+		94BF55461AB2322000DA5CC0 /* MenuIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuIcon.png; sourceTree = "<group>"; };
+		94BF55471AB2322000DA5CC0 /* MenuIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MenuIcon@2x.png"; sourceTree = "<group>"; };
+		94BF55481AB2322000DA5CC0 /* MenuIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MenuIcon@3x.png"; sourceTree = "<group>"; };
+		94BF55491AB2322000DA5CC0 /* SadCloudButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SadCloudButton.png; sourceTree = "<group>"; };
+		94BF554A1AB2322000DA5CC0 /* SadCloudButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SadCloudButton@2x.png"; sourceTree = "<group>"; };
+		94BF554B1AB2322000DA5CC0 /* SadCloudButton@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SadCloudButton@3x.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		94BF55151AB22A3A00DA5CC0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		94BF552A1AB22A3A00DA5CC0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		94BF550F1AB22A3A00DA5CC0 = {
+			isa = PBXGroup;
+			children = (
+				94BF551A1AB22A3A00DA5CC0 /* WeMagine */,
+				94BF55301AB22A3A00DA5CC0 /* WeMagineTests */,
+				94BF55191AB22A3A00DA5CC0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		94BF55191AB22A3A00DA5CC0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				94BF55181AB22A3A00DA5CC0 /* WeMagine.app */,
+				94BF552D1AB22A3A00DA5CC0 /* WeMagineTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		94BF551A1AB22A3A00DA5CC0 /* WeMagine */ = {
+			isa = PBXGroup;
+			children = (
+				94BF555B1AB2322500DA5CC0 /* Images */,
+				94BF551D1AB22A3A00DA5CC0 /* AppDelegate.swift */,
+				94BF551F1AB22A3A00DA5CC0 /* ViewController.swift */,
+				94BF55241AB22A3A00DA5CC0 /* Images.xcassets */,
+				94BF55261AB22A3A00DA5CC0 /* LaunchScreen.xib */,
+				94BF551B1AB22A3A00DA5CC0 /* Supporting Files */,
+			);
+			path = WeMagine;
+			sourceTree = "<group>";
+		};
+		94BF551B1AB22A3A00DA5CC0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				94BF551C1AB22A3A00DA5CC0 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		94BF55301AB22A3A00DA5CC0 /* WeMagineTests */ = {
+			isa = PBXGroup;
+			children = (
+				94BF55331AB22A3A00DA5CC0 /* WeMagineTests.swift */,
+				94BF55311AB22A3A00DA5CC0 /* Supporting Files */,
+			);
+			path = WeMagineTests;
+			sourceTree = "<group>";
+		};
+		94BF55311AB22A3A00DA5CC0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				94BF55321AB22A3A00DA5CC0 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		94BF555B1AB2322500DA5CC0 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				94BF553D1AB2322000DA5CC0 /* Cloud.png */,
+				94BF553E1AB2322000DA5CC0 /* Cloud@2x.png */,
+				94BF553F1AB2322000DA5CC0 /* Cloud@3x.png */,
+				94BF55401AB2322000DA5CC0 /* HappyCloudButton.png */,
+				94BF55411AB2322000DA5CC0 /* HappyCloudButton@2x.png */,
+				94BF55421AB2322000DA5CC0 /* HappyCloudButton@3x.png */,
+				94BF55431AB2322000DA5CC0 /* LampIcon.png */,
+				94BF55441AB2322000DA5CC0 /* LampIcon@2x.png */,
+				94BF55451AB2322000DA5CC0 /* LampIcon@3x.png */,
+				94BF55461AB2322000DA5CC0 /* MenuIcon.png */,
+				94BF55471AB2322000DA5CC0 /* MenuIcon@2x.png */,
+				94BF55481AB2322000DA5CC0 /* MenuIcon@3x.png */,
+				94BF55491AB2322000DA5CC0 /* SadCloudButton.png */,
+				94BF554A1AB2322000DA5CC0 /* SadCloudButton@2x.png */,
+				94BF554B1AB2322000DA5CC0 /* SadCloudButton@3x.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		94BF55171AB22A3A00DA5CC0 /* WeMagine */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 94BF55371AB22A3A00DA5CC0 /* Build configuration list for PBXNativeTarget "WeMagine" */;
+			buildPhases = (
+				94BF55141AB22A3A00DA5CC0 /* Sources */,
+				94BF55151AB22A3A00DA5CC0 /* Frameworks */,
+				94BF55161AB22A3A00DA5CC0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WeMagine;
+			productName = WeMagine;
+			productReference = 94BF55181AB22A3A00DA5CC0 /* WeMagine.app */;
+			productType = "com.apple.product-type.application";
+		};
+		94BF552C1AB22A3A00DA5CC0 /* WeMagineTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 94BF553A1AB22A3A00DA5CC0 /* Build configuration list for PBXNativeTarget "WeMagineTests" */;
+			buildPhases = (
+				94BF55291AB22A3A00DA5CC0 /* Sources */,
+				94BF552A1AB22A3A00DA5CC0 /* Frameworks */,
+				94BF552B1AB22A3A00DA5CC0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				94BF552F1AB22A3A00DA5CC0 /* PBXTargetDependency */,
+			);
+			name = WeMagineTests;
+			productName = WeMagineTests;
+			productReference = 94BF552D1AB22A3A00DA5CC0 /* WeMagineTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		94BF55101AB22A3A00DA5CC0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Victor Souza";
+				TargetAttributes = {
+					94BF55171AB22A3A00DA5CC0 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					94BF552C1AB22A3A00DA5CC0 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = 94BF55171AB22A3A00DA5CC0;
+					};
+				};
+			};
+			buildConfigurationList = 94BF55131AB22A3A00DA5CC0 /* Build configuration list for PBXProject "WeMagine" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 94BF550F1AB22A3A00DA5CC0;
+			productRefGroup = 94BF55191AB22A3A00DA5CC0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				94BF55171AB22A3A00DA5CC0 /* WeMagine */,
+				94BF552C1AB22A3A00DA5CC0 /* WeMagineTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		94BF55161AB22A3A00DA5CC0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94BF554F1AB2322000DA5CC0 /* HappyCloudButton.png in Resources */,
+				94BF55561AB2322000DA5CC0 /* MenuIcon@2x.png in Resources */,
+				94BF55531AB2322000DA5CC0 /* LampIcon@2x.png in Resources */,
+				94BF554D1AB2322000DA5CC0 /* Cloud@2x.png in Resources */,
+				94BF55511AB2322000DA5CC0 /* HappyCloudButton@3x.png in Resources */,
+				94BF55541AB2322000DA5CC0 /* LampIcon@3x.png in Resources */,
+				94BF55581AB2322000DA5CC0 /* SadCloudButton.png in Resources */,
+				94BF55281AB22A3A00DA5CC0 /* LaunchScreen.xib in Resources */,
+				94BF554C1AB2322000DA5CC0 /* Cloud.png in Resources */,
+				94BF554E1AB2322000DA5CC0 /* Cloud@3x.png in Resources */,
+				94BF55501AB2322000DA5CC0 /* HappyCloudButton@2x.png in Resources */,
+				94BF55551AB2322000DA5CC0 /* MenuIcon.png in Resources */,
+				94BF55251AB22A3A00DA5CC0 /* Images.xcassets in Resources */,
+				94BF55591AB2322000DA5CC0 /* SadCloudButton@2x.png in Resources */,
+				94BF555A1AB2322000DA5CC0 /* SadCloudButton@3x.png in Resources */,
+				94BF55521AB2322000DA5CC0 /* LampIcon.png in Resources */,
+				94BF55571AB2322000DA5CC0 /* MenuIcon@3x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		94BF552B1AB22A3A00DA5CC0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		94BF55141AB22A3A00DA5CC0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94BF55201AB22A3A00DA5CC0 /* ViewController.swift in Sources */,
+				94BF551E1AB22A3A00DA5CC0 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		94BF55291AB22A3A00DA5CC0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94BF55341AB22A3A00DA5CC0 /* WeMagineTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		94BF552F1AB22A3A00DA5CC0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 94BF55171AB22A3A00DA5CC0 /* WeMagine */;
+			targetProxy = 94BF552E1AB22A3A00DA5CC0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		94BF55261AB22A3A00DA5CC0 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				94BF55271AB22A3A00DA5CC0 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		94BF55351AB22A3A00DA5CC0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		94BF55361AB22A3A00DA5CC0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		94BF55381AB22A3A00DA5CC0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = WeMagine/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		94BF55391AB22A3A00DA5CC0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = WeMagine/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		94BF553B1AB22A3A00DA5CC0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = WeMagineTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WeMagine.app/WeMagine";
+			};
+			name = Debug;
+		};
+		94BF553C1AB22A3A00DA5CC0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = WeMagineTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WeMagine.app/WeMagine";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		94BF55131AB22A3A00DA5CC0 /* Build configuration list for PBXProject "WeMagine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				94BF55351AB22A3A00DA5CC0 /* Debug */,
+				94BF55361AB22A3A00DA5CC0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		94BF55371AB22A3A00DA5CC0 /* Build configuration list for PBXNativeTarget "WeMagine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				94BF55381AB22A3A00DA5CC0 /* Debug */,
+				94BF55391AB22A3A00DA5CC0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		94BF553A1AB22A3A00DA5CC0 /* Build configuration list for PBXNativeTarget "WeMagineTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				94BF553B1AB22A3A00DA5CC0 /* Debug */,
+				94BF553C1AB22A3A00DA5CC0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 94BF55101AB22A3A00DA5CC0 /* Project object */;
+}
