@@ -1,25 +1,25 @@
 //
-//  ViewController.swift
+//  AddIdeaController.swift
 //  WeMagine
 //
-//  Created by Victor Souza on 3/12/15.
+//  Created by Victor Souza on 3/13/15.
 //  Copyright (c) 2015 Victor Souza. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController, UIGestureRecognizerDelegate {
-    
+class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextFieldDelegate {
+
     var sizeRect = UIScreen.mainScreen().applicationFrame;
     let app = UIApplication.sharedApplication()
     var menuView:UIView = UIView()
-    var badIdea: UIView = UIView()
-    var goodIdea: UIView = UIView()
     var menuViewHidden: Bool = true
-    var mayVote: Bool = true
-
+    var textField: UITextField = UITextField()
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
         
         var prop: CGFloat = sizeRect.size.width/375.0
@@ -30,7 +30,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         
         var barHeight:CGFloat = app.statusBarFrame.size.height
         
-//        Top rectangle
+        //        Top rectangle
         
         width = 375.0 * prop
         height = (59.0 * prop) + barHeight
@@ -65,32 +65,20 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         var lampIcon:UIImage = UIImage(named: "LampIcon@3x.png")!
         var lampIconView:UIImageView = UIImageView(image: lampIcon)
         lampIconView.frame = CGRectMake(x, y, width, height)
-        lampIconView.userInteractionEnabled = true
         self.view.addSubview(lampIconView)
         
-        let newIdea = UITapGestureRecognizer(target: self, action:Selector("newIdea:"))
-        newIdea.delegate = self
-        lampIconView.addGestureRecognizer(newIdea)
+//        Blue View
         
-        //        Blue & Red rectangles
-        
-        badIdea = UIView(frame: CGRectMake(0, (59.0 * prop) + barHeight, sizeRect.size.width/2, sizeRect.size.height+barHeight))
-        badIdea.backgroundColor = UIColor(red: 0.9995, green: 0.4959, blue: 0.562, alpha: 1.0)
-        badIdea.userInteractionEnabled = true
-        self.view.addSubview(badIdea)
-        
-        let badVote = UITapGestureRecognizer(target: self, action:Selector("badVote:"))
-        badVote.delegate = self
-        badIdea.addGestureRecognizer(badVote)
-        
-        goodIdea = UIView(frame: CGRectMake(sizeRect.size.width/2, (59.0 * prop) + barHeight, sizeRect.size.width/2, sizeRect.size.height+barHeight))
+        var goodIdea: UIView = UIView(frame: CGRectMake(0 , (59.0 * prop) + barHeight, sizeRect.size.width, sizeRect.size.height/1.5+barHeight))
         goodIdea.backgroundColor = UIColor(red: 0.6192, green: 0.9166, blue: 1.0, alpha: 1.0)
         goodIdea.userInteractionEnabled = true
         self.view.addSubview(goodIdea)
         
-        let goodVote = UITapGestureRecognizer(target: self, action:Selector("goodVote:"))
-        goodVote.delegate = self
-        goodIdea.addGestureRecognizer(goodVote)
+//        Button Area
+        
+        var buttonAreaView: UIView = UIView(frame: CGRect(x: 0, y: sizeRect.size.height/1.5+barHeight, width: sizeRect.size.width, height: sizeRect.size.height/2.5))
+        buttonAreaView.backgroundColor = UIColor(red: 0.9601, green: 0.9307, blue: 0.9053, alpha: 1.0)
+        self.view.addSubview(buttonAreaView)
         
 //        Cloud
         
@@ -100,45 +88,13 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         width = 325.0 * prop
         height = 274.0 * prop
         x = (sizeRect.size.width - width)/2
-        y = ((fullHeight - totalHeight)/2) + (59.0 * prop) + barHeight
-    
+        y = ((sizeRect.size.height/3) - height/2) + (59.0 * prop)
+        
         var cloudImage: UIImage = UIImage(named: "Cloud@3x.png")!
         var cloudImageView: UIImageView = UIImageView(image: cloudImage)
         cloudImageView.frame = CGRectMake(x,y,width,height)
+        cloudImageView.userInteractionEnabled = true
         self.view.addSubview(cloudImageView)
-        
-//        Sad & Happy images
-
-        width = 104.0 * prop
-        height = 107.0 * prop
-        x = (((sizeRect.size.width/2) - width)/2) + sizeRect.size.width/2
-        y = y + (274.0 * prop) + (70.0 * prop)
-        
-        var goodFace:UIImage = UIImage(named: "HappyCloudButton@3x.png")!
-        var goodImage:UIImageView = UIImageView(image: goodFace)
-        goodImage.frame = CGRectMake(x, y, width, height)
-        self.view.addSubview(goodImage)
-        
-        x = (((sizeRect.size.width/2) - width)/2)
-        
-        var badFace:UIImage = UIImage(named: "SadCloudButton@3x.png")!
-        var badImage:UIImageView = UIImageView(image: badFace)
-        badImage.frame = CGRectMake(x,y,width,height)
-//        badImage.userInteractionEnabled = true
-        self.view.addSubview(badImage)
-        
-//        let sadVote = UILongPressGestureRecognizer(target: self, action:Selector("sadVote:"))
-//        sadVote.delegate = self
-//        badImage.addGestureRecognizer(sadVote)
-        
-//        UITextView
-        
-        var textView: UITextView = UITextView(frame: CGRect(x: cloudImageView.frame.size.width/6, y: cloudImageView.frame.size.height/5, width: cloudImageView.frame.size.width/1.5, height: cloudImageView.frame.size.height/1.8))
-        textView.scrollEnabled = false
-        textView.text = String("E se existisse um cinema só para golfinhos")
-        textView.textAlignment = .Center
-//        textView.backgroundColor = UIColor.redColor()
-        cloudImageView.addSubview(textView)
         
 //        Menu View
         
@@ -161,40 +117,18 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         logout.backgroundColor = UIColor(red: 0.7357, green: 0.639, blue: 0.5589, alpha: 1.0)
         menuView.addSubview(logout)
         
+//        Text Field
         
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func goodVote(recognizer: UITapGestureRecognizer) {
-        if(mayVote)
-        {
-            println("goodVote")
-        }
-    }
-    
-    func badVote(recognizer: UITapGestureRecognizer) {
-        if(mayVote)
-        {
-            println("badVote")
-        }
-    }
-    
-    func sadVote(recognizer: UILongPressGestureRecognizer) {
-        if recognizer.state == UIGestureRecognizerState.Began
-        {
-            println("foi")
-        }
-    }
-    
-    func newIdea(recognizer: UITapGestureRecognizer) {
-        println("newIdea")
-        let secondViewController:AddIdeaController = AddIdeaController()
-        
-        self.presentViewController(secondViewController, animated: true, completion: nil)
+        textField = UITextField(frame: CGRect(x: cloudImageView.frame.size.width/6, y: cloudImageView.frame.size.height/5, width: cloudImageView.frame.size.width/1.5, height: cloudImageView.frame.size.height/1.8))
+//        textField.backgroundColor = UIColor.redColor()
+        textField.userInteractionEnabled = true
+        textField.enabled = true
+        textField.autocorrectionType = UITextAutocorrectionType.No;
+        textField.keyboardType = UIKeyboardType.Default;
+        textField.placeholder = "Teste"
+        textField.delegate = self
+        println(textField.enabled)
+        cloudImageView.addSubview(textField)
     }
     
     func handleTap(recognizer: UITapGestureRecognizer) {
@@ -203,22 +137,15 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             UIView.animateWithDuration(0.3, animations: {
                 self.menuView.frame.origin.x = 0
                 self.menuViewHidden = false
-                self.mayVote = false
             })
         }
         else{
             UIView.animateWithDuration(0.3, animations: {
                 self.menuView.frame.origin.x = -self.sizeRect.size.width/2
                 self.menuViewHidden = true
-                self.mayVote = true
             })
         }
         
     }
     
-//    override func prefersStatusBarHidden() -> Bool {
-//        return true
-//    }
-
 }
-
