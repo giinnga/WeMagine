@@ -15,8 +15,10 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     var menuView:UIView = UIView()
     var badIdea: UIView = UIView()
     var goodIdea: UIView = UIView()
+    var textView: UITextView = UITextView()
     var menuViewHidden: Bool = true
     var mayVote: Bool = true
+    var finished: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +28,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         var width: CGFloat
         var height: CGFloat
         var x: CGFloat
-        var y:CGFloat
+        var y: CGFloat
+        var fontSize: CGFloat
         
         var barHeight:CGFloat = app.statusBarFrame.size.height
         
@@ -72,7 +75,19 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         newIdea.delegate = self
         lampIconView.addGestureRecognizer(newIdea)
         
-        //        Blue & Red rectangles
+        fontSize = verifyPosition(0.0587 * sizeRect.size.width) - 1
+        
+        x = verifyPosition(0.15 * sizeRect.size.width)
+        y = verifyPosition(24 + sizeRect.size.height/48)
+        
+        let weMagineLabel = UILabel(frame: CGRect(x: x, y: y, width: 300, height: 300))
+        weMagineLabel.font = UIFont(name: "HelveticaNeue", size: fontSize)
+        weMagineLabel.text = "We magine!"
+        weMagineLabel.textColor = UIColor(red: 0.1725, green: 0.3294, blue: 0.4784, alpha: 1.0)
+        weMagineLabel.sizeToFit()
+        self.view.addSubview(weMagineLabel)
+        
+//        Blue & Red rectangles
         
         badIdea = UIView(frame: CGRectMake(0, (59.0 * prop) + barHeight, sizeRect.size.width/2, sizeRect.size.height+barHeight))
         badIdea.backgroundColor = UIColor(red: 0.9995, green: 0.4959, blue: 0.562, alpha: 1.0)
@@ -97,10 +112,10 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         var totalHeight: CGFloat = (274.0 * prop) + (70.0 * prop) + (107.0 * prop)
         var fullHeight: CGFloat = sizeRect.size.height - (59.0 * prop)
         
-        width = 325.0 * prop
-        height = 274.0 * prop
-        x = (sizeRect.size.width - width)/2
-        y = ((fullHeight - totalHeight)/2) + (59.0 * prop) + barHeight
+        width = verifyPosition(325.0 * prop)
+        height = verifyPosition(274.0 * prop)
+        x = verifyPosition((sizeRect.size.width - width)/2)
+        y = verifyPosition(((fullHeight - totalHeight)/2) + (59.0 * prop) + barHeight)
     
         var cloudImage: UIImage = UIImage(named: "Cloud@3x.png")!
         var cloudImageView: UIImageView = UIImageView(image: cloudImage)
@@ -133,11 +148,18 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         
 //        UITextView
         
-        var textView: UITextView = UITextView(frame: CGRect(x: cloudImageView.frame.size.width/6, y: cloudImageView.frame.size.height/5, width: cloudImageView.frame.size.width/1.5, height: cloudImageView.frame.size.height/1.8))
+        width = verifyPosition(cloudImageView.frame.size.width/1.28)
+        height = verifyPosition(cloudImageView.frame.size.height/1.8)
+        x = verifyPosition(cloudImageView.frame.size.width/2 - width/2)
+        y = verifyPosition(cloudImageView.frame.size.height/2 - height/2)
+        fontSize = verifyPosition(0.046875 * sizeRect.size.width) - 1
+        
+        textView = UITextView(frame: CGRect(x: x, y: y, width: width, height: height))
         textView.scrollEnabled = false
         textView.text = String("E se existisse um cinema só para golfinhos")
         textView.textAlignment = .Center
-//        textView.backgroundColor = UIColor.redColor()
+        textView.textColor = UIColor(red: 0.1725, green: 0.3294, blue: 0.4784, alpha: 1.0)
+        textView.font = UIFont(name: "HelveticaNeue", size: fontSize)
         cloudImageView.addSubview(textView)
         
 //        Menu View
@@ -148,18 +170,72 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         
 //        Menu View Rectangles
         
-        var share:UIView = UIView(frame: CGRect(x: 0, y: 0, width: sizeRect.size.width/2, height: sizeRect.size.height/10))
+        width = sizeRect.size.width/2
+        height = sizeRect.size.height/10
+        
+        fontSize = verifyPosition(0.048 * sizeRect.size.width) - 1
+        
+        x = verifyPosition(width/8.5)
+        y = verifyPosition(height/3)
+        
+        var share:UIView = UIView(frame: CGRect(x: 0, y: 0, width: width, height: height))
         share.backgroundColor = UIColor(red: 0.7357, green: 0.639, blue: 0.5589, alpha: 1.0)
         menuView.addSubview(share)
         
-        var profile:UIView = UIView(frame: CGRect(x: 0, y: 2*sizeRect.size.height/10, width: sizeRect.size.width/2, height: sizeRect.size.height/10))
+        var shareLabel:UILabel = UILabel(frame: CGRect(x: x, y: y, width: 10 , height: 10))
+        shareLabel.text = "Share Imagination"
+        shareLabel.textColor = UIColor(red: 0.3191, green: 0.3191, blue: 0.3191, alpha: 1.0)
+        shareLabel.font = UIFont(name: "HelveticaNeue-Light", size: fontSize)
+        shareLabel.sizeToFit()
+        share.addSubview(shareLabel)
+        
+        var myIdeas: UIView = UIView(frame: CGRect(x: 0, y: sizeRect.size.height/10, width: width, height: height))
+        myIdeas.backgroundColor = UIColor(red: 0.9608, green: 0.9294, blue: 0.9059, alpha: 1.0)
+        menuView.addSubview(myIdeas)
+        
+        var myIdeasLabel:UILabel = UILabel(frame: CGRect(x: x, y: y, width: 10 , height: 10))
+        myIdeasLabel.text = "My shared ideas"
+        myIdeasLabel.textColor = UIColor(red: 0.3191, green: 0.3191, blue: 0.3191, alpha: 1.0)
+        myIdeasLabel.font = UIFont(name: "HelveticaNeue-Light", size: fontSize)
+        myIdeasLabel.sizeToFit()
+        myIdeas.addSubview(myIdeasLabel)
+        
+        var profile:UIView = UIView(frame: CGRect(x: 0, y: 2 * sizeRect.size.height/10, width: width, height: height))
         profile.backgroundColor = UIColor(red: 0.7357, green: 0.639, blue: 0.5589, alpha: 1.0)
         menuView.addSubview(profile)
         
-        var logout:UIView = UIView(frame: CGRect(x: 0, y: 4*sizeRect.size.height/10, width: sizeRect.size.width/2,
-            height: sizeRect.size.height/10))
+        var profileLabel:UILabel = UILabel(frame: CGRect(x: x, y: y, width: 10 , height: 10))
+        profileLabel.text = "Profile"
+        profileLabel.textColor = UIColor(red: 0.3191, green: 0.3191, blue: 0.3191, alpha: 1.0)
+        profileLabel.font = UIFont(name: "HelveticaNeue-Light", size: fontSize)
+        profileLabel.sizeToFit()
+        profile.addSubview(profileLabel)
+        
+        var settings: UIView = UIView(frame: CGRect(x: 0, y: 3 * sizeRect.size.height/10, width: width, height: height))
+        settings.backgroundColor = UIColor(red: 0.9608, green: 0.9294, blue: 0.9059, alpha: 1.0)
+        menuView.addSubview(settings)
+        
+        var settingsLabel:UILabel = UILabel(frame: CGRect(x: x, y: y, width: 10 , height: 10))
+        settingsLabel.text = "Settings"
+        settingsLabel.textColor = UIColor(red: 0.3191, green: 0.3191, blue: 0.3191, alpha: 1.0)
+        settingsLabel.font = UIFont(name: "HelveticaNeue-Light", size: fontSize)
+        settingsLabel.sizeToFit()
+        settings.addSubview(settingsLabel)
+        
+        var logout:UIView = UIView(frame: CGRect(x: 0, y: 4 * sizeRect.size.height/10, width: width, height: height))
         logout.backgroundColor = UIColor(red: 0.7357, green: 0.639, blue: 0.5589, alpha: 1.0)
         menuView.addSubview(logout)
+        
+        var logoutLabel:UILabel = UILabel(frame: CGRect(x: x, y: y, width: 10 , height: 10))
+        logoutLabel.text = "Logout"
+        logoutLabel.textColor = UIColor(red: 0.3191, green: 0.3191, blue: 0.3191, alpha: 1.0)
+        logoutLabel.font = UIFont(name: "HelveticaNeue-Light", size: fontSize)
+        logoutLabel.sizeToFit()
+        logout.addSubview(logoutLabel)
+        
+        textView.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.New, context: nil)
+//        self.centerTextInTextView()
+        super.viewDidLoad()
         
         
     }
@@ -183,28 +259,43 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
-    func sadVote(recognizer: UILongPressGestureRecognizer) {
-        if recognizer.state == UIGestureRecognizerState.Began
-        {
-            println("foi")
-        }
-    }
+//    func sadVote(recognizer: UILongPressGestureRecognizer) {
+//        if recognizer.state == UIGestureRecognizerState.Began
+//        {
+//            println("foi")
+//        }
+//    }
     
     func newIdea(recognizer: UITapGestureRecognizer) {
-        println("newIdea")
-        let secondViewController:AddIdeaController = AddIdeaController()
         
-        self.presentViewController(secondViewController, animated: true, completion: nil)
+        performSegueWithIdentifier("newIdea", sender: self)
     }
     
     func handleTap(recognizer: UITapGestureRecognizer) {
         
+        let transitionOptions = UIViewAnimationOptions.TransitionFlipFromLeft
+        
+        let endXPosition = 0 as CGFloat
+        
+        let startXPosition = -self.sizeRect.size.width/2 as CGFloat
+        
+        let offset = (0.1*(endXPosition - startXPosition))
+        
         if(menuViewHidden){
+//            UIView.animateWithDuration(0.3, animations: {
+//                self.menuView.frame.origin.x = endXPosition + offset
+//                self.mayVote = false
+//                }, completion: {(finished:Bool) in
+//                    UIView.animateWithDuration(0.1, animations: {
+//                        self.menuView.frame.origin.x = endXPosition
+//                        self.menuViewHidden = false
+//                    })})
             UIView.animateWithDuration(0.3, animations: {
-                self.menuView.frame.origin.x = 0
-                self.menuViewHidden = false
+                self.menuView.frame.origin.x = endXPosition
                 self.mayVote = false
+                self.menuViewHidden = false
             })
+            
         }
         else{
             UIView.animateWithDuration(0.3, animations: {
@@ -216,9 +307,32 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         
     }
     
+    override func performSegueWithIdentifier(identifier: String?, sender: AnyObject?) {
+        if identifier == "newIdea"
+        {
+            let secondViewController:AddIdeaController = AddIdeaController()
+            self.presentViewController(secondViewController, animated: true, completion: nil)
+        }
+    }
+    
+    func verifyPosition(measure:CGFloat) -> CGFloat
+    {
+        var divisionRest = measure % 1
+        var correctValue = measure + 1 - divisionRest
+        return correctValue
+    }
+    
+    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+        var tf: UITextView = object as UITextView
+        var size: CGSize = tf.sizeThatFits(CGSize(width: self.textView.bounds.width, height: 1000))
+        var topCorrect = (tf.bounds.size.height - (size.height * tf.zoomScale))/2
+        topCorrect = (topCorrect < 0.0 ? 0.0 : topCorrect)
+        tf.contentOffset.x = 0
+        tf.contentOffset.y = -topCorrect
+    }
+    
 //    override func prefersStatusBarHidden() -> Bool {
 //        return true
 //    }
-
 }
 
