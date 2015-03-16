@@ -189,6 +189,10 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         shareLabel.sizeToFit()
         share.addSubview(shareLabel)
         
+        let shareGesture = UITapGestureRecognizer(target: self, action:Selector("newIdeaTap:"))
+        shareGesture.delegate = self
+        share.addGestureRecognizer(shareGesture)
+        
         var myIdeas: UIView = UIView(frame: CGRect(x: 0, y: sizeRect.size.height/10, width: width, height: height))
         myIdeas.backgroundColor = UIColor(red: 0.9608, green: 0.9294, blue: 0.9059, alpha: 1.0)
         menuView.addSubview(myIdeas)
@@ -199,6 +203,10 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         myIdeasLabel.font = UIFont(name: "HelveticaNeue-Light", size: fontSize)
         myIdeasLabel.sizeToFit()
         myIdeas.addSubview(myIdeasLabel)
+        
+        let myIdeasGesture = UITapGestureRecognizer(target: self, action:Selector("myIdeas:"))
+        myIdeasGesture.delegate = self
+        myIdeas.addGestureRecognizer(myIdeasGesture)
         
         var profile:UIView = UIView(frame: CGRect(x: 0, y: 2 * sizeRect.size.height/10, width: width, height: height))
         profile.backgroundColor = UIColor(red: 0.7357, green: 0.639, blue: 0.5589, alpha: 1.0)
@@ -239,6 +247,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         
         
     }
+    
+//    Gestures
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -259,12 +269,24 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         }
     }
     
+    func myIdeas(recognizer: UITapGestureRecognizer) {
+        if(!mayVote)
+        {
+            performSegueWithIdentifier("myIdeas", sender: self)
+        }
+    }
+    
 //    func sadVote(recognizer: UILongPressGestureRecognizer) {
 //        if recognizer.state == UIGestureRecognizerState.Began
 //        {
 //            println("foi")
 //        }
 //    }
+    
+    func newIdeaTap(recognizer: UITapGestureRecognizer) {
+        
+        performSegueWithIdentifier("newIdea", sender: self)
+    }
     
     func newIdea(recognizer: UITapGestureRecognizer) {
         
@@ -307,10 +329,18 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         
     }
     
+//    Segue
+    
     override func performSegueWithIdentifier(identifier: String?, sender: AnyObject?) {
         if identifier == "newIdea"
         {
             let secondViewController:AddIdeaController = AddIdeaController()
+            self.presentViewController(secondViewController, animated: true, completion: nil)
+        }
+        
+        else if identifier == "myIdeas"
+        {
+            let secondViewController:MySharedIdeas = MySharedIdeas()
             self.presentViewController(secondViewController, animated: true, completion: nil)
         }
     }

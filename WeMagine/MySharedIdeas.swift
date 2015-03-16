@@ -12,7 +12,6 @@ class MySharedIdeas: UIViewController {
     
     var sizeRect = UIScreen.mainScreen().applicationFrame;
     let app = UIApplication.sharedApplication()
-    let scrollView = UIScrollView(frame: UIScreen.mainScreen().bounds)
     
     override func viewDidLoad() {
         
@@ -27,9 +26,12 @@ class MySharedIdeas: UIViewController {
         
         var barHeight:CGFloat = app.statusBarFrame.size.height
         
-        self.view = self.scrollView
+        var scrollView = UIScrollView(frame: CGRect(x: 0, y: barHeight, width: sizeRect.size.width, height: sizeRect.size.height))
         
-        self.scrollView.scrollEnabled = true
+        self.view = scrollView
+        
+        scrollView.scrollEnabled = true
+        scrollView.contentSize = CGSize(width: sizeRect.size.width, height: 3 * sizeRect.size.height)
      
         
         
