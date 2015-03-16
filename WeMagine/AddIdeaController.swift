@@ -15,6 +15,7 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
     var menuView:UIView = UIView()
     var menuViewHidden: Bool = true
     var textField: UITextView = UITextView()
+    var sendYourIdea: UIImageView = UIImageView()
     
     override func viewDidLoad() {
         
@@ -206,6 +207,15 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
         textField.delegate = self
         textField.textAlignment = .Center
         cloudImageView.addSubview(textField)
+        
+//        Send your idea
+        
+        var shareButton: UIImage = UIImage(named: "HappyCloudButton@3x.png")!
+        sendYourIdea = UIImageView(image: shareButton)
+        sendYourIdea.frame = CGRect(x: sizeRect.size.width/2.8, y: 0.825 * sizeRect.size.height, width: 10, height: 10)
+        sendYourIdea.sizeToFit()
+        sendYourIdea.hidden = true
+        self.view.addSubview(sendYourIdea)
     }
     
     func handleTap(recognizer: UITapGestureRecognizer) {
@@ -241,6 +251,7 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
     }
     
     func textViewDidChange(textView: UITextView) {
+        self.sendYourIdea.hidden = false
         self.centerText()
     }
     

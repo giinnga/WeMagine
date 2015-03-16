@@ -28,6 +28,7 @@
 		94BF55581AB2322000DA5CC0 /* SadCloudButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 94BF55491AB2322000DA5CC0 /* SadCloudButton.png */; };
 		94BF55591AB2322000DA5CC0 /* SadCloudButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94BF554A1AB2322000DA5CC0 /* SadCloudButton@2x.png */; };
 		94BF555A1AB2322000DA5CC0 /* SadCloudButton@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94BF554B1AB2322000DA5CC0 /* SadCloudButton@3x.png */; };
+		94D7F0921AB613D600D7642E /* MySharedIdeas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D7F0911AB613D600D7642E /* MySharedIdeas.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		94BF55491AB2322000DA5CC0 /* SadCloudButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SadCloudButton.png; sourceTree = "<group>"; };
 		94BF554A1AB2322000DA5CC0 /* SadCloudButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SadCloudButton@2x.png"; sourceTree = "<group>"; };
 		94BF554B1AB2322000DA5CC0 /* SadCloudButton@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SadCloudButton@3x.png"; sourceTree = "<group>"; };
+		94D7F0911AB613D600D7642E /* MySharedIdeas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySharedIdeas.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 				94BF551D1AB22A3A00DA5CC0 /* AppDelegate.swift */,
 				94BF551F1AB22A3A00DA5CC0 /* ViewController.swift */,
 				94B1F3401AB32884000E74E4 /* AddIdeaController.swift */,
+				94D7F0911AB613D600D7642E /* MySharedIdeas.swift */,
 				94BF55241AB22A3A00DA5CC0 /* Images.xcassets */,
 				94BF55261AB22A3A00DA5CC0 /* LaunchScreen.xib */,
 				94BF551B1AB22A3A00DA5CC0 /* Supporting Files */,
@@ -280,6 +283,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				94BF55201AB22A3A00DA5CC0 /* ViewController.swift in Sources */,
+				94D7F0921AB613D600D7642E /* MySharedIdeas.swift in Sources */,
 				94BF551E1AB22A3A00DA5CC0 /* AppDelegate.swift in Sources */,
 				94B1F3411AB32884000E74E4 /* AddIdeaController.swift in Sources */,
 			);
