@@ -13,6 +13,15 @@
 		511FBC341AB774AE00BFC694 /* LampIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 511FBC311AB774AE00BFC694 /* LampIcon@3x.png */; };
 		511FBC351AB774AE00BFC694 /* LampIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 511FBC321AB774AE00BFC694 /* LampIcon@2x.png */; };
 		511FBC361AB774AE00BFC694 /* LampIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 511FBC331AB774AE00BFC694 /* LampIcon.png */; };
+		511FBC3A1AB7832A00BFC694 /* SadCloud@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 511FBC371AB7832A00BFC694 /* SadCloud@3x.png */; };
+		511FBC3B1AB7832A00BFC694 /* SadCloud@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 511FBC381AB7832A00BFC694 /* SadCloud@2x.png */; };
+		511FBC3C1AB7832A00BFC694 /* SadCloud.png in Resources */ = {isa = PBXBuildFile; fileRef = 511FBC391AB7832A00BFC694 /* SadCloud.png */; };
+		511FBC401AB7833600BFC694 /* HappyCloud@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 511FBC3D1AB7833600BFC694 /* HappyCloud@3x.png */; };
+		511FBC411AB7833600BFC694 /* HappyCloud@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 511FBC3E1AB7833600BFC694 /* HappyCloud@2x.png */; };
+		511FBC421AB7833600BFC694 /* HappyCloud.png in Resources */ = {isa = PBXBuildFile; fileRef = 511FBC3F1AB7833600BFC694 /* HappyCloud.png */; };
+		511FBC461AB7834000BFC694 /* BigCloud@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 511FBC431AB7834000BFC694 /* BigCloud@3x.png */; };
+		511FBC471AB7834000BFC694 /* BigCloud@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 511FBC441AB7834000BFC694 /* BigCloud@2x.png */; };
+		511FBC481AB7834000BFC694 /* BigCloud.png in Resources */ = {isa = PBXBuildFile; fileRef = 511FBC451AB7834000BFC694 /* BigCloud.png */; };
 		94B1F3411AB32884000E74E4 /* AddIdeaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B1F3401AB32884000E74E4 /* AddIdeaController.swift */; };
 		94BF551E1AB22A3A00DA5CC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BF551D1AB22A3A00DA5CC0 /* AppDelegate.swift */; };
 		94BF55201AB22A3A00DA5CC0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BF551F1AB22A3A00DA5CC0 /* ViewController.swift */; };
@@ -48,6 +57,15 @@
 		511FBC311AB774AE00BFC694 /* LampIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LampIcon@3x.png"; sourceTree = "<group>"; };
 		511FBC321AB774AE00BFC694 /* LampIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LampIcon@2x.png"; sourceTree = "<group>"; };
 		511FBC331AB774AE00BFC694 /* LampIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LampIcon.png; sourceTree = "<group>"; };
+		511FBC371AB7832A00BFC694 /* SadCloud@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SadCloud@3x.png"; sourceTree = "<group>"; };
+		511FBC381AB7832A00BFC694 /* SadCloud@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SadCloud@2x.png"; sourceTree = "<group>"; };
+		511FBC391AB7832A00BFC694 /* SadCloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SadCloud.png; sourceTree = "<group>"; };
+		511FBC3D1AB7833600BFC694 /* HappyCloud@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HappyCloud@3x.png"; sourceTree = "<group>"; };
+		511FBC3E1AB7833600BFC694 /* HappyCloud@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HappyCloud@2x.png"; sourceTree = "<group>"; };
+		511FBC3F1AB7833600BFC694 /* HappyCloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HappyCloud.png; sourceTree = "<group>"; };
+		511FBC431AB7834000BFC694 /* BigCloud@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BigCloud@3x.png"; sourceTree = "<group>"; };
+		511FBC441AB7834000BFC694 /* BigCloud@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BigCloud@2x.png"; sourceTree = "<group>"; };
+		511FBC451AB7834000BFC694 /* BigCloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BigCloud.png; sourceTree = "<group>"; };
 		94B1F3401AB32884000E74E4 /* AddIdeaController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddIdeaController.swift; sourceTree = "<group>"; };
 		94BF55181AB22A3A00DA5CC0 /* WeMagine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeMagine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94BF551C1AB22A3A00DA5CC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -149,6 +167,15 @@
 		94BF555B1AB2322500DA5CC0 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				511FBC431AB7834000BFC694 /* BigCloud@3x.png */,
+				511FBC441AB7834000BFC694 /* BigCloud@2x.png */,
+				511FBC451AB7834000BFC694 /* BigCloud.png */,
+				511FBC3D1AB7833600BFC694 /* HappyCloud@3x.png */,
+				511FBC3E1AB7833600BFC694 /* HappyCloud@2x.png */,
+				511FBC3F1AB7833600BFC694 /* HappyCloud.png */,
+				511FBC371AB7832A00BFC694 /* SadCloud@3x.png */,
+				511FBC381AB7832A00BFC694 /* SadCloud@2x.png */,
+				511FBC391AB7832A00BFC694 /* SadCloud.png */,
 				511FBC311AB774AE00BFC694 /* LampIcon@3x.png */,
 				511FBC321AB774AE00BFC694 /* LampIcon@2x.png */,
 				511FBC331AB774AE00BFC694 /* LampIcon.png */,
@@ -256,14 +283,23 @@
 				94BF55281AB22A3A00DA5CC0 /* LaunchScreen.xib in Resources */,
 				94BF554C1AB2322000DA5CC0 /* Cloud.png in Resources */,
 				511FBC301AB7741000BFC694 /* MenuIcon.png in Resources */,
+				511FBC401AB7833600BFC694 /* HappyCloud@3x.png in Resources */,
 				94BF554E1AB2322000DA5CC0 /* Cloud@3x.png in Resources */,
 				94BF55501AB2322000DA5CC0 /* HappyCloudButton@2x.png in Resources */,
+				511FBC471AB7834000BFC694 /* BigCloud@2x.png in Resources */,
+				511FBC3C1AB7832A00BFC694 /* SadCloud.png in Resources */,
+				511FBC3B1AB7832A00BFC694 /* SadCloud@2x.png in Resources */,
 				511FBC2E1AB7741000BFC694 /* MenuIcon@3x.png in Resources */,
+				511FBC461AB7834000BFC694 /* BigCloud@3x.png in Resources */,
+				511FBC481AB7834000BFC694 /* BigCloud.png in Resources */,
 				511FBC2F1AB7741000BFC694 /* MenuIcon@2x.png in Resources */,
+				511FBC411AB7833600BFC694 /* HappyCloud@2x.png in Resources */,
 				94BF55251AB22A3A00DA5CC0 /* Images.xcassets in Resources */,
+				511FBC421AB7833600BFC694 /* HappyCloud.png in Resources */,
 				94BF55591AB2322000DA5CC0 /* SadCloudButton@2x.png in Resources */,
 				94BF555A1AB2322000DA5CC0 /* SadCloudButton@3x.png in Resources */,
 				511FBC341AB774AE00BFC694 /* LampIcon@3x.png in Resources */,
+				511FBC3A1AB7832A00BFC694 /* SadCloud@3x.png in Resources */,
 				511FBC351AB774AE00BFC694 /* LampIcon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
