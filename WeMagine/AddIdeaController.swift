@@ -31,11 +31,12 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
         var fontSize: CGFloat
         
         var barHeight:CGFloat = app.statusBarFrame.size.height
+        var topHeight:CGFloat = (44.0*prop)
         
-        //        Top rectangle
+//        Top rectangle
         
         width = 375.0 * prop
-        height = (59.0 * prop) + barHeight
+        height = topHeight + barHeight
         x = 0.0
         y = 0.0
         
@@ -43,10 +44,10 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
         topMenuRectangle.backgroundColor = UIColor.whiteColor()
         self.view.addSubview(topMenuRectangle)
         
-        width = 26.0 * prop
-        height = 23.0 * prop
-        x = 12.0
-        y = ((59.0 * prop) - height)/2 + barHeight
+        width = 63.0 * prop
+        height = 44.0 * prop
+        x = 0
+        y = barHeight
         
         var menuOpen:UIImage = UIImage(named: "MenuIcon@3x.png")!
         var menuOpenIcon: UIImageView = UIImageView(image: menuOpen)
@@ -59,41 +60,42 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
         recognizer.delegate = self
         menuOpenIcon.addGestureRecognizer(recognizer)
         
-        width = 38.0 * prop
-        height = 35.0 * prop
-        x = self.sizeRect.width - width - 8.0
-        y = ((59.0 * prop) - height)/2 + barHeight
+        width = 63.0 * prop
+        height = 44.0 * prop
+        x = self.sizeRect.width - width
+        y = barHeight
         
         var lampIcon:UIImage = UIImage(named: "LampIcon@3x.png")!
         var lampIconView:UIImageView = UIImageView(image: lampIcon)
-        lampIconView.userInteractionEnabled = true
         lampIconView.frame = CGRectMake(x, y, width, height)
+        lampIconView.userInteractionEnabled = true
         self.view.addSubview(lampIconView)
         
         let newIdea = UITapGestureRecognizer(target: self, action:Selector("newIdea:"))
         newIdea.delegate = self
         lampIconView.addGestureRecognizer(newIdea)
         
-        fontSize = verifyPosition(0.0587 * sizeRect.size.width) - 1
+        fontSize = verifyPosition(0.0440 * sizeRect.size.width) - 1
         
-        x = verifyPosition(0.15 * sizeRect.size.width)
-        y = verifyPosition(24 + sizeRect.size.height/48)
+        x = (sizeRect.size.width-300)/2
+        y = barHeight;
         
-        let weMagineLabel = UILabel(frame: CGRect(x: x, y: y, width: 300, height: 300))
+        let weMagineLabel = UILabel(frame: CGRectMake(x, y,300,topHeight))
         weMagineLabel.font = UIFont(name: "HelveticaNeue", size: fontSize)
+        weMagineLabel.textAlignment = .Center
         weMagineLabel.text = "We magine!"
         weMagineLabel.textColor = UIColor(red: 0.1725, green: 0.3294, blue: 0.4784, alpha: 1.0)
-        weMagineLabel.sizeToFit()
         self.view.addSubview(weMagineLabel)
         
-//        Blue View
         
-        var goodIdea: UIView = UIView(frame: CGRectMake(0 , (59.0 * prop) + barHeight, sizeRect.size.width, sizeRect.size.height/1.5+barHeight))
+//      Blue View
+        
+        var goodIdea: UIView = UIView(frame: CGRectMake(0 , topHeight + barHeight, sizeRect.size.width, sizeRect.size.height/1.5+barHeight))
         goodIdea.backgroundColor = UIColor(red: 0.6192, green: 0.9166, blue: 1.0, alpha: 1.0)
         goodIdea.userInteractionEnabled = true
         self.view.addSubview(goodIdea)
         
-//        Button Area
+//      Button Area
         
         var buttonAreaView: UIView = UIView(frame: CGRect(x: 0, y: sizeRect.size.height/1.5+barHeight, width: sizeRect.size.width, height: sizeRect.size.height/2.5))
         buttonAreaView.backgroundColor = UIColor(red: 0.9601, green: 0.9307, blue: 0.9053, alpha: 1.0)
@@ -102,12 +104,12 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
 //        Cloud
         
         var totalHeight: CGFloat = (274.0 * prop) + (70.0 * prop) + (107.0 * prop)
-        var fullHeight: CGFloat = sizeRect.size.height - (59.0 * prop)
+        var fullHeight: CGFloat = sizeRect.size.height - topHeight
         
         width = verifyPosition(325.0 * prop)
         height = verifyPosition(274.0 * prop)
         x = verifyPosition((sizeRect.size.width - width)/2)
-        y = verifyPosition(((sizeRect.size.height/3) - height/2) + (59.0 * prop))
+        y = verifyPosition(((sizeRect.size.height/3) - height/2) + topHeight)
         
         var cloudImage: UIImage = UIImage(named: "Cloud@3x.png")!
         var cloudImageView: UIImageView = UIImageView(image: cloudImage)
@@ -258,8 +260,7 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
     func newIdea(recognizer: UITapGestureRecognizer) {
         
         let secondViewController:ViewController = ViewController()
-
-        self.presentViewController(secondViewController, animated: true, completion: nil)
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func verifyPosition(measure:CGFloat) -> CGFloat

@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		510AA5031AB2929B008606BB /* MenuIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 510AA4FD1AB2929B008606BB /* MenuIcon@3x.png */; };
-		510AA5041AB2929B008606BB /* MenuIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 510AA4FE1AB2929B008606BB /* MenuIcon@2x.png */; };
-		510AA5051AB2929B008606BB /* MenuIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 510AA4FF1AB2929B008606BB /* MenuIcon.png */; };
-		510AA5061AB2929B008606BB /* LampIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 510AA5001AB2929B008606BB /* LampIcon@3x.png */; };
-		510AA5071AB2929B008606BB /* LampIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 510AA5011AB2929B008606BB /* LampIcon@2x.png */; };
-		510AA5081AB2929B008606BB /* LampIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 510AA5021AB2929B008606BB /* LampIcon.png */; };
+		511FBC2E1AB7741000BFC694 /* MenuIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 511FBC2B1AB7741000BFC694 /* MenuIcon@3x.png */; };
+		511FBC2F1AB7741000BFC694 /* MenuIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 511FBC2C1AB7741000BFC694 /* MenuIcon@2x.png */; };
+		511FBC301AB7741000BFC694 /* MenuIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 511FBC2D1AB7741000BFC694 /* MenuIcon.png */; };
+		511FBC341AB774AE00BFC694 /* LampIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 511FBC311AB774AE00BFC694 /* LampIcon@3x.png */; };
+		511FBC351AB774AE00BFC694 /* LampIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 511FBC321AB774AE00BFC694 /* LampIcon@2x.png */; };
+		511FBC361AB774AE00BFC694 /* LampIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 511FBC331AB774AE00BFC694 /* LampIcon.png */; };
 		94B1F3411AB32884000E74E4 /* AddIdeaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B1F3401AB32884000E74E4 /* AddIdeaController.swift */; };
 		94BF551E1AB22A3A00DA5CC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BF551D1AB22A3A00DA5CC0 /* AppDelegate.swift */; };
 		94BF55201AB22A3A00DA5CC0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BF551F1AB22A3A00DA5CC0 /* ViewController.swift */; };
@@ -42,12 +42,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		510AA4FD1AB2929B008606BB /* MenuIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MenuIcon@3x.png"; sourceTree = "<group>"; };
-		510AA4FE1AB2929B008606BB /* MenuIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MenuIcon@2x.png"; sourceTree = "<group>"; };
-		510AA4FF1AB2929B008606BB /* MenuIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuIcon.png; sourceTree = "<group>"; };
-		510AA5001AB2929B008606BB /* LampIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LampIcon@3x.png"; sourceTree = "<group>"; };
-		510AA5011AB2929B008606BB /* LampIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LampIcon@2x.png"; sourceTree = "<group>"; };
-		510AA5021AB2929B008606BB /* LampIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LampIcon.png; sourceTree = "<group>"; };
+		511FBC2B1AB7741000BFC694 /* MenuIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MenuIcon@3x.png"; sourceTree = "<group>"; };
+		511FBC2C1AB7741000BFC694 /* MenuIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MenuIcon@2x.png"; sourceTree = "<group>"; };
+		511FBC2D1AB7741000BFC694 /* MenuIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuIcon.png; sourceTree = "<group>"; };
+		511FBC311AB774AE00BFC694 /* LampIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LampIcon@3x.png"; sourceTree = "<group>"; };
+		511FBC321AB774AE00BFC694 /* LampIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LampIcon@2x.png"; sourceTree = "<group>"; };
+		511FBC331AB774AE00BFC694 /* LampIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LampIcon.png; sourceTree = "<group>"; };
 		94B1F3401AB32884000E74E4 /* AddIdeaController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddIdeaController.swift; sourceTree = "<group>"; };
 		94BF55181AB22A3A00DA5CC0 /* WeMagine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeMagine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94BF551C1AB22A3A00DA5CC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -149,12 +149,12 @@
 		94BF555B1AB2322500DA5CC0 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				510AA4FD1AB2929B008606BB /* MenuIcon@3x.png */,
-				510AA4FE1AB2929B008606BB /* MenuIcon@2x.png */,
-				510AA4FF1AB2929B008606BB /* MenuIcon.png */,
-				510AA5001AB2929B008606BB /* LampIcon@3x.png */,
-				510AA5011AB2929B008606BB /* LampIcon@2x.png */,
-				510AA5021AB2929B008606BB /* LampIcon.png */,
+				511FBC311AB774AE00BFC694 /* LampIcon@3x.png */,
+				511FBC321AB774AE00BFC694 /* LampIcon@2x.png */,
+				511FBC331AB774AE00BFC694 /* LampIcon.png */,
+				511FBC2B1AB7741000BFC694 /* MenuIcon@3x.png */,
+				511FBC2C1AB7741000BFC694 /* MenuIcon@2x.png */,
+				511FBC2D1AB7741000BFC694 /* MenuIcon.png */,
 				94BF553D1AB2322000DA5CC0 /* Cloud.png */,
 				94BF553E1AB2322000DA5CC0 /* Cloud@2x.png */,
 				94BF553F1AB2322000DA5CC0 /* Cloud@3x.png */,
@@ -249,22 +249,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				94BF554F1AB2322000DA5CC0 /* HappyCloudButton.png in Resources */,
-				510AA5041AB2929B008606BB /* MenuIcon@2x.png in Resources */,
 				94BF554D1AB2322000DA5CC0 /* Cloud@2x.png in Resources */,
-				510AA5051AB2929B008606BB /* MenuIcon.png in Resources */,
-				510AA5081AB2929B008606BB /* LampIcon.png in Resources */,
 				94BF55511AB2322000DA5CC0 /* HappyCloudButton@3x.png in Resources */,
-				510AA5031AB2929B008606BB /* MenuIcon@3x.png in Resources */,
 				94BF55581AB2322000DA5CC0 /* SadCloudButton.png in Resources */,
+				511FBC361AB774AE00BFC694 /* LampIcon.png in Resources */,
 				94BF55281AB22A3A00DA5CC0 /* LaunchScreen.xib in Resources */,
 				94BF554C1AB2322000DA5CC0 /* Cloud.png in Resources */,
+				511FBC301AB7741000BFC694 /* MenuIcon.png in Resources */,
 				94BF554E1AB2322000DA5CC0 /* Cloud@3x.png in Resources */,
 				94BF55501AB2322000DA5CC0 /* HappyCloudButton@2x.png in Resources */,
+				511FBC2E1AB7741000BFC694 /* MenuIcon@3x.png in Resources */,
+				511FBC2F1AB7741000BFC694 /* MenuIcon@2x.png in Resources */,
 				94BF55251AB22A3A00DA5CC0 /* Images.xcassets in Resources */,
 				94BF55591AB2322000DA5CC0 /* SadCloudButton@2x.png in Resources */,
 				94BF555A1AB2322000DA5CC0 /* SadCloudButton@3x.png in Resources */,
-				510AA5061AB2929B008606BB /* LampIcon@3x.png in Resources */,
-				510AA5071AB2929B008606BB /* LampIcon@2x.png in Resources */,
+				511FBC341AB774AE00BFC694 /* LampIcon@3x.png in Resources */,
+				511FBC351AB774AE00BFC694 /* LampIcon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

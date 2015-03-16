@@ -15,14 +15,15 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
     var menuView:UIView = UIView()
     var badIdea: UIView = UIView()
     var goodIdea: UIView = UIView()
+    var cloudImageView: UIImageView = UIImageView()
     var textView: UITextView = UITextView()
     var menuViewHidden: Bool = true
     var mayVote: Bool = true
     var finished: Bool = false
 
     override func viewDidLoad() {
+
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         var prop: CGFloat = sizeRect.size.width/375.0
         var width: CGFloat
@@ -32,11 +33,12 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         var fontSize: CGFloat
         
         var barHeight:CGFloat = app.statusBarFrame.size.height
+        var topHeight:CGFloat = (44.0*prop)
         
-//        Top rectangle
+//      Top rectangle
         
         width = 375.0 * prop
-        height = (59.0 * prop) + barHeight
+        height = topHeight + barHeight
         x = 0.0
         y = 0.0
         
@@ -44,10 +46,10 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         topMenuRectangle.backgroundColor = UIColor.whiteColor()
         self.view.addSubview(topMenuRectangle)
         
-        width = 26.0 * prop
-        height = 23.0 * prop
-        x = 12.0
-        y = ((59.0 * prop) - height)/2 + barHeight
+        width = 63.0 * prop
+        height = 44.0 * prop
+        x = 0
+        y = barHeight
         
         var menuOpen:UIImage = UIImage(named: "MenuIcon@3x.png")!
         var menuOpenIcon: UIImageView = UIImageView(image: menuOpen)
@@ -60,10 +62,10 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         recognizer.delegate = self
         menuOpenIcon.addGestureRecognizer(recognizer)
         
-        width = 38.0 * prop
-        height = 35.0 * prop
-        x = self.sizeRect.width - width - 8.0
-        y = ((59.0 * prop) - height)/2 + barHeight
+        width = 63.0 * prop
+        height = 44.0 * prop
+        x = self.sizeRect.width - width
+        y = barHeight
         
         var lampIcon:UIImage = UIImage(named: "LampIcon@3x.png")!
         var lampIconView:UIImageView = UIImageView(image: lampIcon)
@@ -75,21 +77,21 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         newIdea.delegate = self
         lampIconView.addGestureRecognizer(newIdea)
         
-        fontSize = verifyPosition(0.0587 * sizeRect.size.width) - 1
+        fontSize = verifyPosition(0.0440 * sizeRect.size.width) - 1
         
-        x = verifyPosition(0.15 * sizeRect.size.width)
-        y = verifyPosition(24 + sizeRect.size.height/48)
+        x = (sizeRect.size.width-300)/2
+        y = barHeight;
         
-        let weMagineLabel = UILabel(frame: CGRect(x: x, y: y, width: 300, height: 300))
+        let weMagineLabel = UILabel(frame: CGRectMake(x, y,300,topHeight))
         weMagineLabel.font = UIFont(name: "HelveticaNeue", size: fontSize)
+        weMagineLabel.textAlignment = .Center
         weMagineLabel.text = "We magine!"
         weMagineLabel.textColor = UIColor(red: 0.1725, green: 0.3294, blue: 0.4784, alpha: 1.0)
-        weMagineLabel.sizeToFit()
         self.view.addSubview(weMagineLabel)
         
-//        Blue & Red rectangles
+//      Blue & Red rectangles
         
-        badIdea = UIView(frame: CGRectMake(0, (59.0 * prop) + barHeight, sizeRect.size.width/2, sizeRect.size.height+barHeight))
+        badIdea = UIView(frame: CGRectMake(0, topHeight + barHeight, sizeRect.size.width/2, sizeRect.size.height+barHeight))
         badIdea.backgroundColor = UIColor(red: 0.9995, green: 0.4959, blue: 0.562, alpha: 1.0)
         badIdea.userInteractionEnabled = true
         self.view.addSubview(badIdea)
@@ -98,7 +100,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         badVote.delegate = self
         badIdea.addGestureRecognizer(badVote)
         
-        goodIdea = UIView(frame: CGRectMake(sizeRect.size.width/2, (59.0 * prop) + barHeight, sizeRect.size.width/2, sizeRect.size.height+barHeight))
+        goodIdea = UIView(frame: CGRectMake(sizeRect.size.width/2, topHeight + barHeight, sizeRect.size.width/2, sizeRect.size.height+barHeight))
         goodIdea.backgroundColor = UIColor(red: 0.6192, green: 0.9166, blue: 1.0, alpha: 1.0)
         goodIdea.userInteractionEnabled = true
         self.view.addSubview(goodIdea)
@@ -107,22 +109,22 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         goodVote.delegate = self
         goodIdea.addGestureRecognizer(goodVote)
         
-//        Cloud
+//      Cloud
         
         var totalHeight: CGFloat = (274.0 * prop) + (70.0 * prop) + (107.0 * prop)
-        var fullHeight: CGFloat = sizeRect.size.height - (59.0 * prop)
+        var fullHeight: CGFloat = sizeRect.size.height - topHeight
         
         width = verifyPosition(325.0 * prop)
         height = verifyPosition(274.0 * prop)
-        x = verifyPosition((sizeRect.size.width - width)/2)
-        y = verifyPosition(((fullHeight - totalHeight)/2) + (59.0 * prop) + barHeight)
+        x = (sizeRect.size.width - width)/2
+        y = verifyPosition(((fullHeight - totalHeight)/2) + topHeight + barHeight)
     
         var cloudImage: UIImage = UIImage(named: "Cloud@3x.png")!
-        var cloudImageView: UIImageView = UIImageView(image: cloudImage)
+        cloudImageView = UIImageView(image: cloudImage)
         cloudImageView.frame = CGRectMake(x,y,width,height)
         self.view.addSubview(cloudImageView)
         
-//        Sad & Happy images
+//      Sad & Happy images
 
         width = 104.0 * prop
         height = 107.0 * prop
@@ -139,36 +141,19 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         var badFace:UIImage = UIImage(named: "SadCloudButton@3x.png")!
         var badImage:UIImageView = UIImageView(image: badFace)
         badImage.frame = CGRectMake(x,y,width,height)
-//        badImage.userInteractionEnabled = true
         self.view.addSubview(badImage)
         
-//        let sadVote = UILongPressGestureRecognizer(target: self, action:Selector("sadVote:"))
-//        sadVote.delegate = self
-//        badImage.addGestureRecognizer(sadVote)
+        //let sadVote = UILongPressGestureRecognizer(target: self, action:Selector("sadVote:"))
+        //sadVote.delegate = self
+        //badImage.addGestureRecognizer(sadVote)
         
-//        UITextView
-        
-        width = verifyPosition(cloudImageView.frame.size.width/1.28)
-        height = verifyPosition(cloudImageView.frame.size.height/1.8)
-        x = verifyPosition(cloudImageView.frame.size.width/2 - width/2)
-        y = verifyPosition(cloudImageView.frame.size.height/2 - height/2)
-        fontSize = verifyPosition(0.046875 * sizeRect.size.width) - 1
-        
-        textView = UITextView(frame: CGRect(x: x, y: y, width: width, height: height))
-        textView.scrollEnabled = false
-        textView.text = String("E se existisse um cinema só para golfinhos")
-        textView.textAlignment = .Center
-        textView.textColor = UIColor(red: 0.1725, green: 0.3294, blue: 0.4784, alpha: 1.0)
-        textView.font = UIFont(name: "HelveticaNeue", size: fontSize)
-        cloudImageView.addSubview(textView)
-        
-//        Menu View
+//      Menu View
         
         menuView = UIView(frame: CGRect(x: -sizeRect.size.width/2, y: topMenuRectangle.frame.size.height, width: sizeRect.size.width/2, height: sizeRect.size.height))
         menuView.backgroundColor = UIColor(red: 0.9601, green: 0.9307, blue: 0.9053, alpha: 1.0)
         self.view.addSubview(menuView)
         
-//        Menu View Rectangles
+//      Menu View Rectangles
         
         width = sizeRect.size.width/2
         height = sizeRect.size.height/10
@@ -241,11 +226,29 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         logoutLabel.sizeToFit()
         logout.addSubview(logoutLabel)
         
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        
+        //      CloudText
+        
+        var width:CGFloat = verifyPosition(cloudImageView.frame.size.width/1.28)
+        var height:CGFloat = verifyPosition(cloudImageView.frame.size.height/1.8)
+        var x:CGFloat = verifyPosition(cloudImageView.frame.size.width/2 - width/2)
+        var y:CGFloat = verifyPosition(cloudImageView.frame.size.height/2 - height/2)
+        var fontSize:CGFloat = verifyPosition(0.046875 * sizeRect.size.width) - 1
+        
+        textView = UITextView(frame: CGRect(x: x, y: y, width: width, height: height))
+        textView.scrollEnabled = false
+        textView.text = String("E se existisse um cinema só para golfinhos")
+        textView.textAlignment = .Center
+        textView.textColor = UIColor(red: 0.1725, green: 0.3294, blue: 0.4784, alpha: 1.0)
+        textView.font = UIFont(name: "HelveticaNeue", size: fontSize)
+        cloudImageView.addSubview(textView)
+        
         textView.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.New, context: nil)
-//        self.centerTextInTextView()
-        super.viewDidLoad()
-        
-        
     }
     
 //    Gestures
@@ -303,23 +306,14 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         
         let offset = (0.1*(endXPosition - startXPosition))
         
-        if(menuViewHidden){
-//            UIView.animateWithDuration(0.3, animations: {
-//                self.menuView.frame.origin.x = endXPosition + offset
-//                self.mayVote = false
-//                }, completion: {(finished:Bool) in
-//                    UIView.animateWithDuration(0.1, animations: {
-//                        self.menuView.frame.origin.x = endXPosition
-//                        self.menuViewHidden = false
-//                    })})
+        if(menuViewHidden) {
             UIView.animateWithDuration(0.3, animations: {
                 self.menuView.frame.origin.x = endXPosition
                 self.mayVote = false
                 self.menuViewHidden = false
             })
-            
         }
-        else{
+        else {
             UIView.animateWithDuration(0.3, animations: {
                 self.menuView.frame.origin.x = -self.sizeRect.size.width/2
                 self.menuViewHidden = true
@@ -329,7 +323,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         
     }
     
-//    Segue
+//  Segue
     
     override func performSegueWithIdentifier(identifier: String?, sender: AnyObject?) {
         if identifier == "newIdea"
@@ -361,8 +355,5 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         tf.contentOffset.y = -topCorrect
     }
     
-//    override func prefersStatusBarHidden() -> Bool {
-//        return true
-//    }
 }
 
