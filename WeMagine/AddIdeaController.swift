@@ -87,21 +87,25 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
         weMagineLabel.textColor = UIColor(red: 0.1725, green: 0.3294, blue: 0.4784, alpha: 1.0)
         self.view.addSubview(weMagineLabel)
         
+//      Button Area
+        
+        var buttonAreaView: UIView = UIView(frame: CGRectMake(0, topHeight + barHeight, sizeRect.size.width, sizeRect.size.height))
+        buttonAreaView.backgroundColor = UIColor(red: 0.9601, green: 0.9307, blue: 0.9053, alpha: 1.0)
+        self.view.addSubview(buttonAreaView)
         
 //      Blue View
         
-        var goodIdea: UIView = UIView(frame: CGRectMake(0 , topHeight + barHeight, sizeRect.size.width, sizeRect.size.height/1.5+barHeight))
+        width = sizeRect.size.width
+        height = 349 * prop
+        x = 0
+        y = topHeight + barHeight
+        
+        var goodIdea: UIView = UIView(frame: CGRectMake(x,y,width,height))
         goodIdea.backgroundColor = UIColor(red: 0.6192, green: 0.9166, blue: 1.0, alpha: 1.0)
         goodIdea.userInteractionEnabled = true
         self.view.addSubview(goodIdea)
         
-//      Button Area
-        
-        var buttonAreaView: UIView = UIView(frame: CGRect(x: 0, y: sizeRect.size.height/1.5+barHeight, width: sizeRect.size.width, height: sizeRect.size.height/2.5))
-        buttonAreaView.backgroundColor = UIColor(red: 0.9601, green: 0.9307, blue: 0.9053, alpha: 1.0)
-        self.view.addSubview(buttonAreaView)
-        
-//        Cloud
+//      Cloud
         
         var totalHeight: CGFloat = (274.0 * prop) + (70.0 * prop) + (107.0 * prop)
         var fullHeight: CGFloat = sizeRect.size.height - topHeight
@@ -109,7 +113,7 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
         width = verifyPosition(325.0 * prop)
         height = verifyPosition(274.0 * prop)
         x = verifyPosition((sizeRect.size.width - width)/2)
-        y = verifyPosition(((sizeRect.size.height/3) - height/2) + topHeight)
+        y = verifyPosition((349*prop - height)/2 + topHeight + barHeight)
         
         var cloudImage: UIImage = UIImage(named: "Cloud@3x.png")!
         var cloudImageView: UIImageView = UIImageView(image: cloudImage)
@@ -117,13 +121,13 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
         cloudImageView.userInteractionEnabled = true
         self.view.addSubview(cloudImageView)
         
-//        Menu View
+//      Menu View
         
         menuView = UIView(frame: CGRect(x: -sizeRect.size.width/2, y: topMenuRectangle.frame.size.height, width: sizeRect.size.width/2, height: sizeRect.size.height))
         menuView.backgroundColor = UIColor(red: 0.9601, green: 0.9307, blue: 0.9053, alpha: 1.0)
         self.view.addSubview(menuView)
         
-//        Menu View Rectangles
+//      Menu View Rectangles
         
         width = sizeRect.size.width/2
         height = sizeRect.size.height/10
