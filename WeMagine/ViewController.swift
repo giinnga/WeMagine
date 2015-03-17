@@ -178,8 +178,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         
 //      Menu View Rectangles
         
-        width = sizeRect.size.width/2
-        height = sizeRect.size.height/10
+        width = verifyPosition(sizeRect.size.width/2) - 1
+        height = verifyPosition(sizeRect.size.height/10) - 1
         
         fontSize = verifyPosition(0.048 * sizeRect.size.width) - 1
         
@@ -353,14 +353,14 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         
         if(menuViewHidden) {
             UIView.animateWithDuration(0.3, animations: {
-                self.menuView.frame.origin.x = endXPosition
+                self.menuView.frame.origin.x = self.verifyPosition(endXPosition) - 1
                 self.mayVote = false
                 self.menuViewHidden = false
             })
         }
         else {
             UIView.animateWithDuration(0.3, animations: {
-                self.menuView.frame.origin.x = -self.sizeRect.size.width/2
+                self.menuView.frame.origin.x = -self.verifyPosition(self.sizeRect.size.width/2)
                 self.menuViewHidden = true
                 self.mayVote = true
             })
