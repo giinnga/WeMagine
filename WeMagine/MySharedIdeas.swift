@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate {
     
     var sizeRect = UIScreen.mainScreen().applicationFrame;
     let app = UIApplication.sharedApplication()
@@ -25,10 +25,54 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
         var fontSize: CGFloat
         
         var barHeight:CGFloat = app.statusBarFrame.size.height
+        var topHeight:CGFloat = (44.0*prop)
+        
+//        Top Bar
+        
+        width = 375.0 * prop
+        height = topHeight + barHeight
+        x = 0.0
+        y = 0.0
+        
+        var topMenuRectangle:UIView = UIView(frame: CGRectMake(x, y, width, height))
+        topMenuRectangle.backgroundColor = UIColor.whiteColor()
+        self.view.addSubview(topMenuRectangle)
+        
+        width = 63.0 * prop
+        height = 44.0 * prop
+        x = 0
+        y = barHeight
+        
+        width = 63.0 * prop
+        height = 44.0 * prop
+        x = self.sizeRect.width - width
+        y = barHeight
+        
+        var lampIcon:UIImage = UIImage(named: "LampIcon@3x.png")!
+        var lampIconView:UIImageView = UIImageView(image: lampIcon)
+        lampIconView.frame = CGRectMake(x, y, width, height)
+        lampIconView.userInteractionEnabled = true
+        self.view.addSubview(lampIconView)
+        
+        let newIdea = UITapGestureRecognizer(target: self, action:Selector("newIdea:"))
+        newIdea.delegate = self
+        lampIconView.addGestureRecognizer(newIdea)
+        
+        fontSize = verifyPosition(0.0440 * sizeRect.size.width) - 1
+        
+        x = (sizeRect.size.width-300)/2
+        y = barHeight;
+        
+        let weMagineLabel = UILabel(frame: CGRectMake(x, y,300,topHeight))
+        weMagineLabel.font = UIFont(name: "HelveticaNeue", size: fontSize)
+        weMagineLabel.textAlignment = .Center
+        weMagineLabel.text = "We magine!"
+        weMagineLabel.textColor = UIColor(red: 0.1725, green: 0.3294, blue: 0.4784, alpha: 1.0)
+        self.view.addSubview(weMagineLabel)
         
 //        Table View
         
-        var tableViewApp: UITableView = UITableView(frame: CGRect(x: 0, y: barHeight, width: sizeRect.size.width, height: sizeRect.size.height))
+        var tableViewApp: UITableView = UITableView(frame: CGRect(x: 0, y: barHeight + topHeight, width: sizeRect.size.width, height: sizeRect.size.height))
         
         tableViewApp.delegate = self
         tableViewApp.dataSource = self
@@ -38,6 +82,19 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
         tableViewApp.registerNib(UINib(nibName: "BigCloud", bundle: nil), forCellReuseIdentifier: "bigCloud")
         
         self.view.addSubview(tableViewApp)
+    }
+    
+    func verifyPosition(measure:CGFloat) -> CGFloat
+    {
+        var divisionRest = measure % 1
+        var correctValue = measure + 1 - divisionRest
+        return correctValue
+    }
+    
+    func newIdea(recognizer: UITapGestureRecognizer) {
+        
+        let secondViewController:ViewController = ViewController()
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {

@@ -46,22 +46,6 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
         
         width = 63.0 * prop
         height = 44.0 * prop
-        x = 0
-        y = barHeight
-        
-        var menuOpen:UIImage = UIImage(named: "MenuIcon@3x.png")!
-        var menuOpenIcon: UIImageView = UIImageView(image: menuOpen)
-        menuOpenIcon.frame = CGRectMake(x, y, width, height)
-        menuOpenIcon.userInteractionEnabled = true
-        menuOpenIcon.tag = 1
-        self.view.addSubview(menuOpenIcon)
-        
-        let recognizer = UITapGestureRecognizer(target: self, action:Selector("handleTap:"))
-        recognizer.delegate = self
-        menuOpenIcon.addGestureRecognizer(recognizer)
-        
-        width = 63.0 * prop
-        height = 44.0 * prop
         x = self.sizeRect.width - width
         y = barHeight
         
@@ -121,77 +105,6 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
         cloudImageView.userInteractionEnabled = true
         self.view.addSubview(cloudImageView)
         
-//      Menu View
-        
-        menuView = UIView(frame: CGRect(x: -sizeRect.size.width/2, y: topMenuRectangle.frame.size.height, width: sizeRect.size.width/2, height: sizeRect.size.height))
-        menuView.backgroundColor = UIColor(red: 0.9601, green: 0.9307, blue: 0.9053, alpha: 1.0)
-        self.view.addSubview(menuView)
-        
-//      Menu View Rectangles
-        
-        width = sizeRect.size.width/2
-        height = sizeRect.size.height/10
-        
-        fontSize = verifyPosition(0.048 * sizeRect.size.width) - 1
-        
-        x = verifyPosition(width/8.5)
-        y = verifyPosition(height/3)
-        
-        var share:UIView = UIView(frame: CGRect(x: 0, y: 0, width: width, height: height))
-        share.backgroundColor = UIColor(red: 0.7357, green: 0.639, blue: 0.5589, alpha: 1.0)
-        menuView.addSubview(share)
-        
-        var shareLabel:UILabel = UILabel(frame: CGRect(x: x, y: y, width: 10 , height: 10))
-        shareLabel.text = "Share Imagination"
-        shareLabel.textColor = UIColor(red: 0.3191, green: 0.3191, blue: 0.3191, alpha: 1.0)
-        shareLabel.font = UIFont(name: "HelveticaNeue-Light", size: fontSize)
-        shareLabel.sizeToFit()
-        share.addSubview(shareLabel)
-        
-        
-        var myIdeas: UIView = UIView(frame: CGRect(x: 0, y: sizeRect.size.height/10, width: width, height: height))
-        myIdeas.backgroundColor = UIColor(red: 0.9608, green: 0.9294, blue: 0.9059, alpha: 1.0)
-        menuView.addSubview(myIdeas)
-        
-        var myIdeasLabel:UILabel = UILabel(frame: CGRect(x: x, y: y, width: 10 , height: 10))
-        myIdeasLabel.text = "My shared ideas"
-        myIdeasLabel.textColor = UIColor(red: 0.3191, green: 0.3191, blue: 0.3191, alpha: 1.0)
-        myIdeasLabel.font = UIFont(name: "HelveticaNeue-Light", size: fontSize)
-        myIdeasLabel.sizeToFit()
-        myIdeas.addSubview(myIdeasLabel)
-        
-        var profile:UIView = UIView(frame: CGRect(x: 0, y: 2*sizeRect.size.height/10, width: width, height: height))
-        profile.backgroundColor = UIColor(red: 0.7357, green: 0.639, blue: 0.5589, alpha: 1.0)
-        menuView.addSubview(profile)
-        
-        var profileLabel:UILabel = UILabel(frame: CGRect(x: x, y: y, width: 10 , height: 10))
-        profileLabel.text = "Profile"
-        profileLabel.textColor = UIColor(red: 0.3191, green: 0.3191, blue: 0.3191, alpha: 1.0)
-        profileLabel.font = UIFont(name: "HelveticaNeue-Light", size: fontSize)
-        profileLabel.sizeToFit()
-        profile.addSubview(profileLabel)
-        
-        var settings: UIView = UIView(frame: CGRect(x: 0, y: 3 * sizeRect.size.height/10, width: width, height: height))
-        settings.backgroundColor = UIColor(red: 0.9608, green: 0.9294, blue: 0.9059, alpha: 1.0)
-        menuView.addSubview(settings)
-        
-        var settingsLabel:UILabel = UILabel(frame: CGRect(x: x, y: y, width: 10 , height: 10))
-        settingsLabel.text = "Settings"
-        settingsLabel.textColor = UIColor(red: 0.3191, green: 0.3191, blue: 0.3191, alpha: 1.0)
-        settingsLabel.font = UIFont(name: "HelveticaNeue-Light", size: fontSize)
-        settingsLabel.sizeToFit()
-        settings.addSubview(settingsLabel)
-        
-        var logout:UIView = UIView(frame: CGRect(x: 0, y: 4*sizeRect.size.height/10, width: width, height: height))
-        logout.backgroundColor = UIColor(red: 0.7357, green: 0.639, blue: 0.5589, alpha: 1.0)
-        menuView.addSubview(logout)
-        
-        var logoutLabel:UILabel = UILabel(frame: CGRect(x: x, y: y, width: 10 , height: 10))
-        logoutLabel.text = "Logout"
-        logoutLabel.textColor = UIColor(red: 0.3191, green: 0.3191, blue: 0.3191, alpha: 1.0)
-        logoutLabel.font = UIFont(name: "HelveticaNeue-Light", size: fontSize)
-        logoutLabel.sizeToFit()
-        logout.addSubview(logoutLabel)
         
 //        Text Field
         
@@ -222,23 +135,6 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
         sendYourIdea.sizeToFit()
         sendYourIdea.hidden = true
         self.view.addSubview(sendYourIdea)
-    }
-    
-    func handleTap(recognizer: UITapGestureRecognizer) {
-        
-        if(menuViewHidden){
-            UIView.animateWithDuration(0.3, animations: {
-                self.menuView.frame.origin.x = 0
-                self.menuViewHidden = false
-            })
-        }
-        else{
-            UIView.animateWithDuration(0.3, animations: {
-                self.menuView.frame.origin.x = -self.verifyPosition(self.sizeRect.size.width/2)
-                self.menuViewHidden = true
-            })
-        }
-        
     }
     
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
