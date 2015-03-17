@@ -150,7 +150,12 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
         sendYourIdea = UIImageView(image: shareButton)
         sendYourIdea.frame = CGRectMake(x, y, width, height)
         sendYourIdea.hidden = true
+        sendYourIdea.userInteractionEnabled = true
         self.view.addSubview(sendYourIdea)
+        
+        let shareGesture = UITapGestureRecognizer(target: self, action:Selector("newIdeaTap:"))
+        shareGesture.delegate = self
+        sendYourIdea.addGestureRecognizer(shareGesture)
     }
     
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
@@ -194,6 +199,12 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
         topCorrect = (topCorrect < 0.0 ? 0.0 : topCorrect)
         self.textField.contentOffset.x = 0
         self.textField.contentOffset.y = -topCorrect
+    }
+    
+    func newIdeaTap(recognizer: UITapGestureRecognizer) {
+        
+        let secondViewController:ViewController = ViewController()
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
 }
