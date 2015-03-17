@@ -23,6 +23,7 @@
 		511FBC471AB7834000BFC694 /* BigCloud@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 511FBC441AB7834000BFC694 /* BigCloud@2x.png */; };
 		511FBC481AB7834000BFC694 /* BigCloud.png in Resources */ = {isa = PBXBuildFile; fileRef = 511FBC451AB7834000BFC694 /* BigCloud.png */; };
 		94B1F3411AB32884000E74E4 /* AddIdeaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B1F3401AB32884000E74E4 /* AddIdeaController.swift */; };
+		94B369EA1AB78D1800A20AB3 /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94B369E81AB78D1800A20AB3 /* CustomCell.xib */; };
 		94BF551E1AB22A3A00DA5CC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BF551D1AB22A3A00DA5CC0 /* AppDelegate.swift */; };
 		94BF55201AB22A3A00DA5CC0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BF551F1AB22A3A00DA5CC0 /* ViewController.swift */; };
 		94BF55251AB22A3A00DA5CC0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94BF55241AB22A3A00DA5CC0 /* Images.xcassets */; };
@@ -38,6 +39,9 @@
 		94BF55591AB2322000DA5CC0 /* SadCloudButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94BF554A1AB2322000DA5CC0 /* SadCloudButton@2x.png */; };
 		94BF555A1AB2322000DA5CC0 /* SadCloudButton@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94BF554B1AB2322000DA5CC0 /* SadCloudButton@3x.png */; };
 		94D7F0921AB613D600D7642E /* MySharedIdeas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D7F0911AB613D600D7642E /* MySharedIdeas.swift */; };
+		94F4928A1AB7985F0052FAB4 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F492891AB7985F0052FAB4 /* CustomCell.swift */; };
+		94F4928D1AB7A2550052FAB4 /* BigCloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F4928B1AB7A2550052FAB4 /* BigCloud.swift */; };
+		94F4928E1AB7A2550052FAB4 /* BigCloud.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94F4928C1AB7A2550052FAB4 /* BigCloud.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +71,7 @@
 		511FBC441AB7834000BFC694 /* BigCloud@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BigCloud@2x.png"; sourceTree = "<group>"; };
 		511FBC451AB7834000BFC694 /* BigCloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BigCloud.png; sourceTree = "<group>"; };
 		94B1F3401AB32884000E74E4 /* AddIdeaController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddIdeaController.swift; sourceTree = "<group>"; };
+		94B369E81AB78D1800A20AB3 /* CustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
 		94BF55181AB22A3A00DA5CC0 /* WeMagine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeMagine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94BF551C1AB22A3A00DA5CC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94BF551D1AB22A3A00DA5CC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +91,9 @@
 		94BF554A1AB2322000DA5CC0 /* SadCloudButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SadCloudButton@2x.png"; sourceTree = "<group>"; };
 		94BF554B1AB2322000DA5CC0 /* SadCloudButton@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SadCloudButton@3x.png"; sourceTree = "<group>"; };
 		94D7F0911AB613D600D7642E /* MySharedIdeas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySharedIdeas.swift; sourceTree = "<group>"; };
+		94F492891AB7985F0052FAB4 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		94F4928B1AB7A2550052FAB4 /* BigCloud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigCloud.swift; sourceTree = "<group>"; };
+		94F4928C1AB7A2550052FAB4 /* BigCloud.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BigCloud.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +140,10 @@
 				94BF551F1AB22A3A00DA5CC0 /* ViewController.swift */,
 				94B1F3401AB32884000E74E4 /* AddIdeaController.swift */,
 				94D7F0911AB613D600D7642E /* MySharedIdeas.swift */,
+				94F492891AB7985F0052FAB4 /* CustomCell.swift */,
+				94B369E81AB78D1800A20AB3 /* CustomCell.xib */,
+				94F4928B1AB7A2550052FAB4 /* BigCloud.swift */,
+				94F4928C1AB7A2550052FAB4 /* BigCloud.xib */,
 				94BF55241AB22A3A00DA5CC0 /* Images.xcassets */,
 				94BF55261AB22A3A00DA5CC0 /* LaunchScreen.xib */,
 				94BF551B1AB22A3A00DA5CC0 /* Supporting Files */,
@@ -282,12 +294,14 @@
 				511FBC361AB774AE00BFC694 /* LampIcon.png in Resources */,
 				94BF55281AB22A3A00DA5CC0 /* LaunchScreen.xib in Resources */,
 				94BF554C1AB2322000DA5CC0 /* Cloud.png in Resources */,
+				94B369EA1AB78D1800A20AB3 /* CustomCell.xib in Resources */,
 				511FBC301AB7741000BFC694 /* MenuIcon.png in Resources */,
 				511FBC401AB7833600BFC694 /* HappyCloud@3x.png in Resources */,
 				94BF554E1AB2322000DA5CC0 /* Cloud@3x.png in Resources */,
 				94BF55501AB2322000DA5CC0 /* HappyCloudButton@2x.png in Resources */,
 				511FBC471AB7834000BFC694 /* BigCloud@2x.png in Resources */,
 				511FBC3C1AB7832A00BFC694 /* SadCloud.png in Resources */,
+				94F4928E1AB7A2550052FAB4 /* BigCloud.xib in Resources */,
 				511FBC3B1AB7832A00BFC694 /* SadCloud@2x.png in Resources */,
 				511FBC2E1AB7741000BFC694 /* MenuIcon@3x.png in Resources */,
 				511FBC461AB7834000BFC694 /* BigCloud@3x.png in Resources */,
@@ -318,8 +332,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94F4928D1AB7A2550052FAB4 /* BigCloud.swift in Sources */,
 				94BF55201AB22A3A00DA5CC0 /* ViewController.swift in Sources */,
 				94D7F0921AB613D600D7642E /* MySharedIdeas.swift in Sources */,
+				94F4928A1AB7985F0052FAB4 /* CustomCell.swift in Sources */,
 				94BF551E1AB22A3A00DA5CC0 /* AppDelegate.swift in Sources */,
 				94B1F3411AB32884000E74E4 /* AddIdeaController.swift in Sources */,
 			);
