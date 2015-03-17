@@ -112,6 +112,7 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
         if indexPath.row == 0
         {
             let cell = tableView.dequeueReusableCellWithIdentifier("bigCloud", forIndexPath: indexPath) as BigCloud
+            cell.backgroundColor = UIColor(red: 0.6275, green: 0.9216, blue: 1.0, alpha: 1.0)
             
             return cell
         }
