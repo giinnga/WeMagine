@@ -29,13 +29,16 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
         
 //        Top Bar
         
-        width = 375.0 * prop
-        height = topHeight + barHeight
-        x = 0.0
-        y = 0.0
+        width = (375.0 * prop) + 2
+        height = (topHeight + barHeight) + 2
+        x = -1
+        y = -1
         
         var topMenuRectangle:UIView = UIView(frame: CGRectMake(x, y, width, height))
         topMenuRectangle.backgroundColor = UIColor.whiteColor()
+        topMenuRectangle.layer.zPosition = 10
+        topMenuRectangle.layer.borderWidth = 1
+        topMenuRectangle.layer.borderColor = UIColor(red: 0.1725, green: 0.3294, blue: 0.4784, alpha: 1.0).CGColor
         self.view.addSubview(topMenuRectangle)
         
         width = 63.0
