@@ -50,6 +50,7 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
         var lampIconView:UIImageView = UIImageView(image: lampIcon)
         lampIconView.frame = CGRectMake(x, y, width, height)
         lampIconView.userInteractionEnabled = true
+        lampIconView.layer.zPosition = 11
         self.view.addSubview(lampIconView)
         
         let newIdea = UITapGestureRecognizer(target: self, action:Selector("newIdea:"))
@@ -66,6 +67,7 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
         weMagineLabel.textAlignment = .Center
         weMagineLabel.text = "We magine!"
         weMagineLabel.textColor = UIColor(red: 0.1725, green: 0.3294, blue: 0.4784, alpha: 1.0)
+        weMagineLabel.layer.zPosition = 11
         self.view.addSubview(weMagineLabel)
         
 //        Table View
@@ -74,6 +76,8 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
         
         tableViewApp.delegate = self
         tableViewApp.dataSource = self
+        
+        tableViewApp.backgroundColor = UIColor(red: 0.6192, green: 0.9166, blue: 1.0, alpha: 1.0)
         
         tableViewApp.separatorStyle = UITableViewCellSeparatorStyle.None
         tableViewApp.registerNib(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "blueCell")

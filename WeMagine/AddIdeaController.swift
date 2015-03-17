@@ -17,6 +17,8 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
     var textField: UITextView = UITextView()
     var sendYourIdea: UIImageView = UIImageView()
     
+    var cloudY = CGFloat()
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -56,6 +58,7 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
         var lampIconView:UIImageView = UIImageView(image: lampIcon)
         lampIconView.frame = CGRectMake(x, y, width, height)
         lampIconView.userInteractionEnabled = true
+        lampIconView.layer.zPosition = 11
         self.view.addSubview(lampIconView)
         
         let newIdea = UITapGestureRecognizer(target: self, action:Selector("newIdea:"))
@@ -72,6 +75,7 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
         weMagineLabel.textAlignment = .Center
         weMagineLabel.text = "We magine!"
         weMagineLabel.textColor = UIColor(red: 0.1725, green: 0.3294, blue: 0.4784, alpha: 1.0)
+        weMagineLabel.layer.zPosition = 11
         self.view.addSubview(weMagineLabel)
         
 //      Button Area
@@ -101,6 +105,8 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
         height = verifyPosition(274.0 * prop)
         x = verifyPosition((sizeRect.size.width - width)/2)
         y = verifyPosition((349*prop - height)/2 + topHeight + barHeight)
+        
+        cloudY = y
         
         var cloudImage: UIImage = UIImage(named: "Cloud@3x.png")!
         var cloudImageView: UIImageView = UIImageView(image: cloudImage)
@@ -132,10 +138,17 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
         
 //        Send your idea
         
-        var shareButton: UIImage = UIImage(named: "HappyCloudButton@3x.png")!
+        var brownHeight:CGFloat = sizeRect.size.height - (topHeight + (349 * prop))
+        var buttonProp:CGFloat = brownHeight/274
+    
+        width = verifyPosition(154.0 * buttonProp)
+        height = verifyPosition(159.0 * buttonProp)
+        x = (sizeRect.size.width-width)/2
+        y = ((brownHeight - height)/2) + topHeight + barHeight + (349 * prop)
+        
+        var shareButton: UIImage = UIImage(named: "SendButton@3x.png")!
         sendYourIdea = UIImageView(image: shareButton)
-        sendYourIdea.frame = CGRect(x: sizeRect.size.width/2.8, y: 0.825 * sizeRect.size.height, width: 10, height: 10)
-        sendYourIdea.sizeToFit()
+        sendYourIdea.frame = CGRectMake(x, y, width, height)
         sendYourIdea.hidden = true
         self.view.addSubview(sendYourIdea)
     }
