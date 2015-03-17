@@ -40,8 +40,6 @@ class LoginController: UIViewController, UIGestureRecognizerDelegate {
         x = sizeRect.size.width/2 - width/2
         y = 0.12 * sizeRect.size.height
         
-//        height = 
-        
         var logoImage: UIImage = UIImage(named: "Logo@3x.png")!
         var logoImageView: UIImageView = UIImageView(image: logoImage)
         logoImageView.frame = CGRect(x: x, y: y, width: width, height: height)
