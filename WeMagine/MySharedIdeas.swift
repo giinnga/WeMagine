@@ -12,6 +12,8 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
     
     var sizeRect = UIScreen.mainScreen().applicationFrame;
     let app = UIApplication.sharedApplication()
+    var number = 11
+    var module = 2
     
     override func viewDidLoad() {
         
@@ -104,7 +106,7 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 11
+        return number
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
@@ -123,12 +125,26 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
         
             if indexPath.row%2 == 0
             {
-                cell.backgroundColor = UIColor(red: 0.6265, green: 0.9197, blue: 1.0, alpha: 1.0)
+                if module == 2
+                {
+                    cell.backgroundColor = UIColor(red: 0.6265, green: 0.9197, blue: 1.0, alpha: 1.0)
+                }
+                else
+                {
+                    cell.backgroundColor = UIColor(red: 0.9601, green: 0.9307, blue: 0.9053, alpha: 1.0)
+                }
             }
             
             else
             {
-                cell.backgroundColor = UIColor(red: 0.9601, green: 0.9307, blue: 0.9053, alpha: 1.0)
+                if module == 2
+                {
+                    cell.backgroundColor = UIColor(red: 0.9601, green: 0.9307, blue: 0.9053, alpha: 1.0)
+                }
+                else
+                {
+                    cell.backgroundColor = UIColor(red: 0.6265, green: 0.9197, blue: 1.0, alpha: 1.0)
+                }
             }
             
             cell.selectionStyle = UITableViewCellSelectionStyle.None
@@ -145,6 +161,23 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
         }
         
         return 103
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete
+        {
+//            var delete = tableView.cellForRowAtIndexPath(indexPath)!.tag
+            number--
+            if module == 2
+            {
+                module = 1
+            }
+            else
+            {
+                module = 2
+            }
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Top)
+        }
     }
 
 }

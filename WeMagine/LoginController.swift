@@ -46,8 +46,6 @@ class LoginController: UIViewController, UIGestureRecognizerDelegate {
         logoImageView.sizeToFit()
         self.view.addSubview(logoImageView)
         
-        println(logoImageView.frame.size.width/sizeRect.size.width)
-        
 //        Text Fields
         
         width = verifyPosition(sizeRect.size.width/1.5)
@@ -61,8 +59,6 @@ class LoginController: UIViewController, UIGestureRecognizerDelegate {
         username.borderStyle = UITextBorderStyle.None
         username.layer.cornerRadius = height/2
         username.layer.sublayerTransform = CATransform3DMakeTranslation(20, 0, 0)
-        
-        println(60/sizeRect.size.width)
         
         self.view.addSubview(username)
         
