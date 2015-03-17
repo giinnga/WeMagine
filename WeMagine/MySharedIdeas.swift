@@ -25,7 +25,7 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
         var fontSize: CGFloat
         
         var barHeight:CGFloat = app.statusBarFrame.size.height
-        var topHeight:CGFloat = (44.0*prop)
+        var topHeight:CGFloat = 44.0
         
 //        Top Bar
         
@@ -38,13 +38,8 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
         topMenuRectangle.backgroundColor = UIColor.whiteColor()
         self.view.addSubview(topMenuRectangle)
         
-        width = 63.0 * prop
-        height = 44.0 * prop
-        x = 0
-        y = barHeight
-        
-        width = 63.0 * prop
-        height = 44.0 * prop
+        width = 63.0
+        height = 44.0
         x = self.sizeRect.width - width
         y = barHeight
         
@@ -58,7 +53,7 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
         newIdea.delegate = self
         lampIconView.addGestureRecognizer(newIdea)
         
-        fontSize = verifyPosition(0.0440 * sizeRect.size.width) - 1
+        fontSize = verifyPosition(0.0580 * sizeRect.size.width) - 1
         
         x = (sizeRect.size.width-300)/2
         y = barHeight;

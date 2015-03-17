@@ -30,8 +30,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
     var menuViewHidden: Bool = true
     var mayVote: Bool = true
     var finished: Bool = false
-    
-    var newIdeaFrame: CGRect = CGRect()
+
     var shownIdeaFrame: CGRect = CGRect()
 
     override func viewDidLoad() {
@@ -50,14 +49,16 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         
 //      Top rectangle
         
-        width = 375.0 * prop
-        height = topHeight + barHeight
-        x = 0.0
-        y = 0.0
+        width = (375.0 * prop) + 2
+        height = (topHeight + barHeight) + 2
+        x = -1
+        y = -1
         
         var topMenuRectangle:UIView = UIView(frame: CGRectMake(x, y, width, height))
         topMenuRectangle.backgroundColor = UIColor.whiteColor()
         topMenuRectangle.layer.zPosition = 10
+        topMenuRectangle.layer.borderWidth = 1
+        topMenuRectangle.layer.borderColor = UIColor(red: 0.1725, green: 0.3294, blue: 0.4784, alpha: 1.0).CGColor
         self.view.addSubview(topMenuRectangle)
         
         width = 63.0
@@ -93,7 +94,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         newIdea.delegate = self
         lampIconView.addGestureRecognizer(newIdea)
         
-        fontSize = verifyPosition(0.0440 * sizeRect.size.width) - 1
+        fontSize = verifyPosition(0.0580 * sizeRect.size.width) - 1
         
         x = (sizeRect.size.width-300)/2
         y = barHeight;
@@ -171,7 +172,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         
 //      Menu View
         
-        menuView = UIView(frame: CGRect(x: -sizeRect.size.width/2, y: topMenuRectangle.frame.size.height, width: sizeRect.size.width/2, height: sizeRect.size.height))
+        menuView = UIView(frame: CGRect(x: -sizeRect.size.width/2, y: topMenuRectangle.frame.size.height - 1, width: sizeRect.size.width/2, height: sizeRect.size.height + 1))
         menuView.backgroundColor = UIColor(red: 0.9601, green: 0.9307, blue: 0.9053, alpha: 1.0)
         self.view.addSubview(menuView)
         
@@ -252,19 +253,10 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         
         width = verifyPosition(cloudImageView.frame.size.width/1.28)
         height = verifyPosition(cloudImageView.frame.size.height/1.8)
-        x = verifyPosition(sizeRect.size.width * 1.5)
-        y = verifyPosition(cloudImageView.frame.size.height/2 - height/2)
-        
-        newIdeaFrame = CGRect(x: x, y: y, width: width, height: height)
-        
-        width = verifyPosition(cloudImageView.frame.size.width/1.28)
-        height = verifyPosition(cloudImageView.frame.size.height/1.8)
         x = verifyPosition(cloudImageView.frame.size.width/2 - width/2)
         y = verifyPosition(cloudImageView.frame.size.height/2 - height/2)
         
         shownIdeaFrame = CGRect(x: x, y: y, width: width, height: height)
-        
-        setNewIdea()
         
 //      CloudText
         
@@ -272,7 +264,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         
         fadeText = UITextView(frame: shownIdeaFrame)
         fadeText.scrollEnabled = false
-        fadeText.text = String("E se existisse um cinema só para golfinhos!")
         fadeText.textAlignment = .Center
         fadeText.textColor = UIColor(red: 0.1725, green: 0.3294, blue: 0.4784, alpha: 1.0)
         fadeText.font = UIFont(name: "HelveticaNeue", size: fontSize)
@@ -284,7 +275,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         
         textView = UITextView(frame: shownIdeaFrame)
         textView.scrollEnabled = false
-        textView.text = String("E se existisse um cinema só para golfinhos?")
         textView.textAlignment = .Center
         textView.textColor = UIColor(red: 0.1725, green: 0.3294, blue: 0.4784, alpha: 1.0)
         textView.font = UIFont(name: "HelveticaNeue", size: fontSize)
@@ -295,6 +285,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         textView.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.New, context: nil)
         
         centerText()
+        setNewIdea()
         
     }
     
@@ -315,39 +306,14 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
     }
     
     func goodVote(recognizer: UITapGestureRecognizer) {
-        if(mayVote)
-        {
-            var height:CGFloat = verifyPosition(cloudImageView.frame.size.height/1.8)
-            var width:CGFloat = verifyPosition(cloudImageView.frame.size.width/1.28)
-            var y:CGFloat = verifyPosition(cloudImageView.frame.size.height/2 - height/2)
-            var x:CGFloat = verifyPosition(cloudImageView.frame.size.width/2 - width/2)
-            
-            
-            println("goodVote")
-            UIView.animateWithDuration(0.7, animations: {
-                self.textView.frame.origin.y = -y - height
-                self.cloudFadeImageView.frame.origin.x = self.shownIdeaFrame.origin.x
-                self.cloudFadeImageView.frame.origin.y = self.shownIdeaFrame.origin.y
-                self.centerText()
-
-                }, completion: {
-                    (value: Bool) in
-                    self.changeTexts()
-                    self.centerText()
-            })
+        if(mayVote) {
+            likeIdea()
         }
     }
     
     func badVote(recognizer: UITapGestureRecognizer) {
-        if(mayVote)
-        {
-            println("badVote")
-            UIView.animateWithDuration(0.3, animations: {
-                self.textView.alpha = 0
-                }, completion:{
-                    (value: Bool) in
-                    println("teste")
-            })
+        if(mayVote) {
+            dislikeIdea()
         }
     }
     
@@ -399,17 +365,48 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
                 self.mayVote = true
             })
         }
-        
     }
     
-//    Next Idea
+//  Next Idea
     
     func setNewIdea()
     {
         
+        self.fadeText.text = self.getNewIdea()
         
+        UIView.animateWithDuration(0.3, animations: {
+            self.cloudFadeImageView.frame.origin.x = self.cloudX
+        }, completion: {
+            (value: Bool) in
+            self.centerText()
+            self.cloudFadeImageView.frame.origin.x = self.cloudX+self.sizeRect.size.width
+            self.cloudImageView.alpha = 1
+            self.cloudImageView.frame = CGRectMake(self.cloudX, self.cloudY, self.cloudWidth, self.cloudHeight)
+            self.textView.text = self.fadeText.text
+        })
         
-
+    }
+    
+    func likeIdea() {
+        
+        UIView.animateWithDuration(0.3, animations: {
+            self.cloudImageView.frame.origin.y = self.cloudY-(self.cloudHeight*2)
+        }, completion: {
+            (value: Bool) in
+            self.setNewIdea()
+        })
+        
+    }
+    
+    func dislikeIdea() {
+        
+        UIView.animateWithDuration(0.3, animations: {
+            self.cloudImageView.alpha = 0
+        }, completion: {
+            (value: Bool) in
+            self.setNewIdea()
+        })
+        
     }
     
     func centerText()
@@ -429,13 +426,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         self.textView.contentOffset.y = -topCorrect
     }
     
-    func changeTexts()
-    {
-        textView.text = fadeText.text
-        textView.frame = shownIdeaFrame
-        
-        fadeText.text = "teste"
-        fadeText.frame = shownIdeaFrame
+    func getNewIdea() -> String {
+        return "Um cinema só para golfinhos é uma boa ideia para testar o app!"
     }
     
 //  Segue

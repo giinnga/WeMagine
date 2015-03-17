@@ -31,7 +31,7 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
         var fontSize: CGFloat
         
         var barHeight:CGFloat = app.statusBarFrame.size.height
-        var topHeight:CGFloat = (44.0*prop)
+        var topHeight:CGFloat = 44.0
         
 //        Top rectangle
         
@@ -44,8 +44,8 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
         topMenuRectangle.backgroundColor = UIColor.whiteColor()
         self.view.addSubview(topMenuRectangle)
         
-        width = 63.0 * prop
-        height = 44.0 * prop
+        width = 63.0
+        height = 44.0
         x = self.sizeRect.width - width
         y = barHeight
         
@@ -59,7 +59,7 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
         newIdea.delegate = self
         lampIconView.addGestureRecognizer(newIdea)
         
-        fontSize = verifyPosition(0.0440 * sizeRect.size.width) - 1
+        fontSize = verifyPosition(0.0580 * sizeRect.size.width) - 1
         
         x = (sizeRect.size.width-300)/2
         y = barHeight;
