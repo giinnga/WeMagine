@@ -18,8 +18,14 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
     var goodIdea: UIView = UIView()
     
     var cloudImageView: UIImageView = UIImageView()
+    var cloudFadeImageView: UIImageView = UIImageView()
     var textView: UITextView = UITextView()
     var fadeText: UITextView = UITextView()
+    
+    var cloudWidth = CGFloat()
+    var cloudHeight = CGFloat()
+    var cloudX = CGFloat()
+    var cloudY = CGFloat()
     
     var menuViewHidden: Bool = true
     var mayVote: Bool = true
@@ -40,7 +46,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         var fontSize: CGFloat
         
         var barHeight:CGFloat = app.statusBarFrame.size.height
-        var topHeight:CGFloat = (44.0*prop)
+        var topHeight:CGFloat = 44.0
         
 //      Top rectangle
         
@@ -54,8 +60,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         topMenuRectangle.layer.zPosition = 10
         self.view.addSubview(topMenuRectangle)
         
-        width = 63.0 * prop
-        height = 44.0 * prop
+        width = 63.0
+        height = 44.0
         x = 0
         y = barHeight
         
@@ -71,8 +77,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         recognizer.delegate = self
         menuOpenIcon.addGestureRecognizer(recognizer)
         
-        width = 63.0 * prop
-        height = 44.0 * prop
+        width = 63.0
+        height = 44.0
         x = self.sizeRect.width - width
         y = barHeight
         
@@ -120,27 +126,32 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         goodVote.delegate = self
         goodIdea.addGestureRecognizer(goodVote)
         
-//      Cloud
+//      Clouds
         
         var totalHeight: CGFloat = (274.0 * prop) + (70.0 * prop) + (107.0 * prop)
         var fullHeight: CGFloat = sizeRect.size.height - topHeight
         
-        width = verifyPosition(325.0 * prop)
-        height = verifyPosition(274.0 * prop)
-        x = (sizeRect.size.width - width)/2
-        y = verifyPosition(((fullHeight - totalHeight)/2) + topHeight + barHeight)
+        cloudWidth = verifyPosition(325.0 * prop)
+        cloudHeight = verifyPosition(274.0 * prop)
+        cloudX = (sizeRect.size.width - cloudWidth)/2
+        cloudY = verifyPosition(((fullHeight - totalHeight)/2) + topHeight + barHeight)
     
         var cloudImage: UIImage = UIImage(named: "Cloud@3x.png")!
+        
         cloudImageView = UIImageView(image: cloudImage)
-        cloudImageView.frame = CGRectMake(x,y,width,height)
+        cloudImageView.frame = CGRectMake(cloudX+2000,cloudY,cloudWidth,cloudHeight)
+        cloudFadeImageView = UIImageView(image: cloudImage)
+        cloudFadeImageView.frame = CGRectMake(cloudX+2000,cloudY,cloudWidth,cloudHeight)
+        
         self.view.addSubview(cloudImageView)
+        self.view.addSubview(cloudFadeImageView)
         
 //      Sad & Happy images
 
         width = 104.0 * prop
         height = 107.0 * prop
         x = (((sizeRect.size.width/2) - width)/2) + sizeRect.size.width/2
-        y = y + (274.0 * prop) + (70.0 * prop)
+        y = cloudY + (274.0 * prop) + (70.0 * prop)
         
         var goodFace:UIImage = UIImage(named: "HappyCloudButton@3x.png")!
         var goodImage:UIImageView = UIImageView(image: goodFace)
@@ -237,7 +248,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         logoutLabel.sizeToFit()
         logout.addSubview(logoutLabel)
         
-//        Frames
+//      Frames
         
         width = verifyPosition(cloudImageView.frame.size.width/1.28)
         height = verifyPosition(cloudImageView.frame.size.height/1.8)
@@ -255,19 +266,25 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         
         setNewIdea()
         
-    }
-    
-    override func viewWillAppear(animated: Bool) {
+//      CloudText
         
-        super.viewWillAppear(animated)
+        fontSize = verifyPosition(0.046875 * sizeRect.size.width) - 1
         
-        //      CloudText
+        fadeText = UITextView(frame: shownIdeaFrame)
+        fadeText.scrollEnabled = false
+        fadeText.text = String("E se existisse um cinema só para golfinhos!")
+        fadeText.textAlignment = .Center
+        fadeText.textColor = UIColor(red: 0.1725, green: 0.3294, blue: 0.4784, alpha: 1.0)
+        fadeText.font = UIFont(name: "HelveticaNeue", size: fontSize)
+        fadeText.backgroundColor = nil
+        fadeText.layer.zPosition = 9
+        cloudFadeImageView.addSubview(fadeText)
         
-        var fontSize:CGFloat = verifyPosition(0.046875 * sizeRect.size.width) - 1
+        fadeText.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.New, context: nil)
         
         textView = UITextView(frame: shownIdeaFrame)
         textView.scrollEnabled = false
-        textView.text = String("E se existisse um cinema só para golfinhos")
+        textView.text = String("E se existisse um cinema só para golfinhos?")
         textView.textAlignment = .Center
         textView.textColor = UIColor(red: 0.1725, green: 0.3294, blue: 0.4784, alpha: 1.0)
         textView.font = UIFont(name: "HelveticaNeue", size: fontSize)
@@ -276,6 +293,18 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         cloudImageView.addSubview(textView)
         
         textView.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.New, context: nil)
+        
+        centerText()
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        
+        self.centerText()
+        
+
     }
     
 //    Gestures
@@ -297,8 +326,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
             println("goodVote")
             UIView.animateWithDuration(0.7, animations: {
                 self.textView.frame.origin.y = -y - height
-                self.fadeText.frame.origin.x = self.shownIdeaFrame.origin.x
-                self.fadeText.frame.origin.y = self.shownIdeaFrame.origin.y
+                self.cloudFadeImageView.frame.origin.x = self.shownIdeaFrame.origin.x
+                self.cloudFadeImageView.frame.origin.y = self.shownIdeaFrame.origin.y
                 self.centerText()
 
                 }, completion: {
@@ -377,19 +406,10 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
     
     func setNewIdea()
     {
-        var fontSize:CGFloat = verifyPosition(0.046875 * sizeRect.size.width) - 1
         
-        fadeText = UITextView(frame: newIdeaFrame)
-        fadeText.scrollEnabled = false
-        fadeText.text = String("E se existisse um cinema só para golfinhos")
-        fadeText.textAlignment = .Center
-        fadeText.textColor = UIColor(red: 0.1725, green: 0.3294, blue: 0.4784, alpha: 1.0)
-        fadeText.font = UIFont(name: "HelveticaNeue", size: fontSize)
-        fadeText.backgroundColor = nil
-        fadeText.layer.zPosition = 9
-        cloudImageView.addSubview(fadeText)
         
-        fadeText.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.New, context: nil)
+        
+
     }
     
     func centerText()
@@ -415,7 +435,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         textView.frame = shownIdeaFrame
         
         fadeText.text = "teste"
-        fadeText.frame = newIdeaFrame
+        fadeText.frame = shownIdeaFrame
     }
     
 //  Segue
