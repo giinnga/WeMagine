@@ -72,7 +72,7 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
         
 //        Table View
         
-        var tableViewApp: UITableView = UITableView(frame: CGRect(x: 0, y: barHeight + topHeight, width: sizeRect.size.width, height: sizeRect.size.height))
+        var tableViewApp: UITableView = UITableView(frame: CGRect(x: 0, y: barHeight + topHeight, width: sizeRect.size.width, height: sizeRect.size.height - (topHeight)))
         
         tableViewApp.delegate = self
         tableViewApp.dataSource = self
