@@ -16,8 +16,11 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
     var menuViewHidden: Bool = true
     var textField: UITextView = UITextView()
     var sendYourIdea: UIImageView = UIImageView()
+    var cloudImageView: UIImageView = UIImageView()
+    var happyCloudImageView: UIImageView = UIImageView()
     
-    var cloudY = CGFloat()
+    var barHeight:CGFloat = CGFloat()
+    var topHeight:CGFloat = 44.0
     
     override func viewDidLoad() {
         
@@ -32,10 +35,9 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
         var y: CGFloat
         var fontSize: CGFloat
         
-        var barHeight:CGFloat = app.statusBarFrame.size.height
-        var topHeight:CGFloat = 44.0
+        barHeight = app.statusBarFrame.size.height
         
-//        Top rectangle
+//      Top rectangle
         
         width = (375.0 * prop) + 2
         height = (topHeight + barHeight) + 2
@@ -106,16 +108,21 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
         x = verifyPosition((sizeRect.size.width - width)/2)
         y = verifyPosition((349*prop - height)/2 + topHeight + barHeight)
         
-        cloudY = y
-        
         var cloudImage: UIImage = UIImage(named: "Cloud@3x.png")!
-        var cloudImageView: UIImageView = UIImageView(image: cloudImage)
+        cloudImageView = UIImageView(image: cloudImage)
         cloudImageView.frame = CGRectMake(x,y,width,height)
         cloudImageView.userInteractionEnabled = true
+        cloudImageView.alpha = 1
         self.view.addSubview(cloudImageView)
         
+        var happyImage:UIImage = UIImage(named: "HappyUpCloud1@3x.png")!
+        happyCloudImageView = UIImageView(image: happyImage)
+        happyCloudImageView.frame = CGRectMake(0, 0, width, height)
+        happyCloudImageView.alpha = 0
         
-//        Text Field
+        cloudImageView.addSubview(happyCloudImageView)
+        
+//      Text Field
         
         width = verifyPosition(cloudImageView.frame.size.width/1.28)
         height = verifyPosition(cloudImageView.frame.size.height/1.8)
@@ -134,9 +141,10 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
         textField.font = UIFont(name: "HelveticaNeue", size: fontSize)
         textField.delegate = self
         textField.textAlignment = .Center
+        textField.alpha = 1
         cloudImageView.addSubview(textField)
         
-//        Send your idea
+//      Send your idea
         
         var brownHeight:CGFloat = sizeRect.size.height - (topHeight + (349 * prop))
         var buttonProp:CGFloat = brownHeight/274
@@ -203,8 +211,79 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
     
     func newIdeaTap(recognizer: UITapGestureRecognizer) {
         
-        let secondViewController:ViewController = ViewController()
-        self.dismissViewControllerAnimated(true, completion: nil)
+        var image = UIImage(named: "SendPressedButton@3x.png")!
+        sendYourIdea.image = image
+        sendYourIdea.frame.origin.y = sendYourIdea.frame.origin.y + 4
+        
+        var timer = NSTimer.scheduledTimerWithTimeInterval(0.12, target: self, selector: Selector("upCloudAnimation"), userInfo: nil, repeats: false)
+
+    }
+    
+    func upCloudAnimation() {
+        
+        var prop: CGFloat = sizeRect.size.width/375.0
+        
+        var image = UIImage(named: "SendButton@3x.png")!
+        sendYourIdea.image = image
+        sendYourIdea.frame.origin.y = sendYourIdea.frame.origin.y - 4
+        
+        var width = 71.0 * prop
+        var height = 60.0 * prop
+        var x = (sizeRect.size.width - width)/2
+        var y = (((349 * prop) - height)/2) + topHeight + barHeight
+        
+        UIView.animateWithDuration(0.2, animations: {
+            
+            //Zero
+            self.textField.alpha = 0
+            
+            }, completion: {
+                
+                (value: Bool) in
+                
+                UIView.animateWithDuration(0.2, animations: {
+                    
+                    //Frist
+                    self.happyCloudImageView.alpha = 1
+                    
+                    }, completion: {
+                        
+                        (value: Bool) in
+                        
+                        UIView.animateWithDuration(0.5, animations: {
+                            
+                            //Second
+                            self.cloudImageView.frame = CGRectMake(x, y, width, height)
+                            self.happyCloudImageView.frame = CGRectMake(0, 0, width, height)
+                            
+                            }, completion: {
+                                
+                                (value: Bool) in
+                                
+                                UIView.animateWithDuration(0.7, animations: {
+                                    
+                                    //Third
+                                    var image:UIImage = UIImage(named: "HappyUpCloud2@3x.png")!
+                                    self.happyCloudImageView.image = image
+                                    self.cloudImageView.frame.origin.y = 0 - 100
+                                    
+                                    }, completion: {
+                                        
+                                        (value: Bool) in
+                                        
+                                        self.cloudImageView.alpha = 0
+                                        
+                                        let secondViewController:ViewController = ViewController()
+                                        self.dismissViewControllerAnimated(true, completion: nil)
+                                        
+                                })
+                                
+                        })
+                        
+                })
+                
+        })
+        
     }
     
 }
