@@ -35,28 +35,44 @@ class LoginController: UIViewController, UIGestureRecognizerDelegate {
         
 //        Logo
         
+        width = 0.540625 * sizeRect.size.width
+        height = 0.48753 * sizeRect.size.width
+        x = sizeRect.size.width/2 - width/2
+        y = 0.12 * sizeRect.size.height
+        
+//        height = 
+        
         var logoImage: UIImage = UIImage(named: "Logo@3x.png")!
         var logoImageView: UIImageView = UIImageView(image: logoImage)
-        logoImageView.frame = CGRect(x: sizeRect.size.width/2 - (0.46133 * sizeRect.size.width)/2, y: 0.12 * sizeRect.size.height, width: 100, height: 100)
+        logoImageView.frame = CGRect(x: x, y: y, width: width, height: height)
         logoImageView.sizeToFit()
         self.view.addSubview(logoImageView)
         
+        println(logoImageView.frame.size.width/sizeRect.size.width)
+        
 //        Text Fields
         
-        username.frame = CGRect(x: sizeRect.size.width/2 - sizeRect.size.width/3, y: sizeRect.size.height/2.3, width: sizeRect.size.width/1.5, height: 60)
+        width = verifyPosition(sizeRect.size.width/1.5)
+        height = verifyPosition(0.16 * sizeRect.size.width)
+        x = verifyPosition(sizeRect.size.width/2 - width/2)
+        y = verifyPosition(sizeRect.size.height/2.3)
+        
+        username.frame = CGRect(x: x, y: y, width: width, height: height)
         username.backgroundColor = UIColor.whiteColor()
         username.placeholder = "Username"
         username.borderStyle = UITextBorderStyle.None
-        username.layer.cornerRadius = 30
+        username.layer.cornerRadius = height/2
         username.layer.sublayerTransform = CATransform3DMakeTranslation(20, 0, 0)
+        
+        println(60/sizeRect.size.width)
         
         self.view.addSubview(username)
         
-        password.frame = CGRect(x: sizeRect.size.width/6, y: sizeRect.size.height/1.8, width: sizeRect.size.width/1.5, height: 60)
+        password.frame = CGRect(x: x, y: y + height + 10, width: width, height: height)
         password.backgroundColor = UIColor.whiteColor()
         password.placeholder = "Password"
         password.borderStyle = UITextBorderStyle.None
-        password.layer.cornerRadius = 30
+        password.layer.cornerRadius = height/2
         password.secureTextEntry = true
         password.layer.sublayerTransform = CATransform3DMakeTranslation(20, 0, 0)
         
@@ -101,6 +117,13 @@ class LoginController: UIViewController, UIGestureRecognizerDelegate {
             self.presentViewController(secondViewController, animated: true, completion: nil)
         }
         
+    }
+    
+    func verifyPosition(measure:CGFloat) -> CGFloat
+    {
+        var divisionRest = measure % 1
+        var correctValue = measure + 1 - divisionRest
+        return correctValue
     }
     
 
