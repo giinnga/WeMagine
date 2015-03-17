@@ -37,7 +37,7 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
         var topMenuRectangle:UIView = UIView(frame: CGRectMake(x, y, width, height))
         topMenuRectangle.backgroundColor = UIColor.whiteColor()
         topMenuRectangle.layer.zPosition = 10
-        topMenuRectangle.layer.borderWidth = 1
+        topMenuRectangle.layer.borderWidth = 0.5
         topMenuRectangle.layer.borderColor = UIColor(red: 0.1725, green: 0.3294, blue: 0.4784, alpha: 1.0).CGColor
         self.view.addSubview(topMenuRectangle)
         

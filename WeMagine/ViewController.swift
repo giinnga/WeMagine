@@ -16,6 +16,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
     var menuView:UIView = UIView()
     var badIdea: UIView = UIView()
     var goodIdea: UIView = UIView()
+    var goodImage: UIImageView = UIImageView()
+    var badImage: UIImageView = UIImageView()
     
     var cloudImageView: UIImageView = UIImageView()
     var cloudFadeImageView: UIImageView = UIImageView()
@@ -57,7 +59,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         var topMenuRectangle:UIView = UIView(frame: CGRectMake(x, y, width, height))
         topMenuRectangle.backgroundColor = UIColor.whiteColor()
         topMenuRectangle.layer.zPosition = 10
-        topMenuRectangle.layer.borderWidth = 1
+        topMenuRectangle.layer.borderWidth = 0.5
         topMenuRectangle.layer.borderColor = UIColor(red: 0.1725, green: 0.3294, blue: 0.4784, alpha: 1.0).CGColor
         self.view.addSubview(topMenuRectangle)
         
@@ -114,18 +116,11 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         badIdea.userInteractionEnabled = true
         self.view.addSubview(badIdea)
         
-        let badVote = UITapGestureRecognizer(target: self, action:Selector("badVote:"))
-        badVote.delegate = self
-        badIdea.addGestureRecognizer(badVote)
-        
         goodIdea = UIView(frame: CGRectMake(sizeRect.size.width/2, topHeight + barHeight, sizeRect.size.width/2, sizeRect.size.height+barHeight))
         goodIdea.backgroundColor = UIColor(red: 0.6192, green: 0.9166, blue: 1.0, alpha: 1.0)
         goodIdea.userInteractionEnabled = true
         self.view.addSubview(goodIdea)
         
-        let goodVote = UITapGestureRecognizer(target: self, action:Selector("goodVote:"))
-        goodVote.delegate = self
-        goodIdea.addGestureRecognizer(goodVote)
         
 //      Clouds
         
@@ -155,20 +150,32 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         y = cloudY + (274.0 * prop) + (70.0 * prop)
         
         var goodFace:UIImage = UIImage(named: "HappyCloudButton@3x.png")!
-        var goodImage:UIImageView = UIImageView(image: goodFace)
+        goodImage = UIImageView(image: goodFace)
         goodImage.frame = CGRectMake(x, y, width, height)
+        goodImage.userInteractionEnabled = true
         self.view.addSubview(goodImage)
         
         x = (((sizeRect.size.width/2) - width)/2)
         
         var badFace:UIImage = UIImage(named: "SadCloudButton@3x.png")!
-        var badImage:UIImageView = UIImageView(image: badFace)
+        badImage = UIImageView(image: badFace)
         badImage.frame = CGRectMake(x,y,width,height)
+        badImage.userInteractionEnabled = true
         self.view.addSubview(badImage)
         
         //let sadVote = UILongPressGestureRecognizer(target: self, action:Selector("sadVote:"))
         //sadVote.delegate = self
         //badImage.addGestureRecognizer(sadVote)
+        
+//      Recognizers
+        
+        let badVote = UITapGestureRecognizer(target: self, action:Selector("badVote:"))
+        badVote.delegate = self
+        badImage.addGestureRecognizer(badVote)
+      
+        let goodVote = UITapGestureRecognizer(target: self, action:Selector("goodVote:"))
+        goodVote.delegate = self
+        goodImage.addGestureRecognizer(goodVote)
         
 //      Menu View
         
@@ -389,22 +396,62 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
     
     func likeIdea() {
         
+        var prop: CGFloat = sizeRect.size.width/375.0
+        
+        goodImage.image = UIImage(named: "HappyPressedButton@3x.png")
+        goodImage.frame.size.height = 103 * prop
+        goodImage.frame.origin.y = goodImage.frame.origin.y + 4
+        goodIdea.backgroundColor = UIColor(red: 87.0/255.0, green: 219.0/255.0, blue: 1, alpha: 1)
+        
+        var timer = NSTimer.scheduledTimerWithTimeInterval(0.12, target: self, selector: Selector("animateLike"), userInfo: nil, repeats: false)
+        
+    }
+    
+    func animateLike() {
+        
+        var prop: CGFloat = sizeRect.size.width/375.0
+        
+        self.goodImage.image = UIImage(named: "HappyCloudButton@3x.png")
+        self.goodImage.frame.size.height = 107 * prop
+        self.goodImage.frame.origin.y = self.goodImage.frame.origin.y - 4
+        self.goodIdea.backgroundColor = UIColor(red: 0.6192, green: 0.9166, blue: 1.0, alpha: 1.0)
+        
         UIView.animateWithDuration(0.3, animations: {
             self.cloudImageView.frame.origin.y = self.cloudY-(self.cloudHeight*2)
-        }, completion: {
-            (value: Bool) in
-            self.setNewIdea()
+            }, completion: {
+                (value: Bool) in
+                self.setNewIdea()
         })
         
     }
     
     func dislikeIdea() {
         
+        var prop: CGFloat = sizeRect.size.width/375.0
+        
+        badImage.image = UIImage(named: "SadPressedButton@3x.png")
+        badImage.frame.size.height = 103 * prop
+        badImage.frame.origin.y = badImage.frame.origin.y + 4
+        badIdea.backgroundColor = UIColor(red: 255.0/255.0, green: 78.0/255.0, blue: 100.0/255.0, alpha: 1)
+        
+        var timer = NSTimer.scheduledTimerWithTimeInterval(0.12, target: self, selector: Selector("animateDislike"), userInfo: nil, repeats: false)
+        
+    }
+    
+    func animateDislike() {
+        
+        var prop: CGFloat = sizeRect.size.width/375.0
+        
+        self.badImage.image = UIImage(named: "SadCloudButton@3x.png")
+        self.badImage.frame.size.height = 107 * prop
+        self.badImage.frame.origin.y = self.badImage.frame.origin.y - 4
+        self.badIdea.backgroundColor = UIColor(red: 0.9995, green: 0.4959, blue: 0.562, alpha: 1.0)
+        
         UIView.animateWithDuration(0.3, animations: {
             self.cloudImageView.alpha = 0
-        }, completion: {
-            (value: Bool) in
-            self.setNewIdea()
+            }, completion: {
+                (value: Bool) in
+                self.setNewIdea()
         })
         
     }
