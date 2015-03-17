@@ -127,7 +127,7 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
             
             else
             {
-                cell.backgroundColor = UIColor(red: 0.9608, green: 0.9608, blue: 0.9608, alpha: 1.0)
+                cell.backgroundColor = UIColor(red: 0.9601, green: 0.9307, blue: 0.9053, alpha: 1.0)
             }
             
             cell.selectionStyle = UITableViewCellSelectionStyle.None

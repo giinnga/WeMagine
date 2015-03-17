@@ -27,7 +27,7 @@
                         <color key="highlightedColor" red="0.13333333333333333" green="0.25882352941176473" blue="0.40392156862745099" alpha="1" colorSpace="calibratedRGB"/>
                     </label>
                 </subviews>
-                <color key="backgroundColor" red="0.56862745098039214" green="0.90196078431372551" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                <color key="backgroundColor" red="0.56862745100000001" green="0.90196078430000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
                     <constraint firstAttribute="centerX" secondItem="YB6-0W-yYx" secondAttribute="centerX" id="Osa-Wj-KnV"/>
                     <constraint firstItem="iDA-kp-jfl" firstAttribute="centerY" secondItem="YB6-0W-yYx" secondAttribute="centerY" constant="57.25" id="Pbf-Xt-DVG"/>
