@@ -314,12 +314,14 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
     
     func goodVote(recognizer: UITapGestureRecognizer) {
         if(mayVote) {
+            self.mayVote = false
             likeIdea()
         }
     }
     
     func badVote(recognizer: UITapGestureRecognizer) {
         if(mayVote) {
+            self.mayVote = false
             dislikeIdea()
         }
     }
@@ -390,6 +392,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
             self.cloudImageView.alpha = 1
             self.cloudImageView.frame = CGRectMake(self.cloudX, self.cloudY, self.cloudWidth, self.cloudHeight)
             self.textView.text = self.fadeText.text
+            self.mayVote = true
         })
         
     }
@@ -402,6 +405,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         goodImage.frame.size.height = 103 * prop
         goodImage.frame.origin.y = goodImage.frame.origin.y + 4
         goodIdea.backgroundColor = UIColor(red: 87.0/255.0, green: 219.0/255.0, blue: 1, alpha: 1)
+        
         
         var timer = NSTimer.scheduledTimerWithTimeInterval(0.12, target: self, selector: Selector("animateLike"), userInfo: nil, repeats: false)
         
