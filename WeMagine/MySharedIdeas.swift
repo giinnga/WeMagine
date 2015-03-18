@@ -115,6 +115,7 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
         {
             let cell = tableView.dequeueReusableCellWithIdentifier("bigCloud", forIndexPath: indexPath) as BigCloud
             cell.backgroundColor = UIColor(red: 0.6275, green: 0.9216, blue: 1.0, alpha: 1.0)
+            cell.editing = false
             
             return cell
         }
@@ -163,20 +164,31 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
         return 103
     }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == UITableViewCellEditingStyle.Delete
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        if indexPath.row > 0
         {
-//            var delete = tableView.cellForRowAtIndexPath(indexPath)!.tag
-            number--
-            if module == 2
+            return true
+        }
+        return false
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.row > 0
+        {
+            if editingStyle == UITableViewCellEditingStyle.Delete
             {
-                module = 1
+    //            var delete = tableView.cellForRowAtIndexPath(indexPath)!.tag
+                number--
+                if module == 2
+                {
+                    module = 1
+                }
+                else
+                {
+                    module = 2
+                }
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Top)
             }
-            else
-            {
-                module = 2
-            }
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Top)
         }
     }
 
