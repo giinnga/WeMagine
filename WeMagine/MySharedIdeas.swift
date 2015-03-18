@@ -12,8 +12,13 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
     
     var sizeRect = UIScreen.mainScreen().applicationFrame;
     let app = UIApplication.sharedApplication()
+    
     var number = 11
     var module = 2
+    
+    var goodVotesArray = [Int]()
+    var badVotesArray = [Int]()
+    var ideasArray = [String]()
     
     override func viewDidLoad() {
         
@@ -28,6 +33,19 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
         
         var barHeight:CGFloat = app.statusBarFrame.size.height
         var topHeight:CGFloat = 44.0
+        
+        goodVotesArray.append(1)
+        goodVotesArray.append(2)
+        goodVotesArray.append(3)
+        
+        badVotesArray.append(1)
+        badVotesArray.append(2)
+        badVotesArray.append(3)
+        
+        ideasArray.append("Ideia 1")
+        ideasArray.append("Ideia 2")
+        ideasArray.append("Ideia 3")
+        
         
 //        Top Bar
         
@@ -106,7 +124,7 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return number
+        return ideasArray.count + 1
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
@@ -150,6 +168,11 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
             
             cell.selectionStyle = UITableViewCellSelectionStyle.None
             
+            cell.badVotesNumber.text = String(self.badVotesArray[indexPath.row-1])
+            cell.goodVotesLabel.text = String(self.goodVotesArray[indexPath.row-1])
+            cell.theIdea.text = self.ideasArray[indexPath.row-1]
+            cell.theIdea.textAlignment = .Center
+            
             return cell
         }
     }
@@ -177,8 +200,11 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
         {
             if editingStyle == UITableViewCellEditingStyle.Delete
             {
+                
     //            var delete = tableView.cellForRowAtIndexPath(indexPath)!.tag
-                number--
+                ideasArray.removeAtIndex(indexPath.row-1)
+                badVotesArray.removeAtIndex(indexPath.row-1)
+                goodVotesArray.removeAtIndex(indexPath.row-1)
                 if module == 2
                 {
                     module = 1
