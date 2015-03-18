@@ -43,6 +43,9 @@
 		51F598D01AB8E94F00148DEE /* SendPressedButton@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51F598CD1AB8E94F00148DEE /* SendPressedButton@3x.png */; };
 		51F598D11AB8E94F00148DEE /* SendPressedButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51F598CE1AB8E94F00148DEE /* SendPressedButton@2x.png */; };
 		51F598D21AB8E94F00148DEE /* SendPressedButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 51F598CF1AB8E94F00148DEE /* SendPressedButton.png */; };
+		51F598D61AB9029F00148DEE /* SendTutorial@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51F598D31AB9029F00148DEE /* SendTutorial@3x.png */; };
+		51F598D71AB9029F00148DEE /* SendTutorial@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51F598D41AB9029F00148DEE /* SendTutorial@2x.png */; };
+		51F598D81AB9029F00148DEE /* SendTutorial.png in Resources */ = {isa = PBXBuildFile; fileRef = 51F598D51AB9029F00148DEE /* SendTutorial.png */; };
 		948382E81AB86BD100204542 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948382E71AB86BD100204542 /* LoginController.swift */; };
 		948382EF1AB86C7700204542 /* LoginButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 948382E91AB86C7700204542 /* LoginButton.png */; };
 		948382F01AB86C7700204542 /* LoginButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 948382EA1AB86C7700204542 /* LoginButton@2x.png */; };
@@ -119,6 +122,9 @@
 		51F598CD1AB8E94F00148DEE /* SendPressedButton@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SendPressedButton@3x.png"; sourceTree = "<group>"; };
 		51F598CE1AB8E94F00148DEE /* SendPressedButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SendPressedButton@2x.png"; sourceTree = "<group>"; };
 		51F598CF1AB8E94F00148DEE /* SendPressedButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SendPressedButton.png; sourceTree = "<group>"; };
+		51F598D31AB9029F00148DEE /* SendTutorial@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SendTutorial@3x.png"; sourceTree = "<group>"; };
+		51F598D41AB9029F00148DEE /* SendTutorial@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SendTutorial@2x.png"; sourceTree = "<group>"; };
+		51F598D51AB9029F00148DEE /* SendTutorial.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SendTutorial.png; sourceTree = "<group>"; };
 		948382E71AB86BD100204542 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		948382E91AB86C7700204542 /* LoginButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoginButton.png; sourceTree = "<group>"; };
 		948382EA1AB86C7700204542 /* LoginButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoginButton@2x.png"; sourceTree = "<group>"; };
@@ -236,6 +242,9 @@
 		94BF555B1AB2322500DA5CC0 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				51F598D31AB9029F00148DEE /* SendTutorial@3x.png */,
+				51F598D41AB9029F00148DEE /* SendTutorial@2x.png */,
+				51F598D51AB9029F00148DEE /* SendTutorial.png */,
 				51F598CD1AB8E94F00148DEE /* SendPressedButton@3x.png */,
 				51F598CE1AB8E94F00148DEE /* SendPressedButton@2x.png */,
 				51F598CF1AB8E94F00148DEE /* SendPressedButton.png */,
@@ -374,10 +383,12 @@
 				51F5989F1AB89F3700148DEE /* SendButton@2x.png in Resources */,
 				51F598B41AB8AE4600148DEE /* SadPressedButton@2x.png in Resources */,
 				948382F41AB86C7700204542 /* Logo@3x.png in Resources */,
+				51F598D71AB9029F00148DEE /* SendTutorial@2x.png in Resources */,
 				948382F01AB86C7700204542 /* LoginButton@2x.png in Resources */,
 				948382F31AB86C7700204542 /* Logo@2x.png in Resources */,
 				94BF554F1AB2322000DA5CC0 /* HappyCloudButton.png in Resources */,
 				94BF554D1AB2322000DA5CC0 /* Cloud@2x.png in Resources */,
+				51F598D61AB9029F00148DEE /* SendTutorial@3x.png in Resources */,
 				94BF55511AB2322000DA5CC0 /* HappyCloudButton@3x.png in Resources */,
 				51F598C41AB8AEDE00148DEE /* NoShadowCloud.png in Resources */,
 				94BF55581AB2322000DA5CC0 /* SadCloudButton.png in Resources */,
@@ -424,6 +435,7 @@
 				948382EF1AB86C7700204542 /* LoginButton.png in Resources */,
 				51F598CA1AB8E50E00148DEE /* HappyUpCloud1@3x.png in Resources */,
 				51F598D21AB8E94F00148DEE /* SendPressedButton.png in Resources */,
+				51F598D81AB9029F00148DEE /* SendTutorial.png in Resources */,
 				511FBC351AB774AE00BFC694 /* LampIcon@2x.png in Resources */,
 				51F598D01AB8E94F00148DEE /* SendPressedButton@3x.png in Resources */,
 			);

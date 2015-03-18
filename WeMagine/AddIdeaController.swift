@@ -12,12 +12,17 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
 
     var sizeRect = UIScreen.mainScreen().applicationFrame;
     let app = UIApplication.sharedApplication()
+    
     var menuView:UIView = UIView()
+    
     var menuViewHidden: Bool = true
+    
     var textField: UITextView = UITextView()
+    
     var sendYourIdea: UIImageView = UIImageView()
     var cloudImageView: UIImageView = UIImageView()
     var happyCloudImageView: UIImageView = UIImageView()
+    var tutorial: UIImageView = UIImageView()
     
     var barHeight:CGFloat = CGFloat()
     var topHeight:CGFloat = 44.0
@@ -122,6 +127,21 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
         
         cloudImageView.addSubview(happyCloudImageView)
         
+//      Tutorial
+        
+        width = 201.0 * prop
+        height = 180.0 * prop
+        x = (sizeRect.size.width - width)/2
+        y = y + (274.0 * prop) - 20.0
+        
+        var tutoImage: UIImage = UIImage(named: "SendTutorial@3x.png")!
+        tutorial = UIImageView(image: tutoImage)
+        tutorial.frame = CGRectMake(x,y,width,height)
+        
+        self.view.addSubview(tutorial)
+        
+        
+        
 //      Text Field
         
         width = verifyPosition(cloudImageView.frame.size.width/1.28)
@@ -183,6 +203,7 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
     
     func textViewDidChange(textView: UITextView) {
         self.sendYourIdea.hidden = false
+        self.tutorial.hidden = true
         self.centerText()
     }
     
