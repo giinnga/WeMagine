@@ -115,7 +115,6 @@ class LoginController: UIViewController, UIGestureRecognizerDelegate, FBLoginVie
         println("User Name: \(user.name)")
         var userEmail = user.objectForKey("email") as String
         println("User Email: \(userEmail)")
-        logInApp()
     }
     
     func loginViewShowingLoggedOutUser(loginView : FBLoginView!) {
