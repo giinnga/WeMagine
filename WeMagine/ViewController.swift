@@ -413,15 +413,19 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         
         centerText()
         
-//        var url = NSURL(string: "http://104.131.156.49/get.php")
-//        var session = NSURLSession.sharedSession()
-//        var dataTask = NSURLSessionDataTask = session.dataTaskWithURL(url, completionHandler: (data,response,error) {
-//            var high = NSJSONSerialization.JSONObjectWithData(data, options: 0, error: nil)
-//        })
-//        
-//        dataTask.resume()
+        var url = NSURL(string: "http://104.131.156.49/get.php")
+        var session = NSURLSession.sharedSession()
+        let task : NSURLSessionDataTask = session.dataTaskWithURL(url!, completionHandler: {(data, response, error) in
+            
+            let theData = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSArray
+            
+            var str:String = theData[0]["Nome"] as String
+            
+            println(str)
+            
+        })
         
-
+        task.resume()
         
         UIView.animateWithDuration(0.3, animations: {
             self.cloudFadeImageView.frame.origin.x = self.cloudX
