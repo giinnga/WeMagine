@@ -46,7 +46,6 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
         ideasArray.append("Ideia 2")
         ideasArray.append("Ideia 3")
         
-        
 //        Top Bar
         
         width = (375.0 * prop) + 2

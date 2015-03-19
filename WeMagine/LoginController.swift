@@ -17,6 +17,8 @@ class LoginController: UIViewController, UIGestureRecognizerDelegate, FBLoginVie
     var password: UITextField = UITextField()
     
     var fbLoginView = FBLoginView()
+    
+    var loggedIn: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,13 +99,13 @@ class LoginController: UIViewController, UIGestureRecognizerDelegate, FBLoginVie
 //        let test = UITapGestureRecognizer(target: self, action:Selector("test:"))
 //        test.delegate = self
 //        testButtonImage.addGestureRecognizer(test)
+        
     }
     
     // Facebook Delegate Methods
     
     func loginViewShowingLoggedInUser(loginView : FBLoginView!) {
         println("User Logged In")
-        logInApp()
     }
     
     func loginViewFetchedUserInfo(loginView : FBLoginView!, user: FBGraphUser) {
@@ -112,6 +114,7 @@ class LoginController: UIViewController, UIGestureRecognizerDelegate, FBLoginVie
         println("User Name: \(user.name)")
         var userEmail = user.objectForKey("email") as String
         println("User Email: \(userEmail)")
+        logInApp()
     }
     
     func loginViewShowingLoggedOutUser(loginView : FBLoginView!) {
@@ -137,7 +140,6 @@ class LoginController: UIViewController, UIGestureRecognizerDelegate, FBLoginVie
         if identifier == "LogIn"
         {
             let secondViewController:ViewController = ViewController()
-            self.dismissViewControllerAnimated(false, completion: {})
             self.presentViewController(secondViewController, animated: true, completion: nil)
         }
         
