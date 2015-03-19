@@ -14,25 +14,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var mainViewController: UIViewController?
 
+
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
-        
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         if let window = window {
             window.backgroundColor = UIColor.whiteColor()
             window.rootViewController = LoginController()
             window.makeKeyAndVisible()
         }
-        
-        FBLoginView.self
-        FBProfilePictureView.self
-        
         return true
-    }
-    
-    func application(application: UIApplication, openURL url: NSURL, sourceApplication: NSString?, annotation: AnyObject) -> Bool {
-        var wasHandled:Bool = FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication)
-        
-        return wasHandled
     }
 
     func applicationWillResignActive(application: UIApplication) {
