@@ -22,6 +22,7 @@
 		511FBC461AB7834000BFC694 /* BigCloud@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 511FBC431AB7834000BFC694 /* BigCloud@3x.png */; };
 		511FBC471AB7834000BFC694 /* BigCloud@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 511FBC441AB7834000BFC694 /* BigCloud@2x.png */; };
 		511FBC481AB7834000BFC694 /* BigCloud.png in Resources */ = {isa = PBXBuildFile; fileRef = 511FBC451AB7834000BFC694 /* BigCloud.png */; };
+		5170EF621ABA26E300E34E3E /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5170EF611ABA26E300E34E3E /* FacebookSDK.framework */; };
 		51F5989E1AB89F3700148DEE /* SendButton@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51F5989B1AB89F3700148DEE /* SendButton@3x.png */; };
 		51F5989F1AB89F3700148DEE /* SendButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51F5989C1AB89F3700148DEE /* SendButton@2x.png */; };
 		51F598A01AB89F3700148DEE /* SendButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 51F5989D1AB89F3700148DEE /* SendButton.png */; };
@@ -101,6 +102,8 @@
 		511FBC431AB7834000BFC694 /* BigCloud@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BigCloud@3x.png"; sourceTree = "<group>"; };
 		511FBC441AB7834000BFC694 /* BigCloud@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BigCloud@2x.png"; sourceTree = "<group>"; };
 		511FBC451AB7834000BFC694 /* BigCloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BigCloud.png; sourceTree = "<group>"; };
+		5170EF611ABA26E300E34E3E /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		5170EF631ABA4D2E00E34E3E /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		51F5989B1AB89F3700148DEE /* SendButton@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SendButton@3x.png"; sourceTree = "<group>"; };
 		51F5989C1AB89F3700148DEE /* SendButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SendButton@2x.png"; sourceTree = "<group>"; };
 		51F5989D1AB89F3700148DEE /* SendButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SendButton.png; sourceTree = "<group>"; };
@@ -163,6 +166,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5170EF621ABA26E300E34E3E /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,6 +203,7 @@
 			children = (
 				94BF555B1AB2322500DA5CC0 /* Images */,
 				94BF551D1AB22A3A00DA5CC0 /* AppDelegate.swift */,
+				5170EF631ABA4D2E00E34E3E /* Bridging-Header.h */,
 				948382E71AB86BD100204542 /* LoginController.swift */,
 				94BF551F1AB22A3A00DA5CC0 /* ViewController.swift */,
 				94B1F3401AB32884000E74E4 /* AddIdeaController.swift */,
@@ -209,6 +214,7 @@
 				94F4928C1AB7A2550052FAB4 /* BigCloud.xib */,
 				94BF55241AB22A3A00DA5CC0 /* Images.xcassets */,
 				94BF55261AB22A3A00DA5CC0 /* LaunchScreen.xib */,
+				5170EF611ABA26E300E34E3E /* FacebookSDK.framework */,
 				94BF551B1AB22A3A00DA5CC0 /* Supporting Files */,
 			);
 			path = WeMagine;
@@ -576,9 +582,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/WeMagine",
+				);
 				INFOPLIST_FILE = WeMagine/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "WeMagine/Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -587,9 +598,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/WeMagine",
+				);
 				INFOPLIST_FILE = WeMagine/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "WeMagine/Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

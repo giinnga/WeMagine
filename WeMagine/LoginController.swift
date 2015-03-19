@@ -8,13 +8,15 @@
 
 import UIKit
 
-class LoginController: UIViewController, UIGestureRecognizerDelegate {
+class LoginController: UIViewController, UIGestureRecognizerDelegate, FBLoginViewDelegate {
     
     var sizeRect = UIScreen.mainScreen().applicationFrame;
     let app = UIApplication.sharedApplication()
     
     var username: UITextField = UITextField()
     var password: UITextField = UITextField()
+    
+    var fbLoginView = FBLoginView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,58 +40,86 @@ class LoginController: UIViewController, UIGestureRecognizerDelegate {
         width = 0.540625 * sizeRect.size.width
         height = 0.48753 * sizeRect.size.width
         x = sizeRect.size.width/2 - width/2
-        y = 0.12 * sizeRect.size.height
+        y = ((sizeRect.size.height - (height + 80 + 50))/2)
         
         var logoImage: UIImage = UIImage(named: "Logo@3x.png")!
         var logoImageView: UIImageView = UIImageView(image: logoImage)
         logoImageView.frame = CGRect(x: x, y: y, width: width, height: height)
         logoImageView.sizeToFit()
         self.view.addSubview(logoImageView)
+       
+        fbLoginView.delegate = self
+        fbLoginView.readPermissions = ["public_profile", "email", "user_friends"]
+        fbLoginView.frame = CGRectMake((sizeRect.size.width - 200)/2, y + height + 80, 200, 50)
+        self.view.addSubview(fbLoginView)
         
-//        Text Fields
-        
-        width = verifyPosition(sizeRect.size.width/1.5)
-        height = verifyPosition(0.16 * sizeRect.size.width)
-        x = verifyPosition(sizeRect.size.width/2 - width/2)
-        y = verifyPosition(sizeRect.size.height/2.3)
-        
-        username.frame = CGRect(x: x, y: y, width: width, height: height)
-        username.backgroundColor = UIColor.whiteColor()
-        username.placeholder = "Username"
-        username.borderStyle = UITextBorderStyle.None
-        username.layer.cornerRadius = height/2
-        username.layer.sublayerTransform = CATransform3DMakeTranslation(20, 0, 0)
-        
-        self.view.addSubview(username)
-        
-        password.frame = CGRect(x: x, y: y + height + 10, width: width, height: height)
-        password.backgroundColor = UIColor.whiteColor()
-        password.placeholder = "Password"
-        password.borderStyle = UITextBorderStyle.None
-        password.layer.cornerRadius = height/2
-        password.secureTextEntry = true
-        password.layer.sublayerTransform = CATransform3DMakeTranslation(20, 0, 0)
-        
-        self.view.addSubview(password)
-        
-//        Buttons
-        
-        var buttonImage: UIImage = UIImage(named: "LoginButton@3x.png")!
-        
-        var loginButtonImage: UIImageView = UIImageView(image: buttonImage)
-        loginButtonImage.frame = CGRect(x: sizeRect.size.width/5, y: sizeRect.size.height/1.45, width: 10, height: 10)
-        loginButtonImage.sizeToFit()
-        self.view.addSubview(loginButtonImage)
-        
-        var testButtonImage: UIImageView = UIImageView(image: buttonImage)
-        testButtonImage.frame = CGRect(x: 2.7 * sizeRect.size.width/5, y: sizeRect.size.height/1.45, width: 10, height: 10)
-        testButtonImage.sizeToFit()
-        testButtonImage.userInteractionEnabled = true
-        self.view.addSubview(testButtonImage)
-        
-        let test = UITapGestureRecognizer(target: self, action:Selector("test:"))
-        test.delegate = self
-        testButtonImage.addGestureRecognizer(test)
+////        Text Fields
+//        
+//        width = verifyPosition(sizeRect.size.width/1.5)
+//        height = verifyPosition(0.16 * sizeRect.size.width)
+//        x = verifyPosition(sizeRect.size.width/2 - width/2)
+//        y = verifyPosition(sizeRect.size.height/2.3)
+//        
+//        username.frame = CGRect(x: x, y: y, width: width, height: height)
+//        username.backgroundColor = UIColor.whiteColor()
+//        username.placeholder = "Username"
+//        username.borderStyle = UITextBorderStyle.None
+//        username.layer.cornerRadius = height/2
+//        username.layer.sublayerTransform = CATransform3DMakeTranslation(20, 0, 0)
+//        
+//        self.view.addSubview(username)
+//        
+//        password.frame = CGRect(x: x, y: y + height + 10, width: width, height: height)
+//        password.backgroundColor = UIColor.whiteColor()
+//        password.placeholder = "Password"
+//        password.borderStyle = UITextBorderStyle.None
+//        password.layer.cornerRadius = height/2
+//        password.secureTextEntry = true
+//        password.layer.sublayerTransform = CATransform3DMakeTranslation(20, 0, 0)
+//        
+//        self.view.addSubview(password)
+//        
+////        Buttons
+//        
+//        var buttonImage: UIImage = UIImage(named: "LoginButton@3x.png")!
+//        
+//        var loginButtonImage: UIImageView = UIImageView(image: buttonImage)
+//        loginButtonImage.frame = CGRect(x: sizeRect.size.width/5, y: sizeRect.size.height/1.45, width: 10, height: 10)
+//        loginButtonImage.sizeToFit()
+//        self.view.addSubview(loginButtonImage)
+//        
+//        var testButtonImage: UIImageView = UIImageView(image: buttonImage)
+//        testButtonImage.frame = CGRect(x: 2.7 * sizeRect.size.width/5, y: sizeRect.size.height/1.45, width: 10, height: 10)
+//        testButtonImage.sizeToFit()
+//        testButtonImage.userInteractionEnabled = true
+//        self.view.addSubview(testButtonImage)
+//        
+//        let test = UITapGestureRecognizer(target: self, action:Selector("test:"))
+//        test.delegate = self
+//        testButtonImage.addGestureRecognizer(test)
+    }
+    
+    // Facebook Delegate Methods
+    
+    func loginViewShowingLoggedInUser(loginView : FBLoginView!) {
+        println("User Logged In")
+        logInApp()
+    }
+    
+    func loginViewFetchedUserInfo(loginView : FBLoginView!, user: FBGraphUser) {
+        println("User: \(user)")
+        println("User ID: \(user.objectID)")
+        println("User Name: \(user.name)")
+        var userEmail = user.objectForKey("email") as String
+        println("User Email: \(userEmail)")
+    }
+    
+    func loginViewShowingLoggedOutUser(loginView : FBLoginView!) {
+        println("User Logged Out")
+    }
+    
+    func loginView(loginView : FBLoginView!, handleError:NSError) {
+        println("Error: \(handleError.localizedDescription)")
     }
 
     override func didReceiveMemoryWarning() {
@@ -97,14 +127,14 @@ class LoginController: UIViewController, UIGestureRecognizerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func test(recognizer: UITapGestureRecognizer)
+    func logInApp()
     {
-        performSegueWithIdentifier("teste", sender: self)
+        performSegueWithIdentifier("LogIn", sender: self)
     }
     
     override func performSegueWithIdentifier(identifier: String?, sender: AnyObject?) {
         
-        if identifier == "teste"
+        if identifier == "LogIn"
         {
             let secondViewController:ViewController = ViewController()
             self.dismissViewControllerAnimated(false, completion: {})
@@ -120,7 +150,6 @@ class LoginController: UIViewController, UIGestureRecognizerDelegate {
         return correctValue
     }
     
-
     /*
     // MARK: - Navigation
 
