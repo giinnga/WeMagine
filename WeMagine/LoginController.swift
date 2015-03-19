@@ -122,6 +122,7 @@ class LoginController: UIViewController, UIGestureRecognizerDelegate, FBLoginVie
     
     func loginViewShowingLoggedOutUser(loginView : FBLoginView!) {
         println("User Logged Out")
+        loggedIn = false
     }
     
     func loginView(loginView : FBLoginView!, handleError:NSError) {

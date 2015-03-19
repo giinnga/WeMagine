@@ -254,7 +254,12 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         logoutLabel.textColor = UIColor(red: 0.3191, green: 0.3191, blue: 0.3191, alpha: 1.0)
         logoutLabel.font = UIFont(name: "HelveticaNeue-Light", size: fontSize)
         logoutLabel.sizeToFit()
+        logoutLabel.userInteractionEnabled = true
         logout.addSubview(logoutLabel)
+        
+        let logoutAction = UITapGestureRecognizer(target: self, action:Selector("logOut"))
+        logoutAction.delegate = self
+        logoutLabel.addGestureRecognizer(logoutAction)
         
 //      Frames
         
@@ -322,6 +327,15 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func logOut() {
+        
+        textView.removeObserver(self, forKeyPath: "contentSize")
+        fadeText.removeObserver(self, forKeyPath: "contentSize")
+        FBSession.activeSession().closeAndClearTokenInformation()
+        self.dismissViewControllerAnimated(true, completion: nil)
+        
     }
     
     func goodVote(recognizer: UITapGestureRecognizer) {
@@ -394,6 +408,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
     {
         
         self.fadeText.text = self.getNewIdea()
+        
+        centerText()
         
         UIView.animateWithDuration(0.3, animations: {
             self.cloudFadeImageView.frame.origin.x = self.cloudX
@@ -487,8 +503,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         topCorrect = (topCorrect < 0.0 ? 0.0 : topCorrect)
         self.textView.contentOffset.x = 0
         self.textView.contentOffset.y = -topCorrect
-        println("Top correct \(topCorrect)")
-        println("Width \(self.textView.bounds.width)")
     }
     
     func getNewIdea() -> String {
