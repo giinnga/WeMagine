@@ -37,17 +37,18 @@ class LoginController: UIViewController, UIGestureRecognizerDelegate, FBLoginVie
         
         self.view.backgroundColor = UIColor(red: 0.6192, green: 0.9166, blue: 1.0, alpha: 1.0)
         
-//        Logo
+//      Logo
         
-        width = 0.540625 * sizeRect.size.width
-        height = 0.48753 * sizeRect.size.width
-        x = sizeRect.size.width/2 - width/2
+        width = 173.0 * prop * 1.5
+        height = 158.0 * prop * 1.5
+        x = (sizeRect.size.width - width)/2
         y = ((sizeRect.size.height - (height + 80 + 50))/2)
         
-        var logoImage: UIImage = UIImage(named: "Logo@3x.png")!
+        var logoImage: UIImage = UIImage(named: "NewLogo@3x.png")!
         var logoImageView: UIImageView = UIImageView(image: logoImage)
-        logoImageView.frame = CGRect(x: x, y: y, width: width, height: height)
-        logoImageView.sizeToFit()
+        //logoImageView.backgroundColor = UIColor.blackColor()
+        logoImageView.frame = CGRectMake(x, y, width, height)
+
         self.view.addSubview(logoImageView)
        
         fbLoginView.delegate = self

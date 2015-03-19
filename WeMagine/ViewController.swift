@@ -191,17 +191,17 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         fontSize = 15
         
         x = 15
-        y = ((height - 10)/2) - 2
+        y = verifyPosition(((height - 10)/2) - 4)
         
         var share:UIView = UIView(frame: CGRect(x: 0, y: 0, width: width, height: height))
         share.backgroundColor = UIColor(red: 0.7357, green: 0.639, blue: 0.5589, alpha: 1.0)
         menuView.addSubview(share)
         
-        var shareLabel:UILabel = UILabel(frame: CGRect(x: x, y: y, width: 10 , height: 10))
+        var shareLabel:UILabel = UILabel(frame: CGRect(x: x, y: y, width: 200 , height: 20))
         shareLabel.text = "Share Imagination"
         shareLabel.textColor = UIColor(red: 0.3191, green: 0.3191, blue: 0.3191, alpha: 1.0)
         shareLabel.font = UIFont(name: "HelveticaNeue-Light", size: fontSize)
-        shareLabel.sizeToFit()
+        //shareLabel.sizeToFit()
         menuView.addSubview(shareLabel)
         
         let shareGesture = UITapGestureRecognizer(target: self, action:Selector("newIdeaTap:"))
@@ -212,11 +212,11 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         myIdeas.backgroundColor = UIColor(red: 0.9608, green: 0.9294, blue: 0.9059, alpha: 1.0)
         menuView.addSubview(myIdeas)
         
-        var myIdeasLabel:UILabel = UILabel(frame: CGRect(x: x, y: y, width: 10 , height: 10))
+        var myIdeasLabel:UILabel = UILabel(frame: CGRect(x: x, y: y, width: 200 , height: 20))
         myIdeasLabel.text = "My shared ideas"
         myIdeasLabel.textColor = UIColor(red: 0.3191, green: 0.3191, blue: 0.3191, alpha: 1.0)
         myIdeasLabel.font = UIFont(name: "HelveticaNeue-Light", size: fontSize)
-        myIdeasLabel.sizeToFit()
+        //myIdeasLabel.sizeToFit()
         myIdeas.addSubview(myIdeasLabel)
         
         let myIdeasGesture = UITapGestureRecognizer(target: self, action:Selector("myIdeas:"))
@@ -227,11 +227,11 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         profile.backgroundColor = UIColor(red: 0.7357, green: 0.639, blue: 0.5589, alpha: 1.0)
         menuView.addSubview(profile)
         
-        var profileLabel:UILabel = UILabel(frame: CGRect(x: x, y: y, width: 10 , height: 10))
+        var profileLabel:UILabel = UILabel(frame: CGRect(x: x, y: y, width: 100 , height: 20))
         profileLabel.text = "Tutorial"
         profileLabel.textColor = UIColor(red: 0.3191, green: 0.3191, blue: 0.3191, alpha: 1.0)
         profileLabel.font = UIFont(name: "HelveticaNeue-Light", size: fontSize)
-        profileLabel.sizeToFit()
+        //profileLabel.sizeToFit()
         profile.addSubview(profileLabel)
         
         var logout:UIView = UIView(frame: CGRect(x: 0, y: 3 * sizeRect.size.height/10, width: width, height: height))
@@ -239,11 +239,11 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         logout.userInteractionEnabled = true
         menuView.addSubview(logout)
         
-        var logoutLabel:UILabel = UILabel(frame: CGRect(x: x, y: y, width: 10 , height: 10))
+        var logoutLabel:UILabel = UILabel(frame: CGRect(x: x, y: y, width: 100 , height: 20))
         logoutLabel.text = "Logout"
         logoutLabel.textColor = UIColor(red: 0.3191, green: 0.3191, blue: 0.3191, alpha: 1.0)
         logoutLabel.font = UIFont(name: "HelveticaNeue-Light", size: fontSize)
-        logoutLabel.sizeToFit()
+        //logoutLabel.sizeToFit()
         
         logout.addSubview(logoutLabel)
         
@@ -413,6 +413,16 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         
         centerText()
         
+//        var url = NSURL(string: "http://104.131.156.49/get.php")
+//        var session = NSURLSession.sharedSession()
+//        var dataTask = NSURLSessionDataTask = session.dataTaskWithURL(url, completionHandler: (data,response,error) {
+//            var high = NSJSONSerialization.JSONObjectWithData(data, options: 0, error: nil)
+//        })
+//        
+//        dataTask.resume()
+        
+
+        
         UIView.animateWithDuration(0.3, animations: {
             self.cloudFadeImageView.frame.origin.x = self.cloudX
         }, completion: {
@@ -508,7 +518,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
     }
     
     func getNewIdea() -> String {
-        return "Um cinema só para golfinhos é uma boa ideia para testar o app!"
+        return "E se existisse um cinema específico para golfinhos?\n\n-Cloudie"
     }
     
 //  Segue

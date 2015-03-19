@@ -56,12 +56,12 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
         topMenuRectangle.layer.borderColor = UIColor(red: 0.1725, green: 0.3294, blue: 0.4784, alpha: 1.0).CGColor
         self.view.addSubview(topMenuRectangle)
         
-        width = 63.0
+        width = 84.0
         height = 44.0
-        x = self.sizeRect.width - width
-        y = barHeight
+        x = -1
+        y = -1 + barHeight
         
-        var lampIcon:UIImage = UIImage(named: "LampIcon@3x.png")!
+        var lampIcon:UIImage = UIImage(named: "BackButton@3x.png")!
         var lampIconView:UIImageView = UIImageView(image: lampIcon)
         lampIconView.frame = CGRectMake(x, y, width, height)
         lampIconView.userInteractionEnabled = true

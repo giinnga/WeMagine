@@ -34,17 +34,17 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
         var barHeight:CGFloat = app.statusBarFrame.size.height
         var topHeight:CGFloat = 44.0
         
-        goodVotesArray.append(1)
-        goodVotesArray.append(2)
+        goodVotesArray.append(321)
+        goodVotesArray.append(9999)
         goodVotesArray.append(3)
         
-        badVotesArray.append(1)
-        badVotesArray.append(2)
-        badVotesArray.append(3)
+        badVotesArray.append(12)
+        badVotesArray.append(0)
+        badVotesArray.append(43)
         
-        ideasArray.append("Ideia 1")
-        ideasArray.append("Ideia 2")
-        ideasArray.append("Ideia 3")
+        ideasArray.append("Uma escova de dentes que nunca cai do suporte! Uma escova de dentes que nunca cai do suporte!")
+        ideasArray.append("Tinham que criar um filme sobre o Ugulino.")
+        ideasArray.append("Uma bola quadrada está fazendo falta na sociedade.")
         
 //        Top Bar
         
@@ -60,12 +60,12 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
         topMenuRectangle.layer.borderColor = UIColor(red: 0.1725, green: 0.3294, blue: 0.4784, alpha: 1.0).CGColor
         self.view.addSubview(topMenuRectangle)
         
-        width = 63.0
+        width = 84.0
         height = 44.0
-        x = self.sizeRect.width - width
-        y = barHeight
+        x = -1
+        y = -1 + barHeight
         
-        var lampIcon:UIImage = UIImage(named: "LampIcon@3x.png")!
+        var lampIcon:UIImage = UIImage(named: "BackButton@3x.png")!
         var lampIconView:UIImageView = UIImageView(image: lampIcon)
         lampIconView.frame = CGRectMake(x, y, width, height)
         lampIconView.userInteractionEnabled = true
@@ -133,6 +133,7 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
             let cell = tableView.dequeueReusableCellWithIdentifier("bigCloud", forIndexPath: indexPath) as BigCloud
             cell.backgroundColor = UIColor(red: 0.6275, green: 0.9216, blue: 1.0, alpha: 1.0)
             cell.editing = false
+            cell.selectionStyle = .None
             
             return cell
         }
@@ -170,7 +171,20 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
             cell.badVotesNumber.text = String(self.badVotesArray[indexPath.row-1])
             cell.goodVotesLabel.text = String(self.goodVotesArray[indexPath.row-1])
             cell.theIdea.text = self.ideasArray[indexPath.row-1]
+            cell.badVotesNumber.textColor = UIColor(red: 0.3191, green: 0.3191, blue: 0.3191, alpha: 1.0)
+            cell.goodVotesLabel.textColor = UIColor(red: 0.3191, green: 0.3191, blue: 0.3191, alpha: 1.0)
+            cell.theIdea.textColor = UIColor(red: 0.3191, green: 0.3191, blue: 0.3191, alpha: 1.0)
             cell.theIdea.textAlignment = .Center
+            
+            var tf: UITextView = cell.theIdea as UITextView
+            var size: CGSize = tf.sizeThatFits(CGSize(width: cell.theIdea.bounds.width, height: 10000))
+            var topCorrectFade = (cell.theIdea.bounds.height - size.height * cell.theIdea.zoomScale)/2
+            topCorrectFade = (topCorrectFade < 0.0 ? 0.0 : topCorrectFade)
+            cell.theIdea.contentOffset.x = 0
+            cell.theIdea.contentOffset.y = -topCorrectFade
+            
+            cell.theIdea.layer.sublayerTransform = CATransform3DMakeTranslation(0, verifyPosition(topCorrectFade) - 5, 0)
+            println(topCorrectFade)
             
             return cell
         }
@@ -216,5 +230,4 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
             }
         }
     }
-
 }

@@ -18,26 +18,45 @@
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SadCloud@3x.png" translatesAutoresizingMaskIntoConstraints="NO" id="z9K-BR-6EZ">
                         <rect key="frame" x="8" y="15" width="66" height="55"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="66" id="WZG-1e-umR"/>
+                            <constraint firstAttribute="height" constant="55" id="Zbw-ho-2ge"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="WZG-1e-umR"/>
+                                <exclude reference="Zbw-ho-2ge"/>
+                            </mask>
+                        </variation>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HappyCloud@3x.png" translatesAutoresizingMaskIntoConstraints="NO" id="AuU-V4-Zl5">
                         <rect key="frame" x="297" y="15" width="66" height="55"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="66" id="IgP-bI-XEa"/>
+                            <constraint firstAttribute="height" constant="55" id="L8v-bq-uap"/>
+                        </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l8y-gO-fNR">
-                        <rect key="frame" x="20" y="71" width="42" height="21"/>
+                        <rect key="frame" x="20" y="71" width="42" height="20.5"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="mdh-6y-kNk"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="mdh-6y-kNk"/>
+                            </mask>
+                        </variation>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T8p-xL-UeM">
-                        <rect key="frame" x="310" y="71" width="42" height="21"/>
+                        <rect key="frame" x="310" y="71" width="42" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GJV-Pe-cmB">
+                    <textView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GJV-Pe-cmB">
                         <rect key="frame" x="81" y="0.0" width="209" height="103"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="115" id="lrd-37-7RZ"/>
@@ -63,6 +82,7 @@
                     <constraint firstItem="l8y-gO-fNR" firstAttribute="top" secondItem="z9K-BR-6EZ" secondAttribute="bottom" constant="1" id="Xpv-4D-SZc"/>
                     <constraint firstItem="GJV-Pe-cmB" firstAttribute="top" secondItem="sMu-2G-5Rg" secondAttribute="top" id="XwT-la-LdE"/>
                     <constraint firstItem="l8y-gO-fNR" firstAttribute="firstBaseline" secondItem="T8p-xL-UeM" secondAttribute="firstBaseline" id="a4A-Sj-buK"/>
+                    <constraint firstAttribute="centerY" secondItem="GJV-Pe-cmB" secondAttribute="centerY" id="bDk-Sf-0Yj"/>
                     <constraint firstAttribute="bottomMargin" secondItem="l8y-gO-fNR" secondAttribute="bottom" constant="2.5" id="cLD-Iz-eFt"/>
                     <constraint firstAttribute="trailingMargin" secondItem="AuU-V4-Zl5" secondAttribute="trailing" constant="-1" id="cdN-2c-gWU"/>
                     <constraint firstItem="l8y-gO-fNR" firstAttribute="leading" secondItem="sMu-2G-5Rg" secondAttribute="leadingMargin" constant="12" id="jBv-l8-O7e"/>
@@ -80,7 +100,10 @@
                     <mask key="constraints">
                         <exclude reference="O35-Fr-c0F"/>
                         <exclude reference="Xpv-4D-SZc"/>
+                        <exclude reference="cLD-Iz-eFt"/>
                         <exclude reference="jBv-l8-O7e"/>
+                        <exclude reference="JCe-xe-IKb"/>
+                        <exclude reference="bDk-Sf-0Yj"/>
                         <exclude reference="E06-Wp-pKO"/>
                         <exclude reference="vdY-aE-cjC"/>
                     </mask>
