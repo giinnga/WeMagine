@@ -17,7 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: NSString?, annotation: AnyObject) -> Bool {
         var wasHandled:Bool = FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication)
-        teste = wasHandled
         return wasHandled
     }
 
@@ -26,14 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         if let window = window {
             window.backgroundColor = UIColor.whiteColor()
-            if !teste
-            {
-                window.rootViewController = LoginController()
-            }
-            else
-            {
-                window.rootViewController = ViewController()
-            }
+            window.rootViewController = LoginController()
             window.makeKeyAndVisible()
         }
         

@@ -106,7 +106,10 @@ class LoginController: UIViewController, UIGestureRecognizerDelegate, FBLoginVie
     
     func loginViewShowingLoggedInUser(loginView : FBLoginView!) {
         println("User Logged In")
-        logInApp()
+        if(loggedIn == false) {
+            logInApp()
+            loggedIn = true
+        }
     }
     
     func loginViewFetchedUserInfo(loginView : FBLoginView!, user: FBGraphUser) {
