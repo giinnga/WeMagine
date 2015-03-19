@@ -138,7 +138,7 @@ class LoginController: UIViewController, UIGestureRecognizerDelegate, FBLoginVie
         {
             let secondViewController:ViewController = ViewController()
             self.dismissViewControllerAnimated(false, completion: {})
-            self.presentViewController(secondViewController, animated: true, completion: nil)
+            self.presentViewController(secondViewController, animated: false, completion: nil)
         }
         
     }

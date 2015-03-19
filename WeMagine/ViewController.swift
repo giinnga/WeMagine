@@ -296,6 +296,12 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         
     }
     
+//    override func viewDidAppear(animated: Bool) {
+//        super.viewDidAppear(animated)
+//        
+//        self.centerText()
+//    }
+    
     override func viewWillAppear(animated: Bool) {
         
         super.viewWillAppear(animated)
@@ -304,6 +310,12 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         
 
     }
+    
+    override func viewWillDisappear(animated: Bool) {
+        self.centerText()
+    }
+    
+    
     
 //    Gestures
 
@@ -471,10 +483,12 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         
         var tt: UITextView = self.textView as UITextView
         var sizeT: CGSize = tt.sizeThatFits(CGSize(width: self.textView.bounds.width, height: 10000))
-        var topCorrect = (self.textView.bounds.height - sizeT.height * self.textView.zoomScale)/2
+        var topCorrect = (self.textView.bounds.height - size.height * self.textView.zoomScale)/2
         topCorrect = (topCorrect < 0.0 ? 0.0 : topCorrect)
         self.textView.contentOffset.x = 0
         self.textView.contentOffset.y = -topCorrect
+        println("Top correct \(topCorrect)")
+        println("Width \(self.textView.bounds.width)")
     }
     
     func getNewIdea() -> String {
@@ -510,7 +524,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         var topCorrect = (tf.bounds.size.height - (size.height * tf.zoomScale))/2
         topCorrect = (topCorrect < 0.0 ? 0.0 : topCorrect)
         tf.contentOffset.x = 0
-        tf.contentOffset.y = -topCorrect
+        self.textView.contentOffset.y = -topCorrect
     }
     
 }

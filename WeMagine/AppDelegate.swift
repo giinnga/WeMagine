@@ -13,13 +13,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var mainViewController: UIViewController?
+    var teste: Bool = false
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: NSString?, annotation: AnyObject) -> Bool {
+        var wasHandled:Bool = FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication)
+        teste = wasHandled
+        return wasHandled
+    }
 
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         if let window = window {
             window.backgroundColor = UIColor.whiteColor()
-            window.rootViewController = LoginController()
+            if teste
+            {
+                window.rootViewController = LoginController()
+            }
+            else
+            {
+                window.rootViewController = ViewController()
+            }
             window.makeKeyAndVisible()
         }
         
@@ -27,11 +41,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FBProfilePictureView.self
         
         return true
-    }
-    
-    func application(application: UIApplication, openURL url: NSURL, sourceApplication: NSString?, annotation: AnyObject) -> Bool {
-        var wasHandled:Bool = FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication)
-        return wasHandled
     }
 
     func applicationWillResignActive(application: UIApplication) {
