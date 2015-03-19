@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         teste = wasHandled
         return wasHandled
     }
-    
+
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
