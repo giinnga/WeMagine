@@ -180,18 +180,18 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
 //      Menu View
         
         menuView = UIView(frame: CGRect(x: -sizeRect.size.width/2, y: topMenuRectangle.frame.size.height - 1, width: sizeRect.size.width/2, height: sizeRect.size.height + 1))
-        menuView.backgroundColor = UIColor(red: 0.9601, green: 0.9307, blue: 0.9053, alpha: 1.0)
+        menuView.backgroundColor = UIColor(red: 0.7357, green: 0.639, blue: 0.5589, alpha: 1.0)
         self.view.addSubview(menuView)
         
 //      Menu View Rectangles
         
-        width = verifyPosition(sizeRect.size.width/2) - 1
-        height = verifyPosition(sizeRect.size.height/10) - 1
+        width = sizeRect.size.width/2
+        height = sizeRect.size.height/10
         
-        fontSize = verifyPosition(0.048 * sizeRect.size.width) - 1
+        fontSize = 15
         
-        x = verifyPosition(width/8.5)
-        y = verifyPosition(height/3)
+        x = 15
+        y = ((height - 10)/2) - 2
         
         var share:UIView = UIView(frame: CGRect(x: 0, y: 0, width: width, height: height))
         share.backgroundColor = UIColor(red: 0.7357, green: 0.639, blue: 0.5589, alpha: 1.0)
@@ -202,7 +202,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         shareLabel.textColor = UIColor(red: 0.3191, green: 0.3191, blue: 0.3191, alpha: 1.0)
         shareLabel.font = UIFont(name: "HelveticaNeue-Light", size: fontSize)
         shareLabel.sizeToFit()
-        share.addSubview(shareLabel)
+        menuView.addSubview(shareLabel)
         
         let shareGesture = UITapGestureRecognizer(target: self, action:Selector("newIdeaTap:"))
         shareGesture.delegate = self
@@ -228,25 +228,15 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         menuView.addSubview(profile)
         
         var profileLabel:UILabel = UILabel(frame: CGRect(x: x, y: y, width: 10 , height: 10))
-        profileLabel.text = "Profile"
+        profileLabel.text = "Tutorial"
         profileLabel.textColor = UIColor(red: 0.3191, green: 0.3191, blue: 0.3191, alpha: 1.0)
         profileLabel.font = UIFont(name: "HelveticaNeue-Light", size: fontSize)
         profileLabel.sizeToFit()
         profile.addSubview(profileLabel)
         
-        var settings: UIView = UIView(frame: CGRect(x: 0, y: 3 * sizeRect.size.height/10, width: width, height: height))
-        settings.backgroundColor = UIColor(red: 0.9608, green: 0.9294, blue: 0.9059, alpha: 1.0)
-        menuView.addSubview(settings)
-        
-        var settingsLabel:UILabel = UILabel(frame: CGRect(x: x, y: y, width: 10 , height: 10))
-        settingsLabel.text = "Settings"
-        settingsLabel.textColor = UIColor(red: 0.3191, green: 0.3191, blue: 0.3191, alpha: 1.0)
-        settingsLabel.font = UIFont(name: "HelveticaNeue-Light", size: fontSize)
-        settingsLabel.sizeToFit()
-        settings.addSubview(settingsLabel)
-        
-        var logout:UIView = UIView(frame: CGRect(x: 0, y: 4 * sizeRect.size.height/10, width: width, height: height))
-        logout.backgroundColor = UIColor(red: 0.7357, green: 0.639, blue: 0.5589, alpha: 1.0)
+        var logout:UIView = UIView(frame: CGRect(x: 0, y: 3 * sizeRect.size.height/10, width: width, height: height))
+        logout.backgroundColor = UIColor(red: 0.9608, green: 0.9294, blue: 0.9059, alpha: 1.0)
+        logout.userInteractionEnabled = true
         menuView.addSubview(logout)
         
         var logoutLabel:UILabel = UILabel(frame: CGRect(x: x, y: y, width: 10 , height: 10))
@@ -254,12 +244,12 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         logoutLabel.textColor = UIColor(red: 0.3191, green: 0.3191, blue: 0.3191, alpha: 1.0)
         logoutLabel.font = UIFont(name: "HelveticaNeue-Light", size: fontSize)
         logoutLabel.sizeToFit()
-        logoutLabel.userInteractionEnabled = true
+        
         logout.addSubview(logoutLabel)
         
         let logoutAction = UITapGestureRecognizer(target: self, action:Selector("logOut"))
         logoutAction.delegate = self
-        logoutLabel.addGestureRecognizer(logoutAction)
+        logout.addGestureRecognizer(logoutAction)
         
 //      Frames
         
@@ -317,10 +307,10 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
     }
     
     override func viewWillDisappear(animated: Bool) {
+    
         self.centerText()
+    
     }
-    
-    
     
 //    Gestures
 
@@ -355,6 +345,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
     func myIdeas(recognizer: UITapGestureRecognizer) {
         if(!mayVote)
         {
+            closeMenu()
             performSegueWithIdentifier("myIdeas", sender: self)
         }
     }
@@ -368,11 +359,13 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
     
     func newIdeaTap(recognizer: UITapGestureRecognizer) {
         
+        closeMenu()
         performSegueWithIdentifier("newIdea", sender: self)
     }
     
     func newIdea(recognizer: UITapGestureRecognizer) {
         
+        closeMenu()
         performSegueWithIdentifier("newIdea", sender: self)
     }
     
@@ -380,26 +373,35 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         
         let transitionOptions = UIViewAnimationOptions.TransitionFlipFromLeft
         
+        if(menuViewHidden) {
+            openMenu()
+        }
+        else {
+            closeMenu()
+        }
+    }
+    
+    func openMenu() {
+        
         let endXPosition = 0 as CGFloat
         
         let startXPosition = -self.sizeRect.size.width/2 as CGFloat
         
         let offset = (0.1*(endXPosition - startXPosition))
         
-        if(menuViewHidden) {
-            UIView.animateWithDuration(0.3, animations: {
-                self.menuView.frame.origin.x = self.verifyPosition(endXPosition) - 1
-                self.mayVote = false
-                self.menuViewHidden = false
-            })
-        }
-        else {
-            UIView.animateWithDuration(0.3, animations: {
-                self.menuView.frame.origin.x = -self.verifyPosition(self.sizeRect.size.width/2)
-                self.menuViewHidden = true
-                self.mayVote = true
-            })
-        }
+        UIView.animateWithDuration(0.3, animations: {
+            self.menuView.frame.origin.x = self.verifyPosition(endXPosition) - 1
+            self.mayVote = false
+            self.menuViewHidden = false
+        })
+    }
+    
+    func closeMenu() {
+        UIView.animateWithDuration(0.3, animations: {
+            self.menuView.frame.origin.x = -self.verifyPosition(self.sizeRect.size.width/2)
+            self.menuViewHidden = true
+            self.mayVote = true
+        })
     }
     
 //  Next Idea
