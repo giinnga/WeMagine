@@ -42,7 +42,7 @@ class LoginController: UIViewController, UIGestureRecognizerDelegate, FBLoginVie
         width = 173.0 * prop * 1.5
         height = 158.0 * prop * 1.5
         x = (sizeRect.size.width - width)/2
-        y = ((sizeRect.size.height - (height + 80 + 50))/2)
+        y = ((sizeRect.size.height - (height + 160 + 50))/2)
         
         var logoImage: UIImage = UIImage(named: "NewLogo@3x.png")!
         var logoImageView: UIImageView = UIImageView(image: logoImage)
@@ -53,7 +53,7 @@ class LoginController: UIViewController, UIGestureRecognizerDelegate, FBLoginVie
        
         fbLoginView.delegate = self
         fbLoginView.readPermissions = ["public_profile", "email", "user_friends"]
-        fbLoginView.frame = CGRectMake((sizeRect.size.width - 200)/2, y + height + 80, 200, 50)
+        fbLoginView.frame = CGRectMake((sizeRect.size.width - 200)/2, y + height + 160, 200, 50)
         self.view.addSubview(fbLoginView)
         
 ////        Text Fields
@@ -106,23 +106,20 @@ class LoginController: UIViewController, UIGestureRecognizerDelegate, FBLoginVie
     // Facebook Delegate Methods
     
     func loginViewShowingLoggedInUser(loginView : FBLoginView!) {
-        println("User Logged In")
         if(loggedIn == false) {
-            logInApp()
-            loggedIn = true
+            //println("User Logged In")
         }
     }
     
     func loginViewFetchedUserInfo(loginView : FBLoginView!, user: FBGraphUser) {
-        println("User: \(user)")
-        println("User ID: \(user.objectID)")
-        println("User Name: \(user.name)")
-        var userEmail = user.objectForKey("email") as String
-        println("User Email: \(userEmail)")
+        if(loggedIn == false) {
+            checkUserCredentials(user)
+            loggedIn = true
+        }
     }
     
     func loginViewShowingLoggedOutUser(loginView : FBLoginView!) {
-        println("User Logged Out")
+        //println("User Logged Out")
         loggedIn = false
     }
     
@@ -135,19 +132,73 @@ class LoginController: UIViewController, UIGestureRecognizerDelegate, FBLoginVie
         // Dispose of any resources that can be recreated.
     }
     
-    func logInApp()
-    {
-        performSegueWithIdentifier("LogIn", sender: self)
+    func checkUserCredentials(user: FBGraphUser) {
+        
+//        println("User: \(user)")
+//        println("User ID: \(user.objectID)")
+//        println("User Name: \(user.name)")
+//        var userEmail = user.objectForKey("email") as String
+//        println("User Email: \(userEmail)")
+        
+        var userEmail = user.objectForKey("email") as String
+        
+        let escapedName = user.name.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+        let escapedEmail = userEmail.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+        
+        let urlpath = "http://104.131.156.49/wemagine/getUser.php?email="+escapedEmail+"&name="+escapedName
+        
+        var url = NSURL(string: urlpath)
+        var session = NSURLSession.sharedSession()
+        let task : NSURLSessionDataTask = session.dataTaskWithURL(url!, completionHandler: {(data, response, error) in
+            
+            if let theData = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as? NSDictionary {
+                
+                if(theData["Status"] as String == "cannotCreateUser") {
+                    
+                    println("Some error has occurred!")
+                    FBSession.activeSession().closeAndClearTokenInformation()
+                    
+                } else if(theData["Status"] as String == "userFound") {
+                    
+                    dispatch_async(dispatch_get_main_queue()) {
+                        () -> Void in
+                        
+                        var result = theData["Result"] as NSArray
+                        var dic = result[0] as NSDictionary
+                        
+                        //println(dic["Name"] as String)
+                        self.logInApp(dic["Name"] as String, useremail: dic["Email"] as String)
+                    }
+                    
+                } else if(theData["Status"] as String == "userCreated") {
+                    
+                    dispatch_async(dispatch_get_main_queue()) {
+                        () -> Void in
+                        
+                        //println(user.name)
+                        self.logInApp(user.name, useremail: userEmail)
+                    }
+                    
+                }
+                
+            } else {
+                
+                println("Some error has occurred!")
+                FBSession.activeSession().closeAndClearTokenInformation()
+            }
+            
+        })
+        
+        task.resume()
+        
     }
     
-    override func performSegueWithIdentifier(identifier: String?, sender: AnyObject?) {
-        
-        if identifier == "LogIn"
-        {
-            let secondViewController:ViewController = ViewController()
-            self.presentViewController(secondViewController, animated: true, completion: nil)
-        }
-        
+    func logInApp(username: String, useremail: String)
+    {
+        let secondViewController:ViewController = ViewController()
+        secondViewController.theUsername = username
+        secondViewController.theUseremail = useremail
+        self.presentViewController(secondViewController, animated: true, completion: nil)
     }
     
     func verifyPosition(measure:CGFloat) -> CGFloat

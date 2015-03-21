@@ -184,7 +184,6 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
             cell.theIdea.contentOffset.y = -topCorrectFade
             
             cell.theIdea.layer.sublayerTransform = CATransform3DMakeTranslation(0, verifyPosition(topCorrectFade) - 5, 0)
-            println(topCorrectFade)
             
             return cell
         }

@@ -18,20 +18,32 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
     var goodIdea: UIView = UIView()
     var goodImage: UIImageView = UIImageView()
     var badImage: UIImageView = UIImageView()
+    var loadSprite: UIImageView = UIImageView()
     
     var cloudImageView: UIImageView = UIImageView()
     var cloudFadeImageView: UIImageView = UIImageView()
     var textView: UITextView = UITextView()
     var fadeText: UITextView = UITextView()
     
+    var ideaText = String()
+    var ideaName = String()
+    var ideaId = String()
+    var theUsername = String()
+    var theUseremail = String()
+    
     var cloudWidth = CGFloat()
     var cloudHeight = CGFloat()
     var cloudX = CGFloat()
     var cloudY = CGFloat()
+    var rotation:CGFloat = 0.0
     
     var menuViewHidden: Bool = true
     var mayVote: Bool = true
     var finished: Bool = false
+    var isLoading: Bool = false
+    
+    var theIdeas:NSMutableArray = NSMutableArray()
+    var newIdeasSet:NSMutableArray = NSMutableArray()
 
     var shownIdeaFrame: CGRect = CGRect()
 
@@ -120,7 +132,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         goodIdea.backgroundColor = UIColor(red: 0.6192, green: 0.9166, blue: 1.0, alpha: 1.0)
         goodIdea.userInteractionEnabled = true
         self.view.addSubview(goodIdea)
-        
+    
         
 //      Clouds
         
@@ -138,9 +150,27 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         cloudImageView.frame = CGRectMake(cloudX+2000,cloudY,cloudWidth,cloudHeight)
         cloudFadeImageView = UIImageView(image: cloudImage)
         cloudFadeImageView.frame = CGRectMake(cloudX+2000,cloudY,cloudWidth,cloudHeight)
+        cloudFadeImageView.layer.zPosition = 10
+        cloudImageView.layer.zPosition = 10
         
         self.view.addSubview(cloudImageView)
         self.view.addSubview(cloudFadeImageView)
+        
+//      Loading Sprite
+        
+        width = 74.0 * prop * 1.3
+        height = 74.0 * prop * 1.3
+        x = (sizeRect.size.width - width)/2
+        y = cloudY + 80.0
+        
+        var loadImage: UIImage = UIImage(named: "LoadCloud@3x.png")!
+        loadSprite = UIImageView(image: loadImage)
+        loadSprite.frame = CGRectMake(x,y,width,height)
+        loadSprite.alpha = 0
+        loadSprite.layer.zPosition = 9
+        self.view.addSubview(loadSprite)
+        
+        var timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: Selector("animateLoadIcon"), userInfo: nil, repeats: true)
         
 //      Sad & Happy images
 
@@ -182,6 +212,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         menuView = UIView(frame: CGRect(x: -sizeRect.size.width/2, y: topMenuRectangle.frame.size.height - 1, width: sizeRect.size.width/2, height: sizeRect.size.height + 1))
         menuView.backgroundColor = UIColor(red: 0.7357, green: 0.639, blue: 0.5589, alpha: 1.0)
         self.view.addSubview(menuView)
+        menuView.layer.zPosition = 50
         
 //      Menu View Rectangles
         
@@ -303,6 +334,12 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         
         self.centerText()
         
+        if (isLoading == true) {
+            mayVote = false
+        } else {
+            mayVote = true
+        }
+        
 
     }
     
@@ -357,6 +394,16 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
 //        }
 //    }
     
+    func animateLoadIcon() {
+        
+        rotation += 0.1
+        if (rotation >= CGFloat(M_PI*2)) {
+            rotation = rotation - CGFloat(M_PI*2)
+        }
+        loadSprite.transform = CGAffineTransformMakeRotation(rotation)
+        
+    }
+    
     func newIdeaTap(recognizer: UITapGestureRecognizer) {
         
         closeMenu()
@@ -378,6 +425,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         }
         else {
             closeMenu()
+            self.mayVote = true
         }
     }
     
@@ -400,44 +448,99 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         UIView.animateWithDuration(0.3, animations: {
             self.menuView.frame.origin.x = -self.verifyPosition(self.sizeRect.size.width/2)
             self.menuViewHidden = true
-            self.mayVote = true
         })
     }
     
 //  Next Idea
     
-    func setNewIdea()
-    {
+    func setNewIdea() {
         
-        self.fadeText.text = self.getNewIdea()
+        if (theIdeas.count > 25) {
+            showNextIdea()
+        } else if (theIdeas.count > 0) {
+            if (isLoading == true) {
+                showNextIdea()
+            } else {
+                showNextIdea()
+                loadNewIdeas(false)
+                isLoading = true
+            }
+        } else {
+            showLoadingSprite()
+            loadNewIdeas(true)
+        }
         
-        centerText()
+    }
+    
+    func loadNewIdeas(noideasleft: Bool) {
         
-        var url = NSURL(string: "http://104.131.156.49/get.php")
+        var url = NSURL(string: "http://104.131.156.49/wemagine/getIdea.php")
         var session = NSURLSession.sharedSession()
         let task : NSURLSessionDataTask = session.dataTaskWithURL(url!, completionHandler: {(data, response, error) in
             
-            let theData = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSArray
-            
-            var str:String = theData[0]["Nome"] as String
-            
-            println(str)
+            if let theData = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as? NSArray {
+                
+                self.theIdeas.addObjectsFromArray(theData)
+                
+                self.isLoading = false
+                
+                if (noideasleft == true) {
+                    
+                    dispatch_async(dispatch_get_main_queue()) {
+                        () -> Void in
+                        self.showNextIdea()
+                    }
+                }
+
+            } else {
+                
+                println("Some error has occurred!")
+            }
             
         })
         
         task.resume()
         
+    }
+    
+    func showNextIdea() {
+        
+        self.fadeText.text = self.getTheNextIdea()
+        
+        centerText()
+        
         UIView.animateWithDuration(0.3, animations: {
             self.cloudFadeImageView.frame.origin.x = self.cloudX
-        }, completion: {
-            (value: Bool) in
-            self.centerText()
-            self.cloudFadeImageView.frame.origin.x = self.cloudX+self.sizeRect.size.width
-            self.cloudImageView.alpha = 1
-            self.cloudImageView.frame = CGRectMake(self.cloudX, self.cloudY, self.cloudWidth, self.cloudHeight)
-            self.textView.text = self.fadeText.text
-            self.mayVote = true
+            }, completion: {
+                (value: Bool) in
+                self.centerText()
+                self.cloudFadeImageView.frame.origin.x = self.cloudX+self.sizeRect.size.width
+                self.cloudImageView.alpha = 1
+                self.cloudImageView.frame = CGRectMake(self.cloudX, self.cloudY, self.cloudWidth, self.cloudHeight)
+                self.textView.text = self.fadeText.text
+                self.mayVote = true
         })
+        
+    }
+    
+    func getTheNextIdea() -> String {
+        
+        var idea: NSDictionary = theIdeas[theIdeas.count - 1] as NSDictionary
+        var str = (idea["Text"] as String) + "\n\n-" + (idea["Name"] as String)
+        
+        ideaText = idea["Text"] as String
+        ideaName = idea["Name"] as String
+        ideaId = idea["Id"] as String
+        
+        theIdeas.removeLastObject()
+        return str
+
+    }
+    
+    func showLoadingSprite() {
+        
+        mayVote = false
+        loadSprite.alpha = 1
         
     }
     
@@ -450,9 +553,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         goodImage.frame.origin.y = goodImage.frame.origin.y + 4
         goodIdea.backgroundColor = UIColor(red: 87.0/255.0, green: 219.0/255.0, blue: 1, alpha: 1)
         
-        
         var timer = NSTimer.scheduledTimerWithTimeInterval(0.12, target: self, selector: Selector("animateLike"), userInfo: nil, repeats: false)
-        
     }
     
     func animateLike() {
@@ -483,7 +584,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         badIdea.backgroundColor = UIColor(red: 255.0/255.0, green: 78.0/255.0, blue: 100.0/255.0, alpha: 1)
         
         var timer = NSTimer.scheduledTimerWithTimeInterval(0.12, target: self, selector: Selector("animateDislike"), userInfo: nil, repeats: false)
-        
     }
     
     func animateDislike() {
@@ -521,10 +621,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         self.textView.contentOffset.y = -topCorrect
     }
     
-    func getNewIdea() -> String {
-        return "E se existisse um cinema específico para golfinhos?\n\n-Cloudie"
-    }
-    
 //  Segue
     
     override func performSegueWithIdentifier(identifier: String?, sender: AnyObject?) {
@@ -541,8 +637,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         }
     }
     
-    func verifyPosition(measure:CGFloat) -> CGFloat
-    {
+    func verifyPosition(measure:CGFloat) -> CGFloat {
         var divisionRest = measure % 1
         var correctValue = measure + 1 - divisionRest
         return correctValue
