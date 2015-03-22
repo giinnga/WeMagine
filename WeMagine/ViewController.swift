@@ -231,7 +231,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         var shareLabel:UILabel = UILabel(frame: CGRect(x: x, y: y, width: 200 , height: 20))
         shareLabel.text = "Share Imagination"
         shareLabel.textColor = UIColor(red: 0.3191, green: 0.3191, blue: 0.3191, alpha: 1.0)
-        shareLabel.font = UIFont(name: "HelveticaNeue-Light", size: fontSize)
+        shareLabel.font = UIFont(name: "HelveticaNeue", size: fontSize)
         //shareLabel.sizeToFit()
         menuView.addSubview(shareLabel)
         
@@ -246,7 +246,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         var myIdeasLabel:UILabel = UILabel(frame: CGRect(x: x, y: y, width: 200 , height: 20))
         myIdeasLabel.text = "My shared ideas"
         myIdeasLabel.textColor = UIColor(red: 0.3191, green: 0.3191, blue: 0.3191, alpha: 1.0)
-        myIdeasLabel.font = UIFont(name: "HelveticaNeue-Light", size: fontSize)
+        myIdeasLabel.font = UIFont(name: "HelveticaNeue", size: fontSize)
         //myIdeasLabel.sizeToFit()
         myIdeas.addSubview(myIdeasLabel)
         
@@ -261,7 +261,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         var profileLabel:UILabel = UILabel(frame: CGRect(x: x, y: y, width: 100 , height: 20))
         profileLabel.text = "Tutorial"
         profileLabel.textColor = UIColor(red: 0.3191, green: 0.3191, blue: 0.3191, alpha: 1.0)
-        profileLabel.font = UIFont(name: "HelveticaNeue-Light", size: fontSize)
+        profileLabel.font = UIFont(name: "HelveticaNeue", size: fontSize)
         //profileLabel.sizeToFit()
         profile.addSubview(profileLabel)
         
@@ -273,7 +273,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         var logoutLabel:UILabel = UILabel(frame: CGRect(x: x, y: y, width: 100 , height: 20))
         logoutLabel.text = "Logout"
         logoutLabel.textColor = UIColor(red: 0.3191, green: 0.3191, blue: 0.3191, alpha: 1.0)
-        logoutLabel.font = UIFont(name: "HelveticaNeue-Light", size: fontSize)
+        logoutLabel.font = UIFont(name: "HelveticaNeue", size: fontSize)
         //logoutLabel.sizeToFit()
         
         logout.addSubview(logoutLabel)
@@ -281,6 +281,21 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         let logoutAction = UITapGestureRecognizer(target: self, action:Selector("logOut"))
         logoutAction.delegate = self
         logout.addGestureRecognizer(logoutAction)
+        
+        var oldHeight = height
+        var newY = ((menuView.frame.size.height-((3 * sizeRect.size.height/10)+oldHeight)))
+        newY = (newY-height)/2
+        
+        width = 127.0 * prop
+        height = 107.0 * prop
+        x = ((sizeRect.size.width/2)-width)/2
+        y = newY + (3 * sizeRect.size.height/10)
+        
+        var blinkCloud = UIImage(named: "BlinkCloud@3x.png")
+        var blinkImageView = UIImageView(image: blinkCloud)
+        blinkImageView.frame = CGRectMake(x,y,width,height)
+        
+        menuView.addSubview(blinkImageView)
         
 //      Frames
         
