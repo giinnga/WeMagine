@@ -25,6 +25,9 @@
 		51325DED1ABE14D5001481D2 /* LoadCloud@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51325DEA1ABE14D5001481D2 /* LoadCloud@3x.png */; };
 		51325DEE1ABE14D5001481D2 /* LoadCloud@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51325DEB1ABE14D5001481D2 /* LoadCloud@2x.png */; };
 		51325DEF1ABE14D5001481D2 /* LoadCloud.png in Resources */ = {isa = PBXBuildFile; fileRef = 51325DEC1ABE14D5001481D2 /* LoadCloud.png */; };
+		51325DF31ABE5730001481D2 /* CancelButton@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51325DF01ABE5730001481D2 /* CancelButton@3x.png */; };
+		51325DF41ABE5730001481D2 /* CancelButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51325DF11ABE5730001481D2 /* CancelButton@2x.png */; };
+		51325DF51ABE5730001481D2 /* CancelButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 51325DF21ABE5730001481D2 /* CancelButton.png */; };
 		5170EF621ABA26E300E34E3E /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5170EF611ABA26E300E34E3E /* FacebookSDK.framework */; };
 		51BC69751ABB05ED00BB5F9E /* NewLogo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51BC69721ABB05ED00BB5F9E /* NewLogo@3x.png */; };
 		51BC69761ABB05ED00BB5F9E /* NewLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51BC69731ABB05ED00BB5F9E /* NewLogo@2x.png */; };
@@ -117,6 +120,9 @@
 		51325DEA1ABE14D5001481D2 /* LoadCloud@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoadCloud@3x.png"; sourceTree = "<group>"; };
 		51325DEB1ABE14D5001481D2 /* LoadCloud@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoadCloud@2x.png"; sourceTree = "<group>"; };
 		51325DEC1ABE14D5001481D2 /* LoadCloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoadCloud.png; sourceTree = "<group>"; };
+		51325DF01ABE5730001481D2 /* CancelButton@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CancelButton@3x.png"; sourceTree = "<group>"; };
+		51325DF11ABE5730001481D2 /* CancelButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CancelButton@2x.png"; sourceTree = "<group>"; };
+		51325DF21ABE5730001481D2 /* CancelButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CancelButton.png; sourceTree = "<group>"; };
 		5170EF611ABA26E300E34E3E /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		5170EF631ABA4D2E00E34E3E /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		51BC69721ABB05ED00BB5F9E /* NewLogo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NewLogo@3x.png"; sourceTree = "<group>"; };
@@ -272,6 +278,9 @@
 		94BF555B1AB2322500DA5CC0 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				51325DF01ABE5730001481D2 /* CancelButton@3x.png */,
+				51325DF11ABE5730001481D2 /* CancelButton@2x.png */,
+				51325DF21ABE5730001481D2 /* CancelButton.png */,
 				51325DEA1ABE14D5001481D2 /* LoadCloud@3x.png */,
 				51325DEB1ABE14D5001481D2 /* LoadCloud@2x.png */,
 				51325DEC1ABE14D5001481D2 /* LoadCloud.png */,
@@ -426,7 +435,9 @@
 			files = (
 				51F5989F1AB89F3700148DEE /* SendButton@2x.png in Resources */,
 				51F598B41AB8AE4600148DEE /* SadPressedButton@2x.png in Resources */,
+				51325DF41ABE5730001481D2 /* CancelButton@2x.png in Resources */,
 				948382F41AB86C7700204542 /* Logo@3x.png in Resources */,
+				51325DF51ABE5730001481D2 /* CancelButton.png in Resources */,
 				51F598D71AB9029F00148DEE /* SendTutorial@2x.png in Resources */,
 				948382F01AB86C7700204542 /* LoginButton@2x.png in Resources */,
 				948382F31AB86C7700204542 /* Logo@2x.png in Resources */,
@@ -490,6 +501,7 @@
 				51F598B71AB8AE4600148DEE /* HappyUpCloud2@2x.png in Resources */,
 				948382EF1AB86C7700204542 /* LoginButton.png in Resources */,
 				51F598CA1AB8E50E00148DEE /* HappyUpCloud1@3x.png in Resources */,
+				51325DF31ABE5730001481D2 /* CancelButton@3x.png in Resources */,
 				51F598D21AB8E94F00148DEE /* SendPressedButton.png in Resources */,
 				51F598D81AB9029F00148DEE /* SendTutorial.png in Resources */,
 				511FBC351AB774AE00BFC694 /* LampIcon@2x.png in Resources */,

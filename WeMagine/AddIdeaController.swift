@@ -13,9 +13,12 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
     var sizeRect = UIScreen.mainScreen().applicationFrame;
     let app = UIApplication.sharedApplication()
     
+    var task = NSURLSessionDataTask()
+    
     var menuView:UIView = UIView()
     
     var menuViewHidden: Bool = true
+    var maySendOrBack = true
     
     var username = String()
     var useremail = String()
@@ -23,10 +26,11 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
     var textField: UITextView = UITextView()
     
     var sendYourIdea: UIImageView = UIImageView()
+    var cancelIdea: UIImageView = UIImageView()
     var cloudImageView: UIImageView = UIImageView()
     var happyCloudImageView: UIImageView = UIImageView()
     var tutorial: UIImageView = UIImageView()
-    var loadSprite = UIImageView()
+    var loadSprite: UIImageView = UIImageView()
     
     var CloudW = CGFloat()
     var CloudH = CGFloat()
@@ -208,6 +212,28 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
         let shareGesture = UITapGestureRecognizer(target: self, action:Selector("newIdeaTap:"))
         shareGesture.delegate = self
         sendYourIdea.addGestureRecognizer(shareGesture)
+        
+//      Cancel Send
+        
+        var cancelHeight:CGFloat = sizeRect.size.height - (topHeight + (349 * prop))
+        var cancelProp:CGFloat = brownHeight/274
+        
+        width = verifyPosition(90.0 * buttonProp)
+        height = verifyPosition(93.0 * buttonProp)
+        x = (sizeRect.size.width-width)/2
+        y = ((brownHeight - height)/2) + topHeight + barHeight + (349 * prop)
+        
+        var cancelButton: UIImage = UIImage(named: "CancelButton@3x.png")!
+        cancelIdea = UIImageView(image: cancelButton)
+        cancelIdea.frame = CGRectMake(x, y, width, height)
+        cancelIdea.hidden = true
+        cancelIdea.alpha = 0
+        cancelIdea.userInteractionEnabled = true
+        self.view.addSubview(cancelIdea)
+        
+        let cancelGesture = UITapGestureRecognizer(target: self, action:Selector("cancelIdeaTap:"))
+        cancelGesture.delegate = self
+        cancelIdea.addGestureRecognizer(cancelGesture)
     }
     
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
@@ -227,14 +253,16 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
     
     func textViewDidChange(textView: UITextView) {
         self.sendYourIdea.hidden = false
-        self.tutorial.hidden = true
+        self.tutorial.alpha = 0
         self.centerText()
     }
     
     func newIdea(recognizer: UITapGestureRecognizer) {
         
-        let secondViewController:ViewController = ViewController()
-        self.dismissViewControllerAnimated(true, completion: nil)
+        if(maySendOrBack == true) {
+            dismissView()
+        }
+        
     }
     
     func verifyPosition(measure:CGFloat) -> CGFloat
@@ -256,12 +284,24 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
     
     func newIdeaTap(recognizer: UITapGestureRecognizer) {
         
-        var image = UIImage(named: "SendPressedButton@3x.png")!
-        sendYourIdea.image = image
-        sendYourIdea.frame.origin.y = sendYourIdea.frame.origin.y + 4
+        if(maySendOrBack == true) {
+            
+            maySendOrBack = false
         
-        var timer = NSTimer.scheduledTimerWithTimeInterval(0.12, target: self, selector: Selector("upCloudAnimation"), userInfo: nil, repeats: false)
+            var image = UIImage(named: "SendPressedButton@3x.png")!
+            sendYourIdea.image = image
+            sendYourIdea.frame.origin.y = sendYourIdea.frame.origin.y + 4
+            
+            var timer = NSTimer.scheduledTimerWithTimeInterval(0.12, target: self, selector: Selector("upCloudAnimation"), userInfo: nil, repeats: false)
+        }
 
+    }
+    
+    func cancelIdeaTap(recognizer: UITapGestureRecognizer) {
+        
+        self.task.cancel()
+        self.reloadView()
+        
     }
     
     func upCloudAnimation() {
@@ -272,12 +312,16 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
         sendYourIdea.image = image
         sendYourIdea.frame.origin.y = sendYourIdea.frame.origin.y - 4
         
-        self.sendYourIdea.hidden = true
-        
         var width = 71.0 * prop
         var height = 60.0 * prop
         var x = (sizeRect.size.width - width)/2
         var y = (((349 * prop) - height)/2) + topHeight + barHeight
+        
+        UIView.animateWithDuration(0.3, animations: {
+        
+            self.sendYourIdea.alpha = 0
+                
+        })
         
         UIView.animateWithDuration(0.2, animations: {
             
@@ -318,11 +362,13 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
                                         
                                         (value: Bool) in
                                         
+                                        self.cancelIdea.hidden = false
                                         self.cloudImageView.alpha = 0
                                         
                                         UIView.animateWithDuration(0.3, animations: {
                                             
                                             //Fourth
+                                            self.cancelIdea.alpha = 1
                                             self.loadSprite.alpha = 1
                                             
                                         }, completion: {
@@ -353,7 +399,7 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
         
         var url = NSURL(string: urlpath)
         var session = NSURLSession.sharedSession()
-        let task : NSURLSessionDataTask = session.dataTaskWithURL(url!, completionHandler: {(data, response, error) in
+        self.task = session.dataTaskWithURL(url!, completionHandler: {(data, response, error) in
             
             if let theData = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as? NSDictionary {
                 
@@ -364,7 +410,6 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
                         
                         UIView.animateWithDuration(0.3, animations: {
                             
-                            //Fourth
                             self.loadSprite.alpha = 0
                             
                             }, completion: {
@@ -403,7 +448,7 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
             
         })
         
-        task.resume()
+        self.task.resume()
         
     }
     
@@ -412,11 +457,24 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
         var image:UIImage = UIImage(named: "HappyUpCloud1@3x.png")!
         self.happyCloudImageView.image = image
         self.happyCloudImageView.alpha = 0
+        self.loadSprite.alpha = 0
         self.cloudImageView.frame = CGRectMake(CloudX, CloudY, CloudW, CloudH)
         self.happyCloudImageView.frame = CGRectMake(0, 0, CloudW, CloudH)
-        self.tutorial.hidden = false
-        self.textField.alpha = 1
-        self.cloudImageView.alpha = 1
+        self.cancelIdea.hidden = true
+        self.sendYourIdea.hidden = true
+        self.sendYourIdea.alpha = 1
+        
+        maySendOrBack = true
+        
+        UIView.animateWithDuration(0.3, animations: {
+            
+            self.tutorial.alpha = 1
+            self.cancelIdea.alpha = 0
+            self.textField.alpha = 1
+            self.cloudImageView.alpha = 1
+            
+        })
+
     }
     
     func dismissView() {
