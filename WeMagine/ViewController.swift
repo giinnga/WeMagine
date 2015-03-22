@@ -556,6 +556,45 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         goodImage.frame.origin.y = goodImage.frame.origin.y + 4
         goodIdea.backgroundColor = UIColor(red: 87.0/255.0, green: 219.0/255.0, blue: 1, alpha: 1)
         
+        let escapedID = ideaId
+        
+        let urlpath = "http://104.131.156.49/wemagine/likeIdea.php?type=1&id="+escapedID
+        
+        var url = NSURL(string: urlpath)
+        var session = NSURLSession.sharedSession()
+        var task = session.dataTaskWithURL(url!, completionHandler: {(data, response, error) in
+            
+            if let theData = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as? NSDictionary {
+                
+                if(theData["Status"] as String == "ideaLikedSucessfully") {
+                    
+                    dispatch_async(dispatch_get_main_queue()) {
+                        () -> Void in
+                        println("Like!")
+                    }
+                    
+                } else if(theData["Status"] as String == "anErrorOcurred") {
+                    
+                    dispatch_async(dispatch_get_main_queue()) {
+                        () -> Void in
+                        println("Some error has occurred!")
+                    }
+                    
+                }
+                
+            } else {
+                
+                dispatch_async(dispatch_get_main_queue()) {
+                    () -> Void in
+                    println("Some error has occurred!")
+                }
+                
+            }
+            
+        })
+        
+        task.resume()
+        
         var timer = NSTimer.scheduledTimerWithTimeInterval(0.12, target: self, selector: Selector("animateLike"), userInfo: nil, repeats: false)
     }
     
@@ -585,6 +624,45 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         badImage.frame.size.height = 103 * prop
         badImage.frame.origin.y = badImage.frame.origin.y + 4
         badIdea.backgroundColor = UIColor(red: 255.0/255.0, green: 78.0/255.0, blue: 100.0/255.0, alpha: 1)
+        
+        let escapedID = ideaId
+        
+        let urlpath = "http://104.131.156.49/wemagine/likeIdea.php?type=0&id="+escapedID
+        
+        var url = NSURL(string: urlpath)
+        var session = NSURLSession.sharedSession()
+        var task = session.dataTaskWithURL(url!, completionHandler: {(data, response, error) in
+            
+            if let theData = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as? NSDictionary {
+                
+                if(theData["Status"] as String == "ideaLikedSucessfully") {
+                    
+                    dispatch_async(dispatch_get_main_queue()) {
+                        () -> Void in
+                        println("Dislike!")
+                    }
+                    
+                } else if(theData["Status"] as String == "anErrorOcurred") {
+                    
+                    dispatch_async(dispatch_get_main_queue()) {
+                        () -> Void in
+                        println("Some error has occurred!")
+                    }
+                    
+                }
+                
+            } else {
+                
+                dispatch_async(dispatch_get_main_queue()) {
+                    () -> Void in
+                    println("Some error has occurred!")
+                }
+                
+            }
+            
+        })
+        
+        task.resume()
         
         var timer = NSTimer.scheduledTimerWithTimeInterval(0.12, target: self, selector: Selector("animateDislike"), userInfo: nil, repeats: false)
     }
@@ -638,6 +716,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         else if identifier == "myIdeas"
         {
             let secondViewController:MySharedIdeas = MySharedIdeas()
+            secondViewController.useremail = theUseremail
             self.presentViewController(secondViewController, animated: true, completion: nil)
         }
     }

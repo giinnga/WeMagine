@@ -13,12 +13,21 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
     var sizeRect = UIScreen.mainScreen().applicationFrame;
     let app = UIApplication.sharedApplication()
     
+    var loadSprite = UIImageView()
+    var deleteView = UIImageView()
+    
+    var rotation:CGFloat = 0.0
+    
     var number = 11
     var module = 2
     
-    var goodVotesArray = [Int]()
-    var badVotesArray = [Int]()
-    var ideasArray = [String]()
+    var datatask = NSURLSessionDataTask()
+    
+    var tableViewApp = UITableView()
+    
+    var useremail = String()
+    
+    var userIdeas:NSMutableArray = NSMutableArray()
     
     override func viewDidLoad() {
         
@@ -33,18 +42,6 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
         
         var barHeight:CGFloat = app.statusBarFrame.size.height
         var topHeight:CGFloat = 44.0
-        
-        goodVotesArray.append(321)
-        goodVotesArray.append(9999)
-        goodVotesArray.append(3)
-        
-        badVotesArray.append(12)
-        badVotesArray.append(0)
-        badVotesArray.append(43)
-        
-        ideasArray.append("Uma escova de dentes que nunca cai do suporte! Uma escova de dentes que nunca cai do suporte!")
-        ideasArray.append("Tinham que criar um filme sobre o Ugulino.")
-        ideasArray.append("Uma bola quadrada está fazendo falta na sociedade.")
         
 //        Top Bar
         
@@ -91,7 +88,7 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
         
 //        Table View
         
-        var tableViewApp: UITableView = UITableView(frame: CGRect(x: 0, y: barHeight + topHeight, width: sizeRect.size.width, height: sizeRect.size.height - (topHeight)))
+        tableViewApp = UITableView(frame: CGRect(x: 0, y: barHeight + topHeight, width: sizeRect.size.width, height: sizeRect.size.height - (topHeight)))
         
         tableViewApp.delegate = self
         tableViewApp.dataSource = self
@@ -103,6 +100,115 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
         tableViewApp.registerNib(UINib(nibName: "BigCloud", bundle: nil), forCellReuseIdentifier: "bigCloud")
         
         self.view.addSubview(tableViewApp)
+        
+//      Delete View
+        
+        deleteView.frame = CGRectMake(0, 0, sizeRect.size.width, sizeRect.size.height + barHeight)
+        deleteView.backgroundColor = UIColor.blackColor()
+        deleteView.alpha = 0
+        deleteView.hidden = true
+        deleteView.layer.zPosition = 99
+        
+        self.view.addSubview(deleteView)
+        
+//      Loading Sprite
+        
+        width = 74.0 * prop * 1.3
+        height = 74.0 * prop * 1.3
+        x = (sizeRect.size.width - width)/2
+        y = 206.0 + 80.0 + topHeight + barHeight
+        
+        var loadImage: UIImage = UIImage(named: "LoadCloud@3x.png")!
+        loadSprite = UIImageView(image: loadImage)
+        loadSprite.frame = CGRectMake(x,y,width,height)
+        loadSprite.alpha = 1
+        loadSprite.layer.zPosition = 100
+        self.view.addSubview(loadSprite)
+        
+        var timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: Selector("animateLoadIcon"), userInfo: nil, repeats: true)
+        
+        loadIdeas()
+    }
+    
+    func animateLoadIcon() {
+        
+        rotation += 0.1
+        if (rotation >= CGFloat(M_PI*2)) {
+            rotation = rotation - CGFloat(M_PI*2)
+        }
+        loadSprite.transform = CGAffineTransformMakeRotation(rotation)
+        
+    }
+    
+    func loadIdeas() {
+        
+        let escapedEmail = useremail.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+        
+        let urlpath = "http://104.131.156.49/wemagine/getUserIdeas.php?email="+escapedEmail
+        
+        var url = NSURL(string: urlpath)
+        var session = NSURLSession.sharedSession()
+        datatask = session.dataTaskWithURL(url!, completionHandler: {(data, response, error) in
+            
+            if let theData = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as? NSDictionary {
+                
+                if(theData["Status"] as String == "sucsessfullyLoadedIdeas") {
+                    
+                    dispatch_async(dispatch_get_main_queue()) {
+                        () -> Void in
+                        
+                        var result = theData["Result"] as NSMutableArray
+                        self.userIdeas = result
+                        
+                        UIView.animateWithDuration(0.5, animations: {
+                            
+                            self.loadSprite.alpha = 0
+                            
+                        }, completion: {
+                                
+                            (value: Bool) in
+                            
+                            self.tableViewApp.reloadData()
+                            
+                        })
+                        
+                    }
+                    
+                } else if(theData["Status"] as String == "userEmptyIdeas") {
+                    
+                    dispatch_async(dispatch_get_main_queue()) {
+                        () -> Void in
+                        
+                        UIView.animateWithDuration(0.5, animations: {
+                            
+                            self.loadSprite.alpha = 0
+                            
+                        }, completion: {
+                                
+                            (value: Bool) in
+                                
+
+                        })
+
+                    }
+                    
+                }
+                
+            } else {
+                
+                println("Some error has occurred!")
+                dispatch_async(dispatch_get_main_queue()) {
+                    () -> Void in
+                    self.loadIdeas()
+                }
+                
+                
+            }
+            
+        })
+        
+        datatask.resume()
+        
     }
     
     func verifyPosition(measure:CGFloat) -> CGFloat
@@ -123,7 +229,7 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ideasArray.count + 1
+        return userIdeas.count + 1
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
@@ -168,9 +274,9 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
             
             cell.selectionStyle = UITableViewCellSelectionStyle.None
             
-            cell.badVotesNumber.text = String(self.badVotesArray[indexPath.row-1])
-            cell.goodVotesLabel.text = String(self.goodVotesArray[indexPath.row-1])
-            cell.theIdea.text = self.ideasArray[indexPath.row-1]
+            cell.badVotesNumber.text = self.userIdeas[indexPath.row-1]["Dislikes"] as? String
+            cell.goodVotesLabel.text = self.userIdeas[indexPath.row-1]["Likes"] as? String
+            cell.theIdea.text = self.userIdeas[indexPath.row-1]["Text"] as? String
             cell.badVotesNumber.textColor = UIColor(red: 0.3191, green: 0.3191, blue: 0.3191, alpha: 1.0)
             cell.goodVotesLabel.textColor = UIColor(red: 0.3191, green: 0.3191, blue: 0.3191, alpha: 1.0)
             cell.theIdea.textColor = UIColor(red: 0.3191, green: 0.3191, blue: 0.3191, alpha: 1.0)
@@ -212,20 +318,100 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
         {
             if editingStyle == UITableViewCellEditingStyle.Delete
             {
+                self.view.userInteractionEnabled = false
+                self.deleteView.hidden = false
+                UIView.animateWithDuration(0.5, animations: {
+                    
+                    self.loadSprite.alpha = 1
+                    self.deleteView.alpha = 0.6
                 
-    //            var delete = tableView.cellForRowAtIndexPath(indexPath)!.tag
-                ideasArray.removeAtIndex(indexPath.row-1)
-                badVotesArray.removeAtIndex(indexPath.row-1)
-                goodVotesArray.removeAtIndex(indexPath.row-1)
-                if module == 2
-                {
-                    module = 1
-                }
-                else
-                {
-                    module = 2
-                }
-                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Top)
+                }, completion: {
+                    
+                    (value: Bool) in
+                    
+                    let escapedID = self.userIdeas[indexPath.row-1]["Id"] as String
+                    
+                    let urlpath = "http://104.131.156.49/wemagine/removeIdea.php?id="+escapedID
+                    
+                    var url = NSURL(string: urlpath)
+                    var session = NSURLSession.sharedSession()
+                    var task = session.dataTaskWithURL(url!, completionHandler: {(data, response, error) in
+                        
+                        if let theData = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as? NSDictionary {
+                            
+                            if(theData["Status"] as String == "ideaDeletedSucessfully") {
+                                
+                                dispatch_async(dispatch_get_main_queue()) {
+                                    () -> Void in
+                                    
+                                    self.userIdeas.removeObjectAtIndex(indexPath.row-1)
+                                    if self.module == 2
+                                    {
+                                        self.module = 1
+                                    }
+                                    else
+                                    {
+                                        self.module = 2
+                                    }
+                                    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Top)
+                                    UIView.animateWithDuration(0.5, animations: {
+                                        
+                                        self.loadSprite.alpha = 0
+                                        self.deleteView.alpha = 0
+                                        
+                                    }, completion: {
+                                        (value: Bool) in
+                                        self.deleteView.hidden = true
+                                        self.view.userInteractionEnabled = true
+                                    })
+                                }
+                                
+                            } else if(theData["Status"] as String == "anErrorOcurred") {
+                                
+                                dispatch_async(dispatch_get_main_queue()) {
+                                    () -> Void in
+                                    println("Some error has occurred!")
+                                    UIView.animateWithDuration(0.5, animations: {
+                                        
+                                        self.loadSprite.alpha = 0
+                                        self.deleteView.alpha = 0
+                                        
+                                        }, completion: {
+                                            (value: Bool) in
+                                            self.deleteView.hidden = true
+                                            self.view.userInteractionEnabled = true
+                                    })
+                                }
+                                
+                            }
+                            
+                        } else {
+                            
+                            dispatch_async(dispatch_get_main_queue()) {
+                                () -> Void in
+                                println("Some error has occurred!")
+                                UIView.animateWithDuration(0.5, animations: {
+                                    
+                                    self.loadSprite.alpha = 0
+                                    self.deleteView.alpha = 0
+                                    
+                                    }, completion: {
+                                        (value: Bool) in
+                                        self.deleteView.hidden = true
+                                        self.view.userInteractionEnabled = true
+                                })
+                            }
+                            
+                        }
+                        
+                    })
+                    
+                    task.resume()
+                        
+                })
+                
+                
+                
             }
         }
     }
