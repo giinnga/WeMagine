@@ -14,19 +14,23 @@ class CustomCell: UITableViewCell {
     @IBOutlet weak var goodVotesLabel: UILabel!
     @IBOutlet weak var theIdea: UITextView!
     
+    var alinhado: Bool = false
+    
     var textTest: String!
        
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
-        centerText()
+//        centerText()
     }
+    
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+//        centerText()
     }
     
     
@@ -39,7 +43,7 @@ class CustomCell: UITableViewCell {
         topCorrectFade = (topCorrectFade < 0.0 ? 0.0 : topCorrectFade)
         self.theIdea.contentOffset.x = 0
         self.theIdea.contentOffset.y = -topCorrectFade
-        println(topCorrectFade)
+//        println(topCorrectFade)
     }
     
 }

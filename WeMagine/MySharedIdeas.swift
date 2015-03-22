@@ -20,6 +20,7 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
     
     var number = 11
     var module = 2
+    var i = 0
     
     var datatask = NSURLSessionDataTask()
     
@@ -277,19 +278,22 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
             cell.badVotesNumber.text = self.userIdeas[indexPath.row-1]["Dislikes"] as? String
             cell.goodVotesLabel.text = self.userIdeas[indexPath.row-1]["Likes"] as? String
             cell.theIdea.text = self.userIdeas[indexPath.row-1]["Text"] as? String
+            
+            var tf: UITextView = cell.theIdea as UITextView
+            var size: CGSize = tf.sizeThatFits(CGSize(width: 160, height: 103))
+            var topCorrectFade = (cell.theIdea.bounds.height - size.height * cell.theIdea.zoomScale)/2
+            topCorrectFade = (topCorrectFade < 0.0 ? 0.0 : topCorrectFade)
+            
             cell.badVotesNumber.textColor = UIColor(red: 0.3191, green: 0.3191, blue: 0.3191, alpha: 1.0)
             cell.goodVotesLabel.textColor = UIColor(red: 0.3191, green: 0.3191, blue: 0.3191, alpha: 1.0)
             cell.theIdea.textColor = UIColor(red: 0.3191, green: 0.3191, blue: 0.3191, alpha: 1.0)
             cell.theIdea.textAlignment = .Center
             
-            var tf: UITextView = cell.theIdea as UITextView
-            var size: CGSize = tf.sizeThatFits(CGSize(width: cell.theIdea.bounds.width, height: 10000))
-            var topCorrectFade = (cell.theIdea.bounds.height - size.height * cell.theIdea.zoomScale)/2
-            topCorrectFade = (topCorrectFade < 0.0 ? 0.0 : topCorrectFade)
-            cell.theIdea.contentOffset.x = 0
-            cell.theIdea.contentOffset.y = -topCorrectFade
-            
-            cell.theIdea.layer.sublayerTransform = CATransform3DMakeTranslation(0, verifyPosition(topCorrectFade) - 5, 0)
+            if cell.alinhado == false
+            {
+                cell.theIdea.layer.sublayerTransform = CATransform3DMakeTranslation(0, verifyPosition(topCorrectFade) - 1, 0)
+                cell.alinhado = true
+            }
             
             return cell
         }
