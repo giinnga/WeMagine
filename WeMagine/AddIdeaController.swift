@@ -17,12 +17,22 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
     
     var menuViewHidden: Bool = true
     
+    var username = String()
+    var useremail = String()
+    
     var textField: UITextView = UITextView()
     
     var sendYourIdea: UIImageView = UIImageView()
     var cloudImageView: UIImageView = UIImageView()
     var happyCloudImageView: UIImageView = UIImageView()
     var tutorial: UIImageView = UIImageView()
+    var loadSprite = UIImageView()
+    
+    var CloudW = CGFloat()
+    var CloudH = CGFloat()
+    var CloudX = CGFloat()
+    var CloudY = CGFloat()
+    var rotation = CGFloat()
     
     var barHeight:CGFloat = CGFloat()
     var topHeight:CGFloat = 44.0
@@ -103,26 +113,41 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
         goodIdea.userInteractionEnabled = true
         self.view.addSubview(goodIdea)
         
+//      Loading Sprite
+        
+        CloudW = verifyPosition(325.0 * prop)
+        CloudH = verifyPosition(274.0 * prop)
+        CloudX = verifyPosition((sizeRect.size.width - CloudW)/2)
+        CloudY = verifyPosition((349*prop - CloudH)/2 + topHeight + barHeight)
+        
+        width = 74.0 * prop * 1.3
+        height = 74.0 * prop * 1.3
+        x = (sizeRect.size.width - width)/2
+        y = CloudY + 80.0
+        
+        var loadImage: UIImage = UIImage(named: "LoadCloud@3x.png")!
+        loadSprite = UIImageView(image: loadImage)
+        loadSprite.frame = CGRectMake(x,y,width,height)
+        loadSprite.alpha = 0
+        self.view.addSubview(loadSprite)
+        
+        var timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: Selector("animateLoadIcon"), userInfo: nil, repeats: true)
+        
 //      Cloud
         
         var totalHeight: CGFloat = (274.0 * prop) + (70.0 * prop) + (107.0 * prop)
         var fullHeight: CGFloat = sizeRect.size.height - topHeight
         
-        width = verifyPosition(325.0 * prop)
-        height = verifyPosition(274.0 * prop)
-        x = verifyPosition((sizeRect.size.width - width)/2)
-        y = verifyPosition((349*prop - height)/2 + topHeight + barHeight)
-        
         var cloudImage: UIImage = UIImage(named: "Cloud@3x.png")!
         cloudImageView = UIImageView(image: cloudImage)
-        cloudImageView.frame = CGRectMake(x,y,width,height)
+        cloudImageView.frame = CGRectMake(CloudX,CloudY,CloudW,CloudH)
         cloudImageView.userInteractionEnabled = true
         cloudImageView.alpha = 1
         self.view.addSubview(cloudImageView)
         
         var happyImage:UIImage = UIImage(named: "HappyUpCloud1@3x.png")!
         happyCloudImageView = UIImageView(image: happyImage)
-        happyCloudImageView.frame = CGRectMake(0, 0, width, height)
+        happyCloudImageView.frame = CGRectMake(0, 0, CloudW, CloudH)
         happyCloudImageView.alpha = 0
         
         cloudImageView.addSubview(happyCloudImageView)
@@ -132,14 +157,13 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
         width = 201.0 * prop
         height = 180.0 * prop
         x = (sizeRect.size.width - width)/2
-        y = y + (274.0 * prop) - 20.0
+        y = CloudY + (274.0 * prop) - 20.0
         
         var tutoImage: UIImage = UIImage(named: "SendTutorial@3x.png")!
         tutorial = UIImageView(image: tutoImage)
         tutorial.frame = CGRectMake(x,y,width,height)
         
         self.view.addSubview(tutorial)
-        
         
         
 //      Text Field
@@ -248,6 +272,8 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
         sendYourIdea.image = image
         sendYourIdea.frame.origin.y = sendYourIdea.frame.origin.y - 4
         
+        self.sendYourIdea.hidden = true
+        
         var width = 71.0 * prop
         var height = 60.0 * prop
         var x = (sizeRect.size.width - width)/2
@@ -294,8 +320,18 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
                                         
                                         self.cloudImageView.alpha = 0
                                         
-                                        let secondViewController:ViewController = ViewController()
-                                        self.dismissViewControllerAnimated(true, completion: nil)
+                                        UIView.animateWithDuration(0.3, animations: {
+                                            
+                                            //Fourth
+                                            self.loadSprite.alpha = 1
+                                            
+                                        }, completion: {
+                                                
+                                                (value: Bool) in
+                                                
+                                        })
+                                        
+                                        self.sendIdea()
                                         
                                 })
                                 
@@ -304,6 +340,99 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
                 })
                 
         })
+        
+    }
+    
+    func sendIdea() {
+        
+        let ideaText = textField.text.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+        let userEmail = useremail.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+        let userName = username.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+        
+        let urlpath = "http://104.131.156.49/wemagine/postIdea.php?email="+userEmail+"&name="+userName+"&idea="+ideaText
+        
+        var url = NSURL(string: urlpath)
+        var session = NSURLSession.sharedSession()
+        let task : NSURLSessionDataTask = session.dataTaskWithURL(url!, completionHandler: {(data, response, error) in
+            
+            if let theData = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as? NSDictionary {
+                
+                if(theData["Status"] as String == "ideaPostedSucessfully") {
+                    
+                    dispatch_async(dispatch_get_main_queue()) {
+                        () -> Void in
+                        
+                        UIView.animateWithDuration(0.3, animations: {
+                            
+                            //Fourth
+                            self.loadSprite.alpha = 0
+                            
+                            }, completion: {
+                                
+                                (value: Bool) in
+                                self.dismissView()
+                        })
+                        
+                    }
+                    
+                } else if(theData["Status"] as String == "anErrorOcurred") {
+                    
+                    dispatch_async(dispatch_get_main_queue()) {
+                        () -> Void in
+                        
+                        UIView.animateWithDuration(0.3, animations: {
+                            
+                            //Fourth
+                            self.loadSprite.alpha = 0
+                            
+                            }, completion: {
+                                
+                                (value: Bool) in
+                                self.reloadView()
+                        })
+                        
+                    }
+                    
+                }
+
+            } else {
+                
+                println("Some error has occurred!")
+                self.reloadView()
+            }
+            
+        })
+        
+        task.resume()
+        
+    }
+    
+    func reloadView() {
+        
+        var image:UIImage = UIImage(named: "HappyUpCloud1@3x.png")!
+        self.happyCloudImageView.image = image
+        self.happyCloudImageView.alpha = 0
+        self.cloudImageView.frame = CGRectMake(CloudX, CloudY, CloudW, CloudH)
+        self.happyCloudImageView.frame = CGRectMake(0, 0, CloudW, CloudH)
+        self.tutorial.hidden = false
+        self.textField.alpha = 1
+        self.cloudImageView.alpha = 1
+    }
+    
+    func dismissView() {
+        
+        let secondViewController:ViewController = ViewController()
+        self.dismissViewControllerAnimated(true, completion: nil)
+        
+    }
+    
+    func animateLoadIcon() {
+        
+        rotation += 0.1
+        if (rotation >= CGFloat(M_PI*2)) {
+            rotation = rotation - CGFloat(M_PI*2)
+        }
+        loadSprite.transform = CGAffineTransformMakeRotation(rotation)
         
     }
     

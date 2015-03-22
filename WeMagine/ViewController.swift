@@ -627,6 +627,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         if identifier == "newIdea"
         {
             let secondViewController:AddIdeaController = AddIdeaController()
+            secondViewController.useremail = theUseremail
+            secondViewController.username = theUsername
             self.presentViewController(secondViewController, animated: true, completion: nil)
         }
         
