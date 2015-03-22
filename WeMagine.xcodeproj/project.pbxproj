@@ -38,6 +38,9 @@
 		51BC69811ABCF71E00BB5F9E /* LoadingCloud@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51BC697E1ABCF71E00BB5F9E /* LoadingCloud@3x.png */; };
 		51BC69821ABCF71E00BB5F9E /* LoadingCloud@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51BC697F1ABCF71E00BB5F9E /* LoadingCloud@2x.png */; };
 		51BC69831ABCF71E00BB5F9E /* LoadingCloud.png in Resources */ = {isa = PBXBuildFile; fileRef = 51BC69801ABCF71E00BB5F9E /* LoadingCloud.png */; };
+		51E3B22A1ABF13B4004705A8 /* CancelPressedButton@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51E3B2271ABF13B4004705A8 /* CancelPressedButton@3x.png */; };
+		51E3B22B1ABF13B4004705A8 /* CancelPressedButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51E3B2281ABF13B4004705A8 /* CancelPressedButton@2x.png */; };
+		51E3B22C1ABF13B4004705A8 /* CancelPressedButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 51E3B2291ABF13B4004705A8 /* CancelPressedButton.png */; };
 		51F5989E1AB89F3700148DEE /* SendButton@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51F5989B1AB89F3700148DEE /* SendButton@3x.png */; };
 		51F5989F1AB89F3700148DEE /* SendButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51F5989C1AB89F3700148DEE /* SendButton@2x.png */; };
 		51F598A01AB89F3700148DEE /* SendButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 51F5989D1AB89F3700148DEE /* SendButton.png */; };
@@ -134,6 +137,9 @@
 		51BC697E1ABCF71E00BB5F9E /* LoadingCloud@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoadingCloud@3x.png"; sourceTree = "<group>"; };
 		51BC697F1ABCF71E00BB5F9E /* LoadingCloud@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoadingCloud@2x.png"; sourceTree = "<group>"; };
 		51BC69801ABCF71E00BB5F9E /* LoadingCloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoadingCloud.png; sourceTree = "<group>"; };
+		51E3B2271ABF13B4004705A8 /* CancelPressedButton@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CancelPressedButton@3x.png"; sourceTree = "<group>"; };
+		51E3B2281ABF13B4004705A8 /* CancelPressedButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CancelPressedButton@2x.png"; sourceTree = "<group>"; };
+		51E3B2291ABF13B4004705A8 /* CancelPressedButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CancelPressedButton.png; sourceTree = "<group>"; };
 		51F5989B1AB89F3700148DEE /* SendButton@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SendButton@3x.png"; sourceTree = "<group>"; };
 		51F5989C1AB89F3700148DEE /* SendButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SendButton@2x.png"; sourceTree = "<group>"; };
 		51F5989D1AB89F3700148DEE /* SendButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SendButton.png; sourceTree = "<group>"; };
@@ -278,6 +284,9 @@
 		94BF555B1AB2322500DA5CC0 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				51E3B2271ABF13B4004705A8 /* CancelPressedButton@3x.png */,
+				51E3B2281ABF13B4004705A8 /* CancelPressedButton@2x.png */,
+				51E3B2291ABF13B4004705A8 /* CancelPressedButton.png */,
 				51325DF01ABE5730001481D2 /* CancelButton@3x.png */,
 				51325DF11ABE5730001481D2 /* CancelButton@2x.png */,
 				51325DF21ABE5730001481D2 /* CancelButton.png */,
@@ -451,6 +460,7 @@
 				94BF55281AB22A3A00DA5CC0 /* LaunchScreen.xib in Resources */,
 				94BF554C1AB2322000DA5CC0 /* Cloud.png in Resources */,
 				94B369EA1AB78D1800A20AB3 /* CustomCell.xib in Resources */,
+				51E3B22B1ABF13B4004705A8 /* CancelPressedButton@2x.png in Resources */,
 				511FBC301AB7741000BFC694 /* MenuIcon.png in Resources */,
 				511FBC401AB7833600BFC694 /* HappyCloud@3x.png in Resources */,
 				51BC69811ABCF71E00BB5F9E /* LoadingCloud@3x.png in Resources */,
@@ -491,6 +501,7 @@
 				51F598B51AB8AE4600148DEE /* SadPressedButton.png in Resources */,
 				51BC697C1ABB192900BB5F9E /* BackButton@2x.png in Resources */,
 				94BF555A1AB2322000DA5CC0 /* SadCloudButton@3x.png in Resources */,
+				51E3B22A1ABF13B4004705A8 /* CancelPressedButton@3x.png in Resources */,
 				51F598B81AB8AE4600148DEE /* HappyUpCloud2.png in Resources */,
 				511FBC341AB774AE00BFC694 /* LampIcon@3x.png in Resources */,
 				51F598CC1AB8E50E00148DEE /* HappyUpCloud1.png in Resources */,
@@ -505,6 +516,7 @@
 				51F598D21AB8E94F00148DEE /* SendPressedButton.png in Resources */,
 				51F598D81AB9029F00148DEE /* SendTutorial.png in Resources */,
 				511FBC351AB774AE00BFC694 /* LampIcon@2x.png in Resources */,
+				51E3B22C1ABF13B4004705A8 /* CancelPressedButton.png in Resources */,
 				51F598D01AB8E94F00148DEE /* SendPressedButton@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

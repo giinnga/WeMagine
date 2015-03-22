@@ -17,8 +17,10 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
     
     var menuView:UIView = UIView()
     
-    var menuViewHidden: Bool = true
-    var maySendOrBack = true
+    var menuViewHidden:Bool = true
+    var maySendOrBack:Bool = true
+    var isLoading:Bool = false
+    var canceled:Bool = false
     
     var username = String()
     var useremail = String()
@@ -82,7 +84,7 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
         lampIconView.layer.zPosition = 11
         self.view.addSubview(lampIconView)
         
-        let newIdea = UITapGestureRecognizer(target: self, action:Selector("newIdea:"))
+        let newIdea = UITapGestureRecognizer(target: self, action:Selector("backToMain:"))
         newIdea.delegate = self
         lampIconView.addGestureRecognizer(newIdea)
         
@@ -218,8 +220,8 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
         var cancelHeight:CGFloat = sizeRect.size.height - (topHeight + (349 * prop))
         var cancelProp:CGFloat = brownHeight/274
         
-        width = verifyPosition(90.0 * buttonProp)
-        height = verifyPosition(93.0 * buttonProp)
+        width = verifyPosition(154.0 * buttonProp)
+        height = verifyPosition(159.0 * buttonProp)
         x = (sizeRect.size.width-width)/2
         y = ((brownHeight - height)/2) + topHeight + barHeight + (349 * prop)
         
@@ -257,7 +259,7 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
         self.centerText()
     }
     
-    func newIdea(recognizer: UITapGestureRecognizer) {
+    func backToMain(recognizer: UITapGestureRecognizer) {
         
         if(maySendOrBack == true) {
             dismissView()
@@ -299,9 +301,27 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
     
     func cancelIdeaTap(recognizer: UITapGestureRecognizer) {
         
-        self.task.cancel()
-        self.reloadView()
+        if(canceled == false) {
+            canceled = true
+            
+            var image = UIImage(named: "CancelPressedButton@3x.png")!
+            cancelIdea.image = image
+            cancelIdea.frame.origin.y = cancelIdea.frame.origin.y + 4
+            
+            var timer = NSTimer.scheduledTimerWithTimeInterval(0.12, target: self, selector: Selector("cancelTheIdea"), userInfo: nil, repeats: false)
+        }
         
+    }
+    
+    func cancelTheIdea() {
+        
+        var image = UIImage(named: "CancelButton@3x.png")!
+        cancelIdea.image = image
+        cancelIdea.frame.origin.y = cancelIdea.frame.origin.y - 4
+        
+        if(isLoading == true) {
+            self.task.cancel()
+        }
     }
     
     func upCloudAnimation() {
@@ -317,77 +337,100 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
         var x = (sizeRect.size.width - width)/2
         var y = (((349 * prop) - height)/2) + topHeight + barHeight
         
+        self.cancelIdea.hidden = false
+        
         UIView.animateWithDuration(0.3, animations: {
         
             self.sendYourIdea.alpha = 0
+            self.cancelIdea.alpha = 1
                 
         })
         
-        UIView.animateWithDuration(0.2, animations: {
-            
-            //Zero
-            self.textField.alpha = 0
-            
+        if(canceled == false) {
+            UIView.animateWithDuration(0.2, animations: {
+                
+                //Zero
+                self.textField.alpha = 0
+                
             }, completion: {
                 
                 (value: Bool) in
                 
-                UIView.animateWithDuration(0.2, animations: {
-                    
-                    //Frist
-                    self.happyCloudImageView.alpha = 1
+                if(self.canceled == false) {
+                    UIView.animateWithDuration(0.2, animations: {
+                        
+                        //Frist
+                        self.happyCloudImageView.alpha = 1
                     
                     }, completion: {
                         
                         (value: Bool) in
                         
-                        UIView.animateWithDuration(0.5, animations: {
-                            
-                            //Second
-                            self.cloudImageView.frame = CGRectMake(x, y, width, height)
-                            self.happyCloudImageView.frame = CGRectMake(0, 0, width, height)
-                            
+                        if(self.canceled == false) {
+                            UIView.animateWithDuration(0.5, animations: {
+                                
+                                //Second
+                                self.cloudImageView.frame = CGRectMake(x, y, width, height)
+                                self.happyCloudImageView.frame = CGRectMake(0, 0, width, height)
+                                
                             }, completion: {
                                 
                                 (value: Bool) in
                                 
-                                UIView.animateWithDuration(0.7, animations: {
-                                    
-                                    //Third
-                                    var image:UIImage = UIImage(named: "HappyUpCloud2@3x.png")!
-                                    self.happyCloudImageView.image = image
-                                    self.cloudImageView.frame.origin.y = 0 - 100
-                                    
+                                if(self.canceled == false) {
+                                    UIView.animateWithDuration(0.7, animations: {
+                                        
+                                        //Third
+                                        var image:UIImage = UIImage(named: "HappyUpCloud2@3x.png")!
+                                        self.happyCloudImageView.image = image
+                                        self.cloudImageView.frame.origin.y = 0 - 100
+                                        
                                     }, completion: {
                                         
                                         (value: Bool) in
                                         
-                                        self.cancelIdea.hidden = false
-                                        self.cloudImageView.alpha = 0
-                                        
-                                        UIView.animateWithDuration(0.3, animations: {
+                                        if(self.canceled == false) {
+                                            self.cloudImageView.alpha = 0
                                             
-                                            //Fourth
-                                            self.cancelIdea.alpha = 1
-                                            self.loadSprite.alpha = 1
+                                            UIView.animateWithDuration(0.3, animations: {
+
+                                                //Fourth
+                                                self.loadSprite.alpha = 1
+                                                
+                                            })
                                             
-                                        }, completion: {
-                                                
-                                                (value: Bool) in
-                                                
-                                        })
-                                        
-                                        self.sendIdea()
-                                        
-                                })
-                                
-                        })
+                                            self.isLoading = true
+                                            self.sendIdea()
+                                            
+                                        } else {
+                                            self.reloadView()    
+                                        }
+                                    })
+
+                                } else {
+                                    self.reloadView()
+                                }
+                                    
+                            })
                         
-                })
+                        } else {
+                            self.reloadView()
+                        }
+                            
+                    })
+                    
+                } else {
+                    self.reloadView()
+                }
                 
-        })
-        
+            })
+            
+        } else {
+            self.reloadView()
+        }
+    
     }
+    
     
     func sendIdea() {
         
@@ -427,13 +470,13 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
                         
                         UIView.animateWithDuration(0.3, animations: {
                             
-                            //Fourth
                             self.loadSprite.alpha = 0
                             
                             }, completion: {
                                 
                                 (value: Bool) in
                                 self.reloadView()
+                                
                         })
                         
                     }
@@ -443,7 +486,12 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
             } else {
                 
                 println("Some error has occurred!")
-                self.reloadView()
+                
+                dispatch_async(dispatch_get_main_queue()) {
+                    () -> Void in
+                    self.reloadView()
+                    
+                }
             }
             
         })
@@ -461,17 +509,20 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
         self.cloudImageView.frame = CGRectMake(CloudX, CloudY, CloudW, CloudH)
         self.happyCloudImageView.frame = CGRectMake(0, 0, CloudW, CloudH)
         self.cancelIdea.hidden = true
-        self.sendYourIdea.hidden = true
-        self.sendYourIdea.alpha = 1
+        self.sendYourIdea.hidden = false
+        self.sendYourIdea.alpha = 0
+        self.isLoading = false
+        self.canceled = false
         
         maySendOrBack = true
         
         UIView.animateWithDuration(0.3, animations: {
             
-            self.tutorial.alpha = 1
+            self.sendYourIdea.alpha = 1
             self.cancelIdea.alpha = 0
             self.textField.alpha = 1
             self.cloudImageView.alpha = 1
+            self.sendYourIdea.userInteractionEnabled = true
             
         })
 

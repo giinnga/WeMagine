@@ -166,7 +166,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         var loadImage: UIImage = UIImage(named: "LoadCloud@3x.png")!
         loadSprite = UIImageView(image: loadImage)
         loadSprite.frame = CGRectMake(x,y,width,height)
-        loadSprite.alpha = 0
+        loadSprite.alpha = 1
         loadSprite.layer.zPosition = 9
         self.view.addSubview(loadSprite)
         
@@ -425,7 +425,11 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         }
         else {
             closeMenu()
-            self.mayVote = true
+            if (isLoading == true) {
+                mayVote = false
+            } else {
+                mayVote = true
+            }
         }
     }
     
@@ -466,7 +470,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
                 isLoading = true
             }
         } else {
-            showLoadingSprite()
+            isLoading = true
+            mayVote = false
             loadNewIdeas(true)
         }
         
@@ -495,6 +500,11 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
             } else {
                 
                 println("Some error has occurred!")
+                
+                dispatch_async(dispatch_get_main_queue()) {
+                    () -> Void in
+                    self.loadNewIdeas(noideasleft)
+                }
             }
             
         })
@@ -535,13 +545,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         theIdeas.removeLastObject()
         return str
 
-    }
-    
-    func showLoadingSprite() {
-        
-        mayVote = false
-        loadSprite.alpha = 1
-        
     }
     
     func likeIdea() {
