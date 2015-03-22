@@ -289,7 +289,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         width = 127.0 * prop
         height = 107.0 * prop
         x = ((sizeRect.size.width/2)-width)/2
-        y = newY + (3 * sizeRect.size.height/10)
+        y = newY + (3 * sizeRect.size.height/10) - 15
         
         var blinkCloud = UIImage(named: "BlinkCloud@3x.png")
         var blinkImageView = UIImageView(image: blinkCloud)
