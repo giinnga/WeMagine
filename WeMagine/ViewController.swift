@@ -222,7 +222,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         fontSize = 15
         
         x = 15
-        y = verifyPosition(((height - 10)/2) - 4)
+        y = verifyPosition(((height - 10)/2) - 4) - 1
         
         var share:UIView = UIView(frame: CGRect(x: 0, y: 0, width: width, height: height))
         share.backgroundColor = UIColor(red: 0.7357, green: 0.639, blue: 0.5589, alpha: 1.0)
