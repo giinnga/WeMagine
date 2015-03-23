@@ -88,7 +88,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         
         var topMenuRectangle:UIView = UIView(frame: CGRectMake(x, y, width, height))
         topMenuRectangle.backgroundColor = UIColor.whiteColor()
-        topMenuRectangle.layer.zPosition = 10
+        topMenuRectangle.layer.zPosition = 90
         topMenuRectangle.layer.borderWidth = 0.5
         topMenuRectangle.layer.borderColor = UIColor(red: 0.1725, green: 0.3294, blue: 0.4784, alpha: 1.0).CGColor
         self.view.addSubview(topMenuRectangle)
@@ -103,7 +103,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         menuOpenIcon.frame = CGRectMake(x, y, width, height)
         menuOpenIcon.userInteractionEnabled = true
         menuOpenIcon.tag = 1
-        menuOpenIcon.layer.zPosition = 11
+        menuOpenIcon.layer.zPosition = 91
         self.view.addSubview(menuOpenIcon)
         
         let recognizer = UITapGestureRecognizer(target: self, action:Selector("handleTap:"))
@@ -119,7 +119,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         var lampIconView:UIImageView = UIImageView(image: lampIcon)
         lampIconView.frame = CGRectMake(x, y, width, height)
         lampIconView.userInteractionEnabled = true
-        lampIconView.layer.zPosition = 11
+        lampIconView.layer.zPosition = 91
         self.view.addSubview(lampIconView)
         
         let newIdea = UITapGestureRecognizer(target: self, action:Selector("newIdea:"))
@@ -136,7 +136,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         weMagineLabel.textAlignment = .Center
         weMagineLabel.text = "We magine!"
         weMagineLabel.textColor = UIColor(red: 0.1725, green: 0.3294, blue: 0.4784, alpha: 1.0)
-        weMagineLabel.layer.zPosition = 11
+        weMagineLabel.layer.zPosition = 91
         self.view.addSubview(weMagineLabel)
         
 //      Blue & Red rectangles
@@ -359,7 +359,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         fadeText.textColor = UIColor(red: 0.1725, green: 0.3294, blue: 0.4784, alpha: 1.0)
         fadeText.font = UIFont(name: "HelveticaNeue", size: fontSize)
         fadeText.backgroundColor = nil
-        fadeText.layer.zPosition = 9
         cloudFadeImageView.addSubview(fadeText)
         
         fadeText.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.New, context: nil)
@@ -370,7 +369,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         textView.textColor = UIColor(red: 0.1725, green: 0.3294, blue: 0.4784, alpha: 1.0)
         textView.font = UIFont(name: "HelveticaNeue", size: fontSize)
         textView.backgroundColor = nil
-        textView.layer.zPosition = 9
         cloudImageView.addSubview(textView)
         
         textView.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.New, context: nil)
@@ -557,11 +555,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         }
         else {
             closeMenu()
-            if (isLoading == true) {
-                mayVote = false
-            } else {
-                mayVote = true
-            }
         }
     }
     
@@ -581,6 +574,11 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
     }
     
     func closeMenu() {
+        if (isLoading == true) {
+            mayVote = false
+        } else {
+            mayVote = true
+        }
         UIView.animateWithDuration(0.3, animations: {
             self.menuView.frame.origin.x = -self.verifyPosition(self.sizeRect.size.width/2)
             self.menuViewHidden = true
@@ -846,11 +844,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
     func reportIdea() {
         
         closeMenu()
-        if (isLoading == true) {
-            mayVote = false
-        } else {
-            mayVote = true
-        }
+
         reporting = true
         
         self.view.userInteractionEnabled = false

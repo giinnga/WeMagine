@@ -351,16 +351,9 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
                                     () -> Void in
                                     
                                     self.userIdeas.removeObjectAtIndex(indexPath.row-1)
-                                    if self.module == 2
-                                    {
-                                        self.module = 1
-                                    }
-                                    else
-                                    {
-                                        self.module = 2
-                                    }
                                     tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Top)
-                                    UIView.animateWithDuration(0.5, animations: {
+                                    
+                                    UIView.animateWithDuration(1, animations: {
                                         
                                         self.loadSprite.alpha = 0
                                         self.deleteView.alpha = 0
@@ -369,6 +362,7 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
                                         (value: Bool) in
                                         self.deleteView.hidden = true
                                         self.view.userInteractionEnabled = true
+                                        tableView.reloadData()
                                     })
                                 }
                                 
