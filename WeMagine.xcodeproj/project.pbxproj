@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		51139FE31AC0352400F1C40E /* BigCloud2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51139FE01AC0352400F1C40E /* BigCloud2@3x.png */; };
+		51139FE41AC0352400F1C40E /* BigCloud2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51139FE11AC0352400F1C40E /* BigCloud2@2x.png */; };
+		51139FE51AC0352400F1C40E /* BigCloud2.png in Resources */ = {isa = PBXBuildFile; fileRef = 51139FE21AC0352400F1C40E /* BigCloud2.png */; };
+		51139FE71AC0424E00F1C40E /* TutorialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51139FE61AC0424E00F1C40E /* TutorialController.swift */; };
+		51139FF11AC04E2100F1C40E /* TutoCloud3@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51139FE81AC04E2100F1C40E /* TutoCloud3@3x.png */; };
+		51139FF21AC04E2100F1C40E /* TutoCloud3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51139FE91AC04E2100F1C40E /* TutoCloud3@2x.png */; };
+		51139FF41AC04E2100F1C40E /* TutoCloud2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51139FEB1AC04E2100F1C40E /* TutoCloud2@3x.png */; };
+		51139FF51AC04E2100F1C40E /* TutoCloud2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51139FEC1AC04E2100F1C40E /* TutoCloud2@2x.png */; };
+		51139FF61AC04E2100F1C40E /* TutoCloud2.png in Resources */ = {isa = PBXBuildFile; fileRef = 51139FED1AC04E2100F1C40E /* TutoCloud2.png */; };
+		51139FF71AC04E2100F1C40E /* TutoCloud1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51139FEE1AC04E2100F1C40E /* TutoCloud1@3x.png */; };
+		51139FF81AC04E2100F1C40E /* TutoCloud1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51139FEF1AC04E2100F1C40E /* TutoCloud1@2x.png */; };
+		51139FF91AC04E2100F1C40E /* TutoCloud1.png in Resources */ = {isa = PBXBuildFile; fileRef = 51139FF01AC04E2100F1C40E /* TutoCloud1.png */; };
+		5113A00F1AC0546400F1C40E /* TutoCloud4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5113A00E1AC0546400F1C40E /* TutoCloud4@2x.png */; };
 		511FBC2E1AB7741000BFC694 /* MenuIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 511FBC2B1AB7741000BFC694 /* MenuIcon@3x.png */; };
 		511FBC2F1AB7741000BFC694 /* MenuIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 511FBC2C1AB7741000BFC694 /* MenuIcon@2x.png */; };
 		511FBC301AB7741000BFC694 /* MenuIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 511FBC2D1AB7741000BFC694 /* MenuIcon.png */; };
@@ -108,6 +121,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		51139FE01AC0352400F1C40E /* BigCloud2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BigCloud2@3x.png"; sourceTree = "<group>"; };
+		51139FE11AC0352400F1C40E /* BigCloud2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BigCloud2@2x.png"; sourceTree = "<group>"; };
+		51139FE21AC0352400F1C40E /* BigCloud2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BigCloud2.png; sourceTree = "<group>"; };
+		51139FE61AC0424E00F1C40E /* TutorialController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialController.swift; path = ../TutorialController.swift; sourceTree = "<group>"; };
+		51139FE81AC04E2100F1C40E /* TutoCloud3@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TutoCloud3@3x.png"; sourceTree = "<group>"; };
+		51139FE91AC04E2100F1C40E /* TutoCloud3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TutoCloud3@2x.png"; sourceTree = "<group>"; };
+		51139FEB1AC04E2100F1C40E /* TutoCloud2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TutoCloud2@3x.png"; sourceTree = "<group>"; };
+		51139FEC1AC04E2100F1C40E /* TutoCloud2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TutoCloud2@2x.png"; sourceTree = "<group>"; };
+		51139FED1AC04E2100F1C40E /* TutoCloud2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TutoCloud2.png; sourceTree = "<group>"; };
+		51139FEE1AC04E2100F1C40E /* TutoCloud1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TutoCloud1@3x.png"; sourceTree = "<group>"; };
+		51139FEF1AC04E2100F1C40E /* TutoCloud1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TutoCloud1@2x.png"; sourceTree = "<group>"; };
+		51139FF01AC04E2100F1C40E /* TutoCloud1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TutoCloud1.png; sourceTree = "<group>"; };
+		5113A00E1AC0546400F1C40E /* TutoCloud4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TutoCloud4@2x.png"; sourceTree = "<group>"; };
 		511FBC2B1AB7741000BFC694 /* MenuIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MenuIcon@3x.png"; sourceTree = "<group>"; };
 		511FBC2C1AB7741000BFC694 /* MenuIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MenuIcon@2x.png"; sourceTree = "<group>"; };
 		511FBC2D1AB7741000BFC694 /* MenuIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuIcon.png; sourceTree = "<group>"; };
@@ -246,6 +272,7 @@
 				94BF555B1AB2322500DA5CC0 /* Images */,
 				94BF551D1AB22A3A00DA5CC0 /* AppDelegate.swift */,
 				5170EF631ABA4D2E00E34E3E /* Bridging-Header.h */,
+				51139FE61AC0424E00F1C40E /* TutorialController.swift */,
 				948382E71AB86BD100204542 /* LoginController.swift */,
 				94BF551F1AB22A3A00DA5CC0 /* ViewController.swift */,
 				94B1F3401AB32884000E74E4 /* AddIdeaController.swift */,
@@ -290,6 +317,18 @@
 		94BF555B1AB2322500DA5CC0 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				5113A00E1AC0546400F1C40E /* TutoCloud4@2x.png */,
+				51139FE81AC04E2100F1C40E /* TutoCloud3@3x.png */,
+				51139FE91AC04E2100F1C40E /* TutoCloud3@2x.png */,
+				51139FEB1AC04E2100F1C40E /* TutoCloud2@3x.png */,
+				51139FEC1AC04E2100F1C40E /* TutoCloud2@2x.png */,
+				51139FED1AC04E2100F1C40E /* TutoCloud2.png */,
+				51139FEE1AC04E2100F1C40E /* TutoCloud1@3x.png */,
+				51139FEF1AC04E2100F1C40E /* TutoCloud1@2x.png */,
+				51139FF01AC04E2100F1C40E /* TutoCloud1.png */,
+				51139FE01AC0352400F1C40E /* BigCloud2@3x.png */,
+				51139FE11AC0352400F1C40E /* BigCloud2@2x.png */,
+				51139FE21AC0352400F1C40E /* BigCloud2.png */,
 				51E3B2331ABF8E22004705A8 /* NewLogo@3x.png */,
 				51E3B2341ABF8E22004705A8 /* NewLogo@2x.png */,
 				51E3B2351ABF8E22004705A8 /* NewLogo.png */,
@@ -461,14 +500,17 @@
 				948382F31AB86C7700204542 /* Logo@2x.png in Resources */,
 				94BF554F1AB2322000DA5CC0 /* HappyCloudButton.png in Resources */,
 				94BF554D1AB2322000DA5CC0 /* Cloud@2x.png in Resources */,
+				51139FF81AC04E2100F1C40E /* TutoCloud1@2x.png in Resources */,
 				51F598D61AB9029F00148DEE /* SendTutorial@3x.png in Resources */,
 				94BF55511AB2322000DA5CC0 /* HappyCloudButton@3x.png in Resources */,
+				51139FE41AC0352400F1C40E /* BigCloud2@2x.png in Resources */,
 				51F598C41AB8AEDE00148DEE /* NoShadowCloud.png in Resources */,
 				94BF55581AB2322000DA5CC0 /* SadCloudButton.png in Resources */,
 				511FBC361AB774AE00BFC694 /* LampIcon.png in Resources */,
 				94BF55281AB22A3A00DA5CC0 /* LaunchScreen.xib in Resources */,
 				94BF554C1AB2322000DA5CC0 /* Cloud.png in Resources */,
 				94B369EA1AB78D1800A20AB3 /* CustomCell.xib in Resources */,
+				51139FF91AC04E2100F1C40E /* TutoCloud1.png in Resources */,
 				51E3B22B1ABF13B4004705A8 /* CancelPressedButton@2x.png in Resources */,
 				511FBC301AB7741000BFC694 /* MenuIcon.png in Resources */,
 				511FBC401AB7833600BFC694 /* HappyCloud@3x.png in Resources */,
@@ -492,23 +534,29 @@
 				511FBC3B1AB7832A00BFC694 /* SadCloud@2x.png in Resources */,
 				51E3B2321ABF7034004705A8 /* BlinkCloud.png in Resources */,
 				511FBC2E1AB7741000BFC694 /* MenuIcon@3x.png in Resources */,
+				51139FE31AC0352400F1C40E /* BigCloud2@3x.png in Resources */,
 				511FBC461AB7834000BFC694 /* BigCloud@3x.png in Resources */,
 				51BC697B1ABB192900BB5F9E /* BackButton@3x.png in Resources */,
 				511FBC481AB7834000BFC694 /* BigCloud.png in Resources */,
 				51325DEF1ABE14D5001481D2 /* LoadCloud.png in Resources */,
 				51F598BC1AB8AE4600148DEE /* HappyPressedButton@3x.png in Resources */,
+				51139FF21AC04E2100F1C40E /* TutoCloud3@2x.png in Resources */,
 				51F598B61AB8AE4600148DEE /* HappyUpCloud2@3x.png in Resources */,
+				51139FF41AC04E2100F1C40E /* TutoCloud2@3x.png in Resources */,
 				511FBC2F1AB7741000BFC694 /* MenuIcon@2x.png in Resources */,
 				511FBC411AB7833600BFC694 /* HappyCloud@2x.png in Resources */,
+				51139FF71AC04E2100F1C40E /* TutoCloud1@3x.png in Resources */,
 				94BF55251AB22A3A00DA5CC0 /* Images.xcassets in Resources */,
 				51F598CB1AB8E50E00148DEE /* HappyUpCloud1@2x.png in Resources */,
 				51BC69831ABCF71E00BB5F9E /* LoadingCloud.png in Resources */,
 				511FBC421AB7833600BFC694 /* HappyCloud.png in Resources */,
 				51F598C21AB8AEDE00148DEE /* NoShadowCloud@3x.png in Resources */,
+				5113A00F1AC0546400F1C40E /* TutoCloud4@2x.png in Resources */,
 				51F598BD1AB8AE4600148DEE /* HappyPressedButton@2x.png in Resources */,
 				51BC697D1ABB192900BB5F9E /* BackButton.png in Resources */,
 				94BF55591AB2322000DA5CC0 /* SadCloudButton@2x.png in Resources */,
 				51E3B2361ABF8E22004705A8 /* NewLogo@3x.png in Resources */,
+				51139FF61AC04E2100F1C40E /* TutoCloud2.png in Resources */,
 				51F598B51AB8AE4600148DEE /* SadPressedButton.png in Resources */,
 				51BC697C1ABB192900BB5F9E /* BackButton@2x.png in Resources */,
 				94BF555A1AB2322000DA5CC0 /* SadCloudButton@3x.png in Resources */,
@@ -518,13 +566,16 @@
 				51F598CC1AB8E50E00148DEE /* HappyUpCloud1.png in Resources */,
 				51F598A01AB89F3700148DEE /* SendButton.png in Resources */,
 				511FBC3A1AB7832A00BFC694 /* SadCloud@3x.png in Resources */,
+				51139FF11AC04E2100F1C40E /* TutoCloud3@3x.png in Resources */,
 				51E3B2371ABF8E22004705A8 /* NewLogo@2x.png in Resources */,
 				51325DEE1ABE14D5001481D2 /* LoadCloud@2x.png in Resources */,
 				948382F11AB86C7700204542 /* LoginButton@3x.png in Resources */,
 				51F598B71AB8AE4600148DEE /* HappyUpCloud2@2x.png in Resources */,
 				948382EF1AB86C7700204542 /* LoginButton.png in Resources */,
 				51F598CA1AB8E50E00148DEE /* HappyUpCloud1@3x.png in Resources */,
+				51139FE51AC0352400F1C40E /* BigCloud2.png in Resources */,
 				51325DF31ABE5730001481D2 /* CancelButton@3x.png in Resources */,
+				51139FF51AC04E2100F1C40E /* TutoCloud2@2x.png in Resources */,
 				51F598D21AB8E94F00148DEE /* SendPressedButton.png in Resources */,
 				51F598D81AB9029F00148DEE /* SendTutorial.png in Resources */,
 				511FBC351AB774AE00BFC694 /* LampIcon@2x.png in Resources */,
@@ -550,6 +601,7 @@
 				94F4928D1AB7A2550052FAB4 /* BigCloud.swift in Sources */,
 				94BF55201AB22A3A00DA5CC0 /* ViewController.swift in Sources */,
 				94D7F0921AB613D600D7642E /* MySharedIdeas.swift in Sources */,
+				51139FE71AC0424E00F1C40E /* TutorialController.swift in Sources */,
 				94F4928A1AB7985F0052FAB4 /* CustomCell.swift in Sources */,
 				94BF551E1AB22A3A00DA5CC0 /* AppDelegate.swift in Sources */,
 				94B1F3411AB32884000E74E4 /* AddIdeaController.swift in Sources */,

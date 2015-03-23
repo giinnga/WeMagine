@@ -13,31 +13,41 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BigCloud@3x.png" translatesAutoresizingMaskIntoConstraints="NO" id="YB6-0W-yYx">
-                        <rect key="frame" x="85" y="13" width="195" height="177.5"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="195" id="ap6-yh-VcI"/>
-                            <constraint firstAttribute="height" constant="177.5" id="b8l-pb-2la"/>
-                        </constraints>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My shared ideas" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iDA-kp-jfl">
-                        <rect key="frame" x="82.5" y="143.5" width="199" height="31.5"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="27"/>
+                        <rect key="frame" x="86" y="156" width="190.5" height="32"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="27"/>
                         <color key="textColor" red="0.1333333333" green="0.25882352939999997" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="highlightedColor" red="0.13333333333333333" green="0.25882352941176473" blue="0.40392156862745099" alpha="1" colorSpace="calibratedRGB"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BigCloud2@3x.png" translatesAutoresizingMaskIntoConstraints="NO" id="YB6-0W-yYx">
+                        <rect key="frame" x="106" y="23" width="150" height="128"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="150" id="ap6-yh-VcI"/>
+                            <constraint firstAttribute="height" constant="128" id="b8l-pb-2la"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="centerX" secondItem="YB6-0W-yYx" secondAttribute="centerX" id="Osa-Wj-KnV"/>
-                    <constraint firstItem="iDA-kp-jfl" firstAttribute="centerY" secondItem="YB6-0W-yYx" secondAttribute="centerY" constant="57.25" id="Pbf-Xt-DVG"/>
+                    <constraint firstAttribute="centerY" secondItem="YB6-0W-yYx" secondAttribute="centerY" constant="15.75" id="94q-55-QIK"/>
+                    <constraint firstAttribute="centerX" secondItem="YB6-0W-yYx" secondAttribute="centerX" constant="-9.5" id="Osa-Wj-KnV"/>
+                    <constraint firstItem="iDA-kp-jfl" firstAttribute="centerY" secondItem="YB6-0W-yYx" secondAttribute="centerY" constant="85" id="Pbf-Xt-DVG"/>
+                    <constraint firstAttribute="centerX" secondItem="iDA-kp-jfl" secondAttribute="centerX" id="Tpd-ae-zL1"/>
                     <constraint firstAttribute="centerY" secondItem="YB6-0W-yYx" secondAttribute="centerY" constant="1.25" id="W1Q-BZ-Rti"/>
+                    <constraint firstAttribute="centerX" secondItem="YB6-0W-yYx" secondAttribute="centerX" constant="1" id="evG-gJ-lue"/>
                     <constraint firstAttribute="centerX" secondItem="iDA-kp-jfl" secondAttribute="centerX" id="k4e-ld-bGG"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="Osa-Wj-KnV"/>
+                        <exclude reference="W1Q-BZ-Rti"/>
+                        <exclude reference="k4e-ld-bGG"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <point key="canvasLocation" x="331" y="383"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="BigCloud@3x.png" width="468" height="414"/>
+        <image name="BigCloud2@3x.png" width="393" height="330"/>
     </resources>
 </document>

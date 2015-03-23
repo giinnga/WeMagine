@@ -20,6 +20,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
     var badImage: UIImageView = UIImageView()
     var loadSprite: UIImageView = UIImageView()
     
+    var tutorial = Bool()
+    
     var cloudImageView: UIImageView = UIImageView()
     var cloudFadeImageView: UIImageView = UIImageView()
     var textView: UITextView = UITextView()
@@ -267,7 +269,12 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         profileLabel.textColor = UIColor(red: 0.3191, green: 0.3191, blue: 0.3191, alpha: 1.0)
         profileLabel.font = UIFont(name: "HelveticaNeue", size: fontSize)
         //profileLabel.sizeToFit()
+        profile.userInteractionEnabled = true
         profile.addSubview(profileLabel)
+        
+        let tutorialAction = UITapGestureRecognizer(target: self, action:Selector("showTutorial"))
+        tutorialAction.delegate = self
+        profile.addGestureRecognizer(tutorialAction)
         
         var logout:UIView = UIView(frame: CGRect(x: 0, y: 3 * sizeRect.size.height/10, width: width, height: height))
         logout.backgroundColor = UIColor(red: 0.9608, green: 0.9294, blue: 0.9059, alpha: 1.0)
@@ -344,6 +351,10 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         centerText()
         setNewIdea()
         
+        if(tutorial == true) {
+            showTutorial()
+        }
+        
     }
     
 //    override func viewDidAppear(animated: Bool) {
@@ -374,6 +385,12 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
     }
     
 //    Gestures
+    
+    func showTutorial() {
+        closeMenu()
+        let secondViewController:TutorialController = TutorialController()
+        self.presentViewController(secondViewController, animated: true, completion: nil)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
