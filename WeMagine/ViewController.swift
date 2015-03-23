@@ -517,7 +517,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
     
     func setNewIdea() {
         
-        if (theIdeas.count > 25) {
+        if (theIdeas.count > 2) {
             showNextIdea()
         } else if (theIdeas.count > 0) {
             if (isLoading == true) {
@@ -540,6 +540,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         var url = NSURL(string: "http://104.131.156.49/wemagine/getIdea.php")
         var session = NSURLSession.sharedSession()
         let task : NSURLSessionDataTask = session.dataTaskWithURL(url!, completionHandler: {(data, response, error) in
+            
+            println("queried")
             
             if let theData = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as? NSArray {
                 
@@ -593,14 +595,14 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
     
     func getTheNextIdea() -> String {
         
-        var idea: NSDictionary = theIdeas[theIdeas.count - 1] as NSDictionary
+        var idea: NSDictionary = theIdeas[0] as NSDictionary
         var str = (idea["Text"] as String) + "\n\n-" + (idea["Name"] as String)
         
         ideaText = idea["Text"] as String
         ideaName = idea["Name"] as String
         ideaId = idea["Id"] as String
         
-        theIdeas.removeLastObject()
+        theIdeas.removeObjectAtIndex(0)
         return str
 
     }
