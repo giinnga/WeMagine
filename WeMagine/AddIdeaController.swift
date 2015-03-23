@@ -251,12 +251,19 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
     
     func textViewDidBeginEditing(textView: UITextView) {
         self.centerText()
+        self.tutorial.alpha = 0
     }
     
     func textViewDidChange(textView: UITextView) {
-        self.sendYourIdea.hidden = false
-        self.tutorial.alpha = 0
         self.centerText()
+        if textView.text != ""
+        {
+            self.sendYourIdea.hidden = false
+        }
+        else
+        {
+            self.sendYourIdea.hidden = true
+        }
     }
     
     func backToMain(recognizer: UITapGestureRecognizer) {
@@ -547,6 +554,7 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
     
     func dismissView() {
         
+        self.textField.resignFirstResponder()
         let secondViewController:ViewController = ViewController()
         self.dismissViewControllerAnimated(true, completion: nil)
         
