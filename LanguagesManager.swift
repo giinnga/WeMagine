@@ -100,6 +100,15 @@ class LanguagesManager: NSObject {
         return "Exit"
     }
     
+    class func textMainMenuReport(lan: String) -> String {
+        
+        if(lan == "pt") {
+            return "Denunciar ideia"
+        }
+        
+        return "Report idea"
+    }
+    
     class func textMainMenuLogOut(lan: String) -> String {
         
         if(lan == "pt") {
@@ -107,6 +116,51 @@ class LanguagesManager: NSObject {
         }
         
         return "LogOut"
+    }
+    
+    class func textMainMenuReportText(lan: String) -> String {
+        
+        if(lan == "pt") {
+            return "Se você considera esta ideia ofensiva e/ou inapropriada, você pode denunciá-la para nós. Você quer fazer isso?"
+        }
+        
+        return "If you think this idea is offensive and/or inapropiate, you can report it to us. Do you want to do this?"
+    }
+    
+    class func textMainMenuReportOk(lan: String) -> String {
+        
+        if(lan == "pt") {
+            return "Sim"
+        }
+        
+        return "Yes"
+    }
+    
+    class func textMainMenuReportCancel(lan: String) -> String {
+        
+        if(lan == "pt") {
+            return "Não"
+        }
+        
+        return "No"
+    }
+    
+    class func textMainMenuReportSucess(lan: String) -> String {
+        
+        if(lan == "pt") {
+            return "Ideia reportada com sucesso!"
+        }
+        
+        return "Idea sucessfully reported!"
+    }
+    
+    class func textMainMenuReportFail(lan: String) -> String {
+        
+        if(lan == "pt") {
+            return "Algo deu errado ao tentar denunciar a ideia. Por favor tente novamente."
+        }
+        
+        return "Something went wrong while reporting the idea. Please try again."
     }
     
     class func textSendTutorial(lan: String) -> String {

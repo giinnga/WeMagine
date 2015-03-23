@@ -140,20 +140,25 @@ class LoginController: UIViewController, UIGestureRecognizerDelegate, FBLoginVie
     
     func loginViewShowingLoggedInUser(loginView : FBLoginView!) {
         if(loggedIn == false) {
-            
             self.view.userInteractionEnabled = false
             UIView.animateWithDuration(0.3, animations: {
                 self.deleteView.alpha = 0.6
                 self.loadSprite.alpha = 1
-            }, completion: {
-                (value: Bool) in
-                
+                }, completion: {
+                    (value: Bool) in
+                    
             })
         }
     }
     
     func loginViewFetchedUserInfo(loginView : FBLoginView!, user: FBGraphUser) {
         if(loggedIn == false) {
+            self.view.userInteractionEnabled = false
+            UIView.animateWithDuration(0.3, animations: {
+                self.deleteView.alpha = 0.6
+                self.loadSprite.alpha = 1
+                    
+            })
             checkUserCredentials(user)
             loggedIn = true
         }

@@ -27,6 +27,7 @@
 		5113A01B1AC0818000F1C40E /* BackButtonPT@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5113A0181AC0818000F1C40E /* BackButtonPT@3x.png */; };
 		5113A01C1AC0818000F1C40E /* BackButtonPT@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5113A0191AC0818000F1C40E /* BackButtonPT@2x.png */; };
 		5113A01D1AC0818000F1C40E /* BackButtonPT.png in Resources */ = {isa = PBXBuildFile; fileRef = 5113A01A1AC0818000F1C40E /* BackButtonPT.png */; };
+		5113A01F1AC0850E00F1C40E /* ReportDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5113A01E1AC0850E00F1C40E /* ReportDelegate.swift */; };
 		511FBC2E1AB7741000BFC694 /* MenuIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 511FBC2B1AB7741000BFC694 /* MenuIcon@3x.png */; };
 		511FBC2F1AB7741000BFC694 /* MenuIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 511FBC2C1AB7741000BFC694 /* MenuIcon@2x.png */; };
 		511FBC301AB7741000BFC694 /* MenuIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 511FBC2D1AB7741000BFC694 /* MenuIcon.png */; };
@@ -148,6 +149,7 @@
 		5113A0181AC0818000F1C40E /* BackButtonPT@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BackButtonPT@3x.png"; sourceTree = "<group>"; };
 		5113A0191AC0818000F1C40E /* BackButtonPT@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BackButtonPT@2x.png"; sourceTree = "<group>"; };
 		5113A01A1AC0818000F1C40E /* BackButtonPT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackButtonPT.png; sourceTree = "<group>"; };
+		5113A01E1AC0850E00F1C40E /* ReportDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportDelegate.swift; path = ../ReportDelegate.swift; sourceTree = "<group>"; };
 		511FBC2B1AB7741000BFC694 /* MenuIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MenuIcon@3x.png"; sourceTree = "<group>"; };
 		511FBC2C1AB7741000BFC694 /* MenuIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MenuIcon@2x.png"; sourceTree = "<group>"; };
 		511FBC2D1AB7741000BFC694 /* MenuIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuIcon.png; sourceTree = "<group>"; };
@@ -287,6 +289,7 @@
 				94BF551D1AB22A3A00DA5CC0 /* AppDelegate.swift */,
 				5170EF631ABA4D2E00E34E3E /* Bridging-Header.h */,
 				5113A0101AC05A6400F1C40E /* LanguagesManager.swift */,
+				5113A01E1AC0850E00F1C40E /* ReportDelegate.swift */,
 				51139FE61AC0424E00F1C40E /* TutorialController.swift */,
 				948382E71AB86BD100204542 /* LoginController.swift */,
 				94BF551F1AB22A3A00DA5CC0 /* ViewController.swift */,
@@ -625,6 +628,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5113A01F1AC0850E00F1C40E /* ReportDelegate.swift in Sources */,
 				94F4928D1AB7A2550052FAB4 /* BigCloud.swift in Sources */,
 				5113A0111AC05A6400F1C40E /* LanguagesManager.swift in Sources */,
 				94BF55201AB22A3A00DA5CC0 /* ViewController.swift in Sources */,

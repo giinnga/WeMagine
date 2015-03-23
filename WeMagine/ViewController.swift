@@ -22,6 +22,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
     
     var tutorial = Bool()
     
+    var reporting = false
+    
     var theLang = String()
     
     var cloudImageView: UIImageView = UIImageView()
@@ -68,8 +70,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         
 //      Top rectangle
         
-        println(theUsername)
-        println(theUseremail)
+        //println(theUsername)
+        //println(theUseremail)
         
         width = (375.0 * prop) + 2
         height = (topHeight + barHeight) + 2
@@ -227,13 +229,13 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         width = sizeRect.size.width/2
         height = sizeRect.size.height/10
         
-        fontSize = 15
+        fontSize = 13
         
         x = 15
         y = verifyPosition(((height - 10)/2) - 4) - 1
         
         var share:UIView = UIView(frame: CGRect(x: 0, y: 0, width: width, height: height))
-        share.backgroundColor = UIColor(red: 0.7357, green: 0.639, blue: 0.5589, alpha: 1.0)
+        share.backgroundColor = UIColor(red: 0.9608, green: 0.9294, blue: 0.9059, alpha: 1.0)
         menuView.addSubview(share)
         
         var shareLabel:UILabel = UILabel(frame: CGRect(x: x, y: y, width: 200 , height: 20))
@@ -248,7 +250,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         share.addGestureRecognizer(shareGesture)
         
         var myIdeas: UIView = UIView(frame: CGRect(x: 0, y: sizeRect.size.height/10, width: width, height: height))
-        myIdeas.backgroundColor = UIColor(red: 0.9608, green: 0.9294, blue: 0.9059, alpha: 1.0)
+        myIdeas.backgroundColor = UIColor(red: 0.7357, green: 0.639, blue: 0.5589, alpha: 1.0)
         menuView.addSubview(myIdeas)
         
         var myIdeasLabel:UILabel = UILabel(frame: CGRect(x: x, y: y, width: 200 , height: 20))
@@ -263,7 +265,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         myIdeas.addGestureRecognizer(myIdeasGesture)
         
         var profile:UIView = UIView(frame: CGRect(x: 0, y: 2 * sizeRect.size.height/10, width: width, height: height))
-        profile.backgroundColor = UIColor(red: 0.7357, green: 0.639, blue: 0.5589, alpha: 1.0)
+        profile.backgroundColor = UIColor(red: 0.9608, green: 0.9294, blue: 0.9059, alpha: 1.0)
         menuView.addSubview(profile)
         
         var profileLabel:UILabel = UILabel(frame: CGRect(x: x, y: y, width: 100 , height: 20))
@@ -274,11 +276,26 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         profile.userInteractionEnabled = true
         profile.addSubview(profileLabel)
         
+        var report:UIView = UIView(frame: CGRect(x: 0, y: 3 * sizeRect.size.height/10, width: width, height: height))
+        report.backgroundColor = UIColor(red: 0.7357, green: 0.639, blue: 0.5589, alpha: 1.0)
+        menuView.addSubview(report)
+        
+        let reportGesture = UITapGestureRecognizer(target: self, action:Selector("tryReportIdea"))
+        reportGesture.delegate = self
+        report.addGestureRecognizer(reportGesture)
+        
+        var reportLabel:UILabel = UILabel(frame: CGRect(x: x, y: y, width: 100 , height: 20))
+        reportLabel.text = LanguagesManager.textMainMenuReport(self.theLang)
+        reportLabel.textColor = UIColor(red: 0.3191, green: 0.3191, blue: 0.3191, alpha: 1.0)
+        reportLabel.font = UIFont(name: "HelveticaNeue", size: fontSize)
+        report.userInteractionEnabled = true
+        report.addSubview(reportLabel)
+        
         let tutorialAction = UITapGestureRecognizer(target: self, action:Selector("showTutorial"))
         tutorialAction.delegate = self
         profile.addGestureRecognizer(tutorialAction)
         
-        var logout:UIView = UIView(frame: CGRect(x: 0, y: 3 * sizeRect.size.height/10, width: width, height: height))
+        var logout:UIView = UIView(frame: CGRect(x: 0, y: 4 * sizeRect.size.height/10, width: width, height: height))
         logout.backgroundColor = UIColor(red: 0.9608, green: 0.9294, blue: 0.9059, alpha: 1.0)
         logout.userInteractionEnabled = true
         menuView.addSubview(logout)
@@ -301,13 +318,13 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         logout.addGestureRecognizer(logoutAction)
         
         var oldHeight = height
-        var newY = ((menuView.frame.size.height-((3 * sizeRect.size.height/10)+oldHeight)))
+        var newY = ((menuView.frame.size.height-((4 * sizeRect.size.height/10)+oldHeight)))
         newY = (newY-height)/2
         
         width = 127.0 * prop
         height = 107.0 * prop
         x = ((sizeRect.size.width/2)-width)/2
-        y = newY + (3 * sizeRect.size.height/10) - 15
+        y = newY + (4 * sizeRect.size.height/10) - 15
         
         var blinkCloud = UIImage(named: "BlinkCloud@3x.png")
         var blinkImageView = UIImageView(image: blinkCloud)
@@ -447,8 +464,18 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
     
     func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
         
-        if(buttonIndex == 1) {
-            exitScreen()
+        if(alertView.title == LanguagesManager.textMainMenuReport(self.theLang)) {
+            
+            if(buttonIndex == 1) {
+                reportIdea()
+            }
+            
+        } else {
+            
+            if(buttonIndex == 1) {
+                exitScreen()
+            }
+            
         }
         
     }
@@ -561,7 +588,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         var session = NSURLSession.sharedSession()
         let task : NSURLSessionDataTask = session.dataTaskWithURL(url!, completionHandler: {(data, response, error) in
             
-            println("queried")
+            //println("queried")
             
             if let theData = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as? NSArray {
                 
@@ -579,7 +606,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
 
             } else {
                 
-                println("Some error has occurred!")
+                //println("Some error has occurred!")
                 
                 dispatch_async(dispatch_get_main_queue()) {
                     () -> Void in
@@ -650,14 +677,14 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
                     
                     dispatch_async(dispatch_get_main_queue()) {
                         () -> Void in
-                        println("Like!")
+                        //println("Like!")
                     }
                     
                 } else if(theData["Status"] as String == "anErrorOcurred") {
                     
                     dispatch_async(dispatch_get_main_queue()) {
                         () -> Void in
-                        println("Some error has occurred!")
+                        //println("Some error has occurred!")
                     }
                     
                 }
@@ -666,7 +693,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
                 
                 dispatch_async(dispatch_get_main_queue()) {
                     () -> Void in
-                    println("Some error has occurred!")
+                    //println("Some error has occurred!")
                 }
                 
             }
@@ -719,14 +746,14 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
                     
                     dispatch_async(dispatch_get_main_queue()) {
                         () -> Void in
-                        println("Dislike!")
+                        //println("Dislike!")
                     }
                     
                 } else if(theData["Status"] as String == "anErrorOcurred") {
                     
                     dispatch_async(dispatch_get_main_queue()) {
                         () -> Void in
-                        println("Some error has occurred!")
+                        //println("Some error has occurred!")
                     }
                     
                 }
@@ -735,7 +762,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
                 
                 dispatch_async(dispatch_get_main_queue()) {
                     () -> Void in
-                    println("Some error has occurred!")
+                    //println("Some error has occurred!")
                 }
                 
             }
@@ -780,6 +807,64 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         topCorrect = (topCorrect < 0.0 ? 0.0 : topCorrect)
         self.textView.contentOffset.x = 0
         self.textView.contentOffset.y = -topCorrect
+    }
+    
+    func tryReportIdea() {
+        if(theIdeas.count > 0 && reporting == false) {
+            var alert = UIAlertView(title: LanguagesManager.textMainMenuReport(self.theLang), message: LanguagesManager.textMainMenuReportText(self.theLang), delegate: self, cancelButtonTitle: LanguagesManager.textMainMenuReportCancel(self.theLang), otherButtonTitles: LanguagesManager.textMainMenuReportOk(self.theLang))
+            alert.show()
+        }
+    }
+    
+    func reportIdea() {
+        
+        closeMenu()
+        if (isLoading == true) {
+            mayVote = false
+        } else {
+            mayVote = true
+        }
+        reporting = true
+        
+        let theText = ideaText.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+        
+        var url = NSURL(string: "http://104.131.156.49/wemagine/reportIdea.php?id="+ideaId+"&text="+theText)
+        var session = NSURLSession.sharedSession()
+        let task : NSURLSessionDataTask = session.dataTaskWithURL(url!, completionHandler: {(data, response, error) in
+            
+            if let theData = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as? NSDictionary {
+                
+                dispatch_async(dispatch_get_main_queue()) {
+                    () -> Void in
+                    self.reporting = false
+                    self.reportOk()
+                }
+                
+            } else {
+                
+                //println("Some error has occurred!")
+                
+                dispatch_async(dispatch_get_main_queue()) {
+                    () -> Void in
+                    self.reporting = false
+                    self.reportError()
+                }
+            }
+            
+        })
+        
+        task.resume()
+        
+    }
+    
+    func reportError() {
+        var alert = UIAlertView(title: "Oops!", message: LanguagesManager.textMainMenuReportFail(self.theLang), delegate: self, cancelButtonTitle: "Ok")
+        alert.show()
+    }
+    
+    func reportOk() {
+        var alert = UIAlertView(title: LanguagesManager.textMainMenuReport(self.theLang), message: LanguagesManager.textMainMenuReportSucess(self.theLang), delegate: self, cancelButtonTitle: "Ok")
+        alert.show()
     }
     
 //  Segue
