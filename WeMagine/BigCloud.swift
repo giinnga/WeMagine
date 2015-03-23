@@ -10,6 +10,8 @@ import UIKit
 
 class BigCloud: UITableViewCell {
 
+    @IBOutlet weak var bigCloudText: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -20,7 +20,8 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
     
     var number = 11
     var module = 2
-    var i = 0
+    
+    var theLang = String()
     
     var datatask = NSURLSessionDataTask()
     
@@ -241,6 +242,7 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
             cell.backgroundColor = UIColor(red: 0.6275, green: 0.9216, blue: 1.0, alpha: 1.0)
             cell.editing = false
             cell.selectionStyle = .None
+            cell.bigCloudText.text = LanguagesManager.textMyIdeasBigCloudText(self.theLang)
             
             return cell
         }

@@ -24,6 +24,8 @@ class TutorialController: UIViewController, UIGestureRecognizerDelegate {
     
     var step = 0
     
+    var theLang = String()
+    
     var tutoText = UILabel()
     
     var cloudImageView: UIImageView = UIImageView()
@@ -75,7 +77,7 @@ class TutorialController: UIViewController, UIGestureRecognizerDelegate {
         
         tutoText.frame = CGRectMake((sizeRect.size.width - 250)/2, textY, 250, 250)
         tutoText.font = UIFont(name: "HelveticaNeue", size: 18)
-        tutoText.text = "Welcome to We magine!"
+        tutoText.text = LanguagesManager.textTutorialStep0(self.theLang)
         tutoText.lineBreakMode = .ByWordWrapping
         tutoText.numberOfLines = 0
         tutoText.layer.zPosition = 91
@@ -203,31 +205,31 @@ class TutorialController: UIViewController, UIGestureRecognizerDelegate {
         step += 1
         
         if(step==1) {
-            tutoText.text = "Here you will learn how to use the app."
+            tutoText.text = LanguagesManager.textTutorialStep1(self.theLang)
         }
         
         if(step==2) {
-            tutoText.text = "Some random idea will appear in this cloud!"
+            tutoText.text = LanguagesManager.textTutorialStep2(self.theLang)
             cloudImageView.layer.zPosition = 99
             theCloud.alpha = 0
             tutoText.frame.origin.y = tutoText.frame.origin.y + 120
         }
         
         if(step==3) {
-            tutoText.text = "Tap here if you like the idea!"
+            tutoText.text = LanguagesManager.textTutorialStep3(self.theLang)
             cloudImageView.layer.zPosition = 80
             goodImage.layer.zPosition = 99
             tutoText.frame.origin.y = tutoText.frame.origin.y - 120
         }
         
         if(step==4) {
-            tutoText.text = "And if you don't like it, tap here."
+            tutoText.text = LanguagesManager.textTutorialStep4(self.theLang)
             goodImage.layer.zPosition = 80
             badImage.layer.zPosition = 99
         }
         
         if(step==5) {
-            tutoText.text = "If you are logged in, you can send your ideas by tapping this lamp."
+            tutoText.text = LanguagesManager.textTutorialStep5(self.theLang)
             badImage.layer.zPosition = 80
             theCloud.alpha = 1
             var image = UIImage(named: "TutoCloud2@2x.png")
@@ -236,7 +238,7 @@ class TutorialController: UIViewController, UIGestureRecognizerDelegate {
         }
         
         if(step==6) {
-            tutoText.text = "Tap here to open the app menu."
+            tutoText.text = LanguagesManager.textTutorialStep6(self.theLang)
             lampIconView.layer.zPosition = 80
             menuOpenIcon.layer.zPosition = 99
         }
@@ -244,17 +246,17 @@ class TutorialController: UIViewController, UIGestureRecognizerDelegate {
         if(step==7) {
             var image = UIImage(named: "TutoCloud4@2x.png")
             theCloud.image = image
-            tutoText.text = "Here you can view all the ideas you've sent and log out if you want to."
+            tutoText.text = LanguagesManager.textTutorialStep7(self.theLang)
         }
         
         if(step==8) {
-            tutoText.text = "You can also watch this tutorial again!"
+            tutoText.text = LanguagesManager.textTutorialStep8(self.theLang)
         }
         
         if(step==9) {
             var image = UIImage(named: "TutoCloud3@2x.png")
             theCloud.image = image
-            tutoText.text = "Enjoy the app!\nAnd keep imagining!"
+            tutoText.text = LanguagesManager.textTutorialStep9(self.theLang)
             menuOpenIcon.layer.zPosition = 80
         }
         if(step==10) {
