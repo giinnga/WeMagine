@@ -172,6 +172,33 @@ class LanguagesManager: NSObject {
         return "Tap on the cloud to\nshare your idea!"
     }
     
+    class func textMainMenuReportError(lan: String) -> String {
+        
+        if(lan == "pt") {
+            return "Erro"
+        }
+        
+        return "Error"
+    }
+    
+    class func textMainMenuReportRetry(lan: String) -> String {
+        
+        if(lan == "pt") {
+            return "Tentar"
+        }
+        
+        return "Retry"
+    }
+    
+    class func textMainMenuReportNotRetry(lan: String) -> String {
+        
+        if(lan == "pt") {
+            return "Cancelar"
+        }
+        
+        return "Cancel"
+    }
+    
     class func textSendError(lan: String) -> String {
         
         if(lan == "pt") {

@@ -20,6 +20,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
     var badImage: UIImageView = UIImageView()
     var loadSprite: UIImageView = UIImageView()
     
+    var reportView = UIView()
+    
     var tutorial = Bool()
     
     var reporting = false
@@ -77,6 +79,12 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         height = (topHeight + barHeight) + 2
         x = -1
         y = -1
+        
+        reportView.frame = CGRectMake(0, 0, sizeRect.size.width, sizeRect.size.height + barHeight)
+        reportView.alpha = 0
+        reportView.layer.zPosition = 100
+        reportView.backgroundColor = UIColor.blackColor()
+        self.view.addSubview(reportView)
         
         var topMenuRectangle:UIView = UIView(frame: CGRectMake(x, y, width, height))
         topMenuRectangle.backgroundColor = UIColor.whiteColor()
@@ -470,6 +478,25 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
                 reportIdea()
             }
             
+        } else if(alertView.title == LanguagesManager.textMainMenuReportError(self.theLang)) {
+            
+            if(buttonIndex == 1) {
+                
+                reportIdea()
+                
+            } else {
+                
+                UIView.animateWithDuration(0.3, animations: {
+                    self.reportView.alpha = 0
+                    self.loadSprite.alpha = 0
+                }, completion: {
+                    (value: Bool) in
+                    self.view.userInteractionEnabled = true
+                    self.loadSprite.alpha = 1
+                    self.loadSprite.layer.zPosition = 9
+                })
+            }
+            
         } else {
             
             if(buttonIndex == 1) {
@@ -826,6 +853,16 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         }
         reporting = true
         
+        self.view.userInteractionEnabled = false
+        
+        loadSprite.alpha = 0
+        loadSprite.layer.zPosition = 110
+        
+        UIView.animateWithDuration(0.3, animations: {
+            self.reportView.alpha = 0.6
+            self.loadSprite.alpha = 1
+        })
+        
         let theText = ideaText.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
         
         var url = NSURL(string: "http://104.131.156.49/wemagine/reportIdea.php?id="+ideaId+"&text="+theText)
@@ -858,13 +895,24 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
     }
     
     func reportError() {
-        var alert = UIAlertView(title: "Oops!", message: LanguagesManager.textMainMenuReportFail(self.theLang), delegate: self, cancelButtonTitle: "Ok")
+        var alert = UIAlertView(title: LanguagesManager.textMainMenuReportError(self.theLang), message: LanguagesManager.textMainMenuReportFail(self.theLang), delegate: self, cancelButtonTitle: LanguagesManager.textMainMenuReportNotRetry(self.theLang), otherButtonTitles: LanguagesManager.textMainMenuReportRetry(self.theLang))
         alert.show()
     }
     
     func reportOk() {
         var alert = UIAlertView(title: LanguagesManager.textMainMenuReport(self.theLang), message: LanguagesManager.textMainMenuReportSucess(self.theLang), delegate: self, cancelButtonTitle: "Ok")
         alert.show()
+        
+        UIView.animateWithDuration(0.3, animations: {
+            self.reportView.alpha = 0
+            self.loadSprite.alpha = 0
+        }, completion: {
+            (value: Bool) in
+            self.view.userInteractionEnabled = true
+            self.loadSprite.alpha = 1
+            self.loadSprite.layer.zPosition = 9
+            self.animateDislike()
+        })
     }
     
 //  Segue
