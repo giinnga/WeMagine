@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewControllerTransitioningDelegate {
+class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewControllerTransitioningDelegate, UIAlertViewDelegate {
     
     var sizeRect = UIScreen.mainScreen().applicationFrame;
     let app = UIApplication.sharedApplication()
@@ -41,6 +41,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
     var mayVote: Bool = true
     var finished: Bool = false
     var isLoading: Bool = false
+    var loggedIn = Bool()
     
     var theIdeas:NSMutableArray = NSMutableArray()
     var newIdeasSet:NSMutableArray = NSMutableArray()
@@ -62,6 +63,9 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         var topHeight:CGFloat = 44.0
         
 //      Top rectangle
+        
+        println(theUsername)
+        println(theUseremail)
         
         width = (375.0 * prop) + 2
         height = (topHeight + barHeight) + 2
@@ -271,7 +275,12 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         menuView.addSubview(logout)
         
         var logoutLabel:UILabel = UILabel(frame: CGRect(x: x, y: y, width: 100 , height: 20))
-        logoutLabel.text = "Logout"
+        if(loggedIn == true) {
+            logoutLabel.text = "Logout"
+        } else {
+            logoutLabel.text = "Exit"
+        }
+        
         logoutLabel.textColor = UIColor(red: 0.3191, green: 0.3191, blue: 0.3191, alpha: 1.0)
         logoutLabel.font = UIFont(name: "HelveticaNeue", size: fontSize)
         //logoutLabel.sizeToFit()
@@ -380,6 +389,14 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         
     }
     
+    func exitScreen() {
+        
+        textView.removeObserver(self, forKeyPath: "contentSize")
+        fadeText.removeObserver(self, forKeyPath: "contentSize")
+        self.dismissViewControllerAnimated(true, completion: nil)
+        
+    }
+    
     func goodVote(recognizer: UITapGestureRecognizer) {
         if(mayVote) {
             self.mayVote = false
@@ -398,8 +415,22 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         if(!mayVote)
         {
             closeMenu()
-            performSegueWithIdentifier("myIdeas", sender: self)
+            if(loggedIn == true) {
+                performSegueWithIdentifier("myIdeas", sender: self)
+            } else {
+                var alert = UIAlertView(title: "Oops!", message: "You can't see your ideas without logging in. Please, log in with facebook to be able to to that!", delegate: self, cancelButtonTitle: "Nevermind", otherButtonTitles: "OK then!")
+                alert.show()
+            }
+            
         }
+    }
+    
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        
+        if(buttonIndex == 1) {
+            exitScreen()
+        }
+        
     }
     
 //    func sadVote(recognizer: UILongPressGestureRecognizer) {
@@ -422,13 +453,25 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
     func newIdeaTap(recognizer: UITapGestureRecognizer) {
         
         closeMenu()
-        performSegueWithIdentifier("newIdea", sender: self)
+        if(loggedIn == true) {
+            performSegueWithIdentifier("newIdea", sender: self)
+        } else {
+            var alert = UIAlertView(title: "Oops!", message: "You can't send a new idea without logging in. Please, log in with facebook to be able to to that!", delegate: self, cancelButtonTitle: "Nevermind", otherButtonTitles: "OK then!")
+            alert.show()
+        }
+        
     }
     
     func newIdea(recognizer: UITapGestureRecognizer) {
         
         closeMenu()
-        performSegueWithIdentifier("newIdea", sender: self)
+        if(loggedIn == true) {
+            performSegueWithIdentifier("newIdea", sender: self)
+        } else {
+            var alert = UIAlertView(title: "Oops!", message: "You can't send a new idea without logging in. Please, log in with facebook to be able to to that!", delegate: self, cancelButtonTitle: "Nevermind", otherButtonTitles: "OK then!")
+            alert.show()
+        }
+        
     }
     
     func handleTap(recognizer: UITapGestureRecognizer) {

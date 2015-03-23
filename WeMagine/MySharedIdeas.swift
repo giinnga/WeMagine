@@ -375,6 +375,10 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
                                 dispatch_async(dispatch_get_main_queue()) {
                                     () -> Void in
                                     println("Some error has occurred!")
+                                    
+                                    var alert = UIAlertView(title: "Oops!", message: "Something went wrong!\nPlease try again!", delegate: self, cancelButtonTitle: "OK")
+                                    alert.show()
+    
                                     UIView.animateWithDuration(0.5, animations: {
                                         
                                         self.loadSprite.alpha = 0
@@ -394,6 +398,10 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
                             dispatch_async(dispatch_get_main_queue()) {
                                 () -> Void in
                                 println("Some error has occurred!")
+                                
+                                var alert = UIAlertView(title: "Oops!", message: "Something went wrong!\nPlease try again!", delegate: self, cancelButtonTitle: "OK")
+                                alert.show()
+
                                 UIView.animateWithDuration(0.5, animations: {
                                     
                                     self.loadSprite.alpha = 0

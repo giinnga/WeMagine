@@ -16,6 +16,11 @@ class LoginController: UIViewController, UIGestureRecognizerDelegate, FBLoginVie
     var username: UITextField = UITextField()
     var password: UITextField = UITextField()
     
+    var rotation = CGFloat()
+    
+    var deleteView = UIImageView()
+    var loadSprite = UIImageView()
+    
     var fbLoginView = FBLoginView()
     
     var loggedIn: Bool = false
@@ -39,10 +44,13 @@ class LoginController: UIViewController, UIGestureRecognizerDelegate, FBLoginVie
         
 //      Logo
         
-        width = 173.0 * prop * 1.5
-        height = 158.0 * prop * 1.5
+        var space:CGFloat = 30.0
+        var middle:CGFloat = 60.0
+        
+        width = 134.0 * prop * 1.5
+        height = 150.0 * prop * 1.5
         x = (sizeRect.size.width - width)/2
-        y = ((sizeRect.size.height - (height + 160 + 50))/2)
+        y = ((sizeRect.size.height - (height + space + middle + 50))/2)
         
         var logoImage: UIImage = UIImage(named: "NewLogo@3x.png")!
         var logoImageView: UIImageView = UIImageView(image: logoImage)
@@ -50,56 +58,71 @@ class LoginController: UIViewController, UIGestureRecognizerDelegate, FBLoginVie
         logoImageView.frame = CGRectMake(x, y, width, height)
 
         self.view.addSubview(logoImageView)
+        
+        var buttonView = UILabel()
+        buttonView.frame = CGRectMake((sizeRect.size.width - 200)/2, y + height + space + middle, 200, 40)
+        buttonView.backgroundColor = UIColor.whiteColor()
+        buttonView.layer.cornerRadius = 4
+        buttonView.layer.masksToBounds = true
+        buttonView.text = "Enter without logging in"
+        buttonView.textAlignment = .Center
+        buttonView.font = UIFont(name: "HelveticaNeue-Light", size: 15)
+        buttonView.userInteractionEnabled = true
+        self.view.addSubview(buttonView)
+        
+        let logGesture = UITapGestureRecognizer(target: self, action:Selector("enterNoLog"))
+        logGesture.delegate = self
+        buttonView.addGestureRecognizer(logGesture)
        
         fbLoginView.delegate = self
         fbLoginView.readPermissions = ["public_profile", "email", "user_friends"]
-        fbLoginView.frame = CGRectMake((sizeRect.size.width - 200)/2, y + height + 160, 200, 50)
+        fbLoginView.frame = CGRectMake((sizeRect.size.width - 200)/2, y + height + space, 200, 50)
+        fbLoginView.layer.shadowRadius = 0
+        fbLoginView.layer.shadowOpacity = 0
         self.view.addSubview(fbLoginView)
         
-////        Text Fields
-//        
-//        width = verifyPosition(sizeRect.size.width/1.5)
-//        height = verifyPosition(0.16 * sizeRect.size.width)
-//        x = verifyPosition(sizeRect.size.width/2 - width/2)
-//        y = verifyPosition(sizeRect.size.height/2.3)
-//        
-//        username.frame = CGRect(x: x, y: y, width: width, height: height)
-//        username.backgroundColor = UIColor.whiteColor()
-//        username.placeholder = "Username"
-//        username.borderStyle = UITextBorderStyle.None
-//        username.layer.cornerRadius = height/2
-//        username.layer.sublayerTransform = CATransform3DMakeTranslation(20, 0, 0)
-//        
-//        self.view.addSubview(username)
-//        
-//        password.frame = CGRect(x: x, y: y + height + 10, width: width, height: height)
-//        password.backgroundColor = UIColor.whiteColor()
-//        password.placeholder = "Password"
-//        password.borderStyle = UITextBorderStyle.None
-//        password.layer.cornerRadius = height/2
-//        password.secureTextEntry = true
-//        password.layer.sublayerTransform = CATransform3DMakeTranslation(20, 0, 0)
-//        
-//        self.view.addSubview(password)
-//        
-////        Buttons
-//        
-//        var buttonImage: UIImage = UIImage(named: "LoginButton@3x.png")!
-//        
-//        var loginButtonImage: UIImageView = UIImageView(image: buttonImage)
-//        loginButtonImage.frame = CGRect(x: sizeRect.size.width/5, y: sizeRect.size.height/1.45, width: 10, height: 10)
-//        loginButtonImage.sizeToFit()
-//        self.view.addSubview(loginButtonImage)
-//        
-//        var testButtonImage: UIImageView = UIImageView(image: buttonImage)
-//        testButtonImage.frame = CGRect(x: 2.7 * sizeRect.size.width/5, y: sizeRect.size.height/1.45, width: 10, height: 10)
-//        testButtonImage.sizeToFit()
-//        testButtonImage.userInteractionEnabled = true
-//        self.view.addSubview(testButtonImage)
-//        
-//        let test = UITapGestureRecognizer(target: self, action:Selector("test:"))
-//        test.delegate = self
-//        testButtonImage.addGestureRecognizer(test)
+//      Delete View
+        
+        deleteView.frame = CGRectMake(0, 0, sizeRect.size.width, sizeRect.size.height + barHeight)
+        deleteView.backgroundColor = UIColor.blackColor()
+        deleteView.alpha = 0
+        deleteView.layer.zPosition = 99
+        
+        self.view.addSubview(deleteView)
+        
+//      Loading Sprite
+        
+        width = 74.0 * prop * 1.3
+        height = 74.0 * prop * 1.3
+        x = (sizeRect.size.width - width)/2
+        y = (sizeRect.size.height - height)/2
+        
+        var loadImage: UIImage = UIImage(named: "LoadCloud@3x.png")!
+        loadSprite = UIImageView(image: loadImage)
+        loadSprite.frame = CGRectMake(x,y,width,height)
+        loadSprite.alpha = 0
+        loadSprite.layer.zPosition = 100
+        self.view.addSubview(loadSprite)
+        
+        var timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: Selector("animateLoadIcon"), userInfo: nil, repeats: true)
+        
+    }
+    
+    func animateLoadIcon() {
+        
+        rotation += 0.1
+        if (rotation >= CGFloat(M_PI*2)) {
+            rotation = rotation - CGFloat(M_PI*2)
+        }
+        loadSprite.transform = CGAffineTransformMakeRotation(rotation)
+        
+    }
+    
+    func enterNoLog() {
+        
+        let secondViewController:ViewController = ViewController()
+        secondViewController.loggedIn = false
+        self.presentViewController(secondViewController, animated: true, completion: nil)
         
     }
     
@@ -107,7 +130,15 @@ class LoginController: UIViewController, UIGestureRecognizerDelegate, FBLoginVie
     
     func loginViewShowingLoggedInUser(loginView : FBLoginView!) {
         if(loggedIn == false) {
-            //println("User Logged In")
+            
+            self.view.userInteractionEnabled = false
+            UIView.animateWithDuration(0.3, animations: {
+                self.deleteView.alpha = 0.6
+                self.loadSprite.alpha = 1
+            }, completion: {
+                (value: Bool) in
+                
+            })
         }
     }
     
@@ -119,12 +150,38 @@ class LoginController: UIViewController, UIGestureRecognizerDelegate, FBLoginVie
     }
     
     func loginViewShowingLoggedOutUser(loginView : FBLoginView!) {
-        //println("User Logged Out")
+        
         loggedIn = false
+        
+        UIView.animateWithDuration(0.3, animations: {
+            self.deleteView.alpha = 0
+            self.loadSprite.alpha = 0
+        }, completion: {
+            (value: Bool) in
+            self.view.userInteractionEnabled = true
+        })
+        
     }
     
     func loginView(loginView : FBLoginView!, handleError:NSError) {
         println("Error: \(handleError.localizedDescription)")
+        loginError()
+
+    }
+    
+    func loginError() {
+        
+        UIView.animateWithDuration(0.3, animations: {
+            self.deleteView.alpha = 0
+            self.loadSprite.alpha = 0
+            }, completion: {
+                (value: Bool) in
+                self.view.userInteractionEnabled = true
+                var alert = UIAlertView(title: "Oops!", message: "Could not connect with facebook!\nPlease try again later!", delegate: self, cancelButtonTitle: "OK")
+                alert.show()
+                FBSession.activeSession().closeAndClearTokenInformation()
+        })
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -155,8 +212,12 @@ class LoginController: UIViewController, UIGestureRecognizerDelegate, FBLoginVie
                 
                 if(theData["Status"] as String == "cannotCreateUser") {
                     
-                    println("Some error has occurred!")
-                    FBSession.activeSession().closeAndClearTokenInformation()
+                    dispatch_async(dispatch_get_main_queue()) {
+                        () -> Void in
+                        
+                        println("Some error has occurred!")
+                        self.loginError()
+                    }
                     
                 } else if(theData["Status"] as String == "userFound") {
                     
@@ -183,8 +244,12 @@ class LoginController: UIViewController, UIGestureRecognizerDelegate, FBLoginVie
                 
             } else {
                 
-                println("Some error has occurred!")
-                FBSession.activeSession().closeAndClearTokenInformation()
+                dispatch_async(dispatch_get_main_queue()) {
+                    () -> Void in
+                    
+                    println("Some error has occurred!")
+                    //self.loginError()
+                }
             }
             
         })
@@ -198,6 +263,7 @@ class LoginController: UIViewController, UIGestureRecognizerDelegate, FBLoginVie
         let secondViewController:ViewController = ViewController()
         secondViewController.theUsername = username
         secondViewController.theUseremail = useremail
+        secondViewController.loggedIn = true
         self.presentViewController(secondViewController, animated: true, completion: nil)
     }
     

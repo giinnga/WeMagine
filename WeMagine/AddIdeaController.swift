@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextViewDelegate {
+class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextViewDelegate, UIAlertViewDelegate {
 
     var sizeRect = UIScreen.mainScreen().applicationFrame;
     let app = UIApplication.sharedApplication()
@@ -434,6 +434,16 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
     
     func sendIdea() {
         
+        UIView.animateWithDuration(0.3, animations: {
+            
+            self.cancelIdea.alpha = 0
+            
+            }, completion: {
+                
+                (value: Bool) in
+                self.cancelIdea.hidden = true
+        })
+        
         let ideaText = textField.text.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
         let userEmail = useremail.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
         let userName = username.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
@@ -477,6 +487,9 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
                                 (value: Bool) in
                                 self.reloadView()
                                 
+                                var alert = UIAlertView(title: "Oops!", message: "Something went wrong!\nPlease try again!", delegate: self, cancelButtonTitle: "OK")
+                                alert.show()
+                                
                         })
                         
                     }
@@ -489,6 +502,10 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
                 
                 dispatch_async(dispatch_get_main_queue()) {
                     () -> Void in
+                    
+                    var alert = UIAlertView(title: "Oops!", message: "Something went wrong!\nPlease try again!", delegate: self, cancelButtonTitle: "OK")
+                    alert.show()
+                    
                     self.reloadView()
                     
                 }
