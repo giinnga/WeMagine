@@ -115,7 +115,7 @@ class LanguagesManager: NSObject {
             return "Desconectar"
         }
         
-        return "LogOut"
+        return "Log Out"
     }
     
     class func textMainMenuReportText(lan: String) -> String {
