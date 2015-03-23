@@ -64,7 +64,7 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
         x = -1
         y = -1 + barHeight
         
-        var lampIcon:UIImage = UIImage(named: "BackButton@3x.png")!
+        var lampIcon:UIImage = UIImage(named: LanguagesManager.imageBackButton(self.theLang))!
         var lampIconView:UIImageView = UIImageView(image: lampIcon)
         lampIconView.frame = CGRectMake(x, y, width, height)
         lampIconView.userInteractionEnabled = true

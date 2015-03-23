@@ -111,7 +111,7 @@ class LanguagesManager: NSObject {
     
     class func textSendTutorial(lan: String) -> String {
         
-        if(lan == "pt-br") {
+        if(lan == "pt") {
             return "Toque na nuvem para\ncompartilhar sua ideia!"
         }
         
@@ -120,7 +120,7 @@ class LanguagesManager: NSObject {
     
     class func textSendError(lan: String) -> String {
         
-        if(lan == "pt-br") {
+        if(lan == "pt") {
             return "Algo deu errado!\nPor favor tente novamente!"
         }
         
@@ -129,7 +129,7 @@ class LanguagesManager: NSObject {
     
     class func imageBackButton(lan: String) -> String {
         
-        if(lan == "pt-br") {
+        if(lan == "pt") {
             return "BackButtonPT@3x.png"
         }
         
