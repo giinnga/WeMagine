@@ -17,6 +17,8 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
     
     var menuView:UIView = UIView()
     
+    var theLang = String()
+    
     var menuViewHidden:Bool = true
     var maySendOrBack:Bool = true
     var isLoading:Bool = false
@@ -33,6 +35,8 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
     var happyCloudImageView: UIImageView = UIImageView()
     var tutorial: UIImageView = UIImageView()
     var loadSprite: UIImageView = UIImageView()
+    
+    var tutorialText = UILabel()
     
     var CloudW = CGFloat()
     var CloudH = CGFloat()
@@ -160,12 +164,22 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
         
 //      Tutorial
         
-        width = 201.0 * prop
-        height = 180.0 * prop
+        var brownHeight:CGFloat = sizeRect.size.height - (topHeight + (349 * prop))
+        
+        width = 250.0
+        height = 100.0
+        x = (sizeRect.size.width - width)/2
+        y = ((brownHeight - height)/2) + topHeight + barHeight + (349 * prop)
+        
+        tutorialText.frame = CGRectMake(x, y, width, height)
+        tutorialText.text = LanguagesManager.textSendTutorial(self.theLang)
+        
+        width = 13.0 * prop
+        height = 109.0 * prop
         x = (sizeRect.size.width - width)/2
         y = CloudY + (274.0 * prop) - 20.0
         
-        var tutoImage: UIImage = UIImage(named: "SendTutorial@3x.png")!
+        var tutoImage: UIImage = UIImage(named: "TutorialArrow@3x.png")!
         tutorial = UIImageView(image: tutoImage)
         tutorial.frame = CGRectMake(x,y,width,height)
         
@@ -196,7 +210,7 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
         
 //      Send your idea
         
-        var brownHeight:CGFloat = sizeRect.size.height - (topHeight + (349 * prop))
+        
         var buttonProp:CGFloat = brownHeight/274
     
         width = verifyPosition(154.0 * buttonProp)

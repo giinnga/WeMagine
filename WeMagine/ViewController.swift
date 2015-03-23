@@ -22,6 +22,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
     
     var tutorial = Bool()
     
+    var theLang = String()
+    
     var cloudImageView: UIImageView = UIImageView()
     var cloudFadeImageView: UIImageView = UIImageView()
     var textView: UITextView = UITextView()
@@ -235,7 +237,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         menuView.addSubview(share)
         
         var shareLabel:UILabel = UILabel(frame: CGRect(x: x, y: y, width: 200 , height: 20))
-        shareLabel.text = "Share Imagination"
+        shareLabel.text = LanguagesManager.textMainMenuShareImagination(self.theLang)
         shareLabel.textColor = UIColor(red: 0.3191, green: 0.3191, blue: 0.3191, alpha: 1.0)
         shareLabel.font = UIFont(name: "HelveticaNeue", size: fontSize)
         //shareLabel.sizeToFit()
@@ -250,7 +252,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         menuView.addSubview(myIdeas)
         
         var myIdeasLabel:UILabel = UILabel(frame: CGRect(x: x, y: y, width: 200 , height: 20))
-        myIdeasLabel.text = "My shared ideas"
+        myIdeasLabel.text = LanguagesManager.textMainMenuMyIdeas(self.theLang)
         myIdeasLabel.textColor = UIColor(red: 0.3191, green: 0.3191, blue: 0.3191, alpha: 1.0)
         myIdeasLabel.font = UIFont(name: "HelveticaNeue", size: fontSize)
         //myIdeasLabel.sizeToFit()
@@ -265,7 +267,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         menuView.addSubview(profile)
         
         var profileLabel:UILabel = UILabel(frame: CGRect(x: x, y: y, width: 100 , height: 20))
-        profileLabel.text = "Tutorial"
+        profileLabel.text = LanguagesManager.textMainMenuTutorial(self.theLang)
         profileLabel.textColor = UIColor(red: 0.3191, green: 0.3191, blue: 0.3191, alpha: 1.0)
         profileLabel.font = UIFont(name: "HelveticaNeue", size: fontSize)
         //profileLabel.sizeToFit()
@@ -283,9 +285,9 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         
         var logoutLabel:UILabel = UILabel(frame: CGRect(x: x, y: y, width: 100 , height: 20))
         if(loggedIn == true) {
-            logoutLabel.text = "Logout"
+            logoutLabel.text = LanguagesManager.textMainMenuLogOut(self.theLang)
         } else {
-            logoutLabel.text = "Exit"
+            logoutLabel.text = LanguagesManager.textMainMenuExit(self.theLang)
         }
         
         logoutLabel.textColor = UIColor(red: 0.3191, green: 0.3191, blue: 0.3191, alpha: 1.0)
@@ -435,7 +437,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
             if(loggedIn == true) {
                 performSegueWithIdentifier("myIdeas", sender: self)
             } else {
-                var alert = UIAlertView(title: "Oops!", message: "You can't see your ideas without logging in. Please, log in with facebook to be able to to that!", delegate: self, cancelButtonTitle: "Nevermind", otherButtonTitles: "OK then!")
+                var alert = UIAlertView(title: "Oops!", message: LanguagesManager.textMainNotLoggedInSee(self.theLang), delegate: self, cancelButtonTitle: LanguagesManager.textMainButtonCancel(self.theLang), otherButtonTitles: LanguagesManager.textMainButtonOK(self.theLang))
                 alert.show()
             }
             
@@ -473,7 +475,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         if(loggedIn == true) {
             performSegueWithIdentifier("newIdea", sender: self)
         } else {
-            var alert = UIAlertView(title: "Oops!", message: "You can't send a new idea without logging in. Please, log in with facebook to be able to to that!", delegate: self, cancelButtonTitle: "Nevermind", otherButtonTitles: "OK then!")
+            var alert = UIAlertView(title: "Oops!", message: LanguagesManager.textMainNotLoggedInSend(self.theLang), delegate: self, cancelButtonTitle: LanguagesManager.textMainButtonCancel(self.theLang), otherButtonTitles: LanguagesManager.textMainButtonOK(self.theLang))
             alert.show()
         }
         
@@ -485,7 +487,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         if(loggedIn == true) {
             performSegueWithIdentifier("newIdea", sender: self)
         } else {
-            var alert = UIAlertView(title: "Oops!", message: "You can't send a new idea without logging in. Please, log in with facebook to be able to to that!", delegate: self, cancelButtonTitle: "Nevermind", otherButtonTitles: "OK then!")
+            var alert = UIAlertView(title: "Oops!", message: LanguagesManager.textMainNotLoggedInSend(self.theLang), delegate: self, cancelButtonTitle: LanguagesManager.textMainButtonCancel(self.theLang), otherButtonTitles: LanguagesManager.textMainButtonOK(self.theLang))
             alert.show()
         }
         

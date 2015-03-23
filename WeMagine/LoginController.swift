@@ -24,6 +24,8 @@ class LoginController: UIViewController, UIGestureRecognizerDelegate, FBLoginVie
     var fbLoginView = FBLoginView()
     
     var loggedIn: Bool = false
+    
+    var theLang = "pt-br"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,7 +66,7 @@ class LoginController: UIViewController, UIGestureRecognizerDelegate, FBLoginVie
         buttonView.backgroundColor = UIColor.whiteColor()
         buttonView.layer.cornerRadius = 4
         buttonView.layer.masksToBounds = true
-        buttonView.text = "Enter without logging in"
+        buttonView.text = LanguagesManager.textLoginEnterNoLoginButton(theLang)
         buttonView.textAlignment = .Center
         buttonView.font = UIFont(name: "HelveticaNeue-Light", size: 15)
         buttonView.userInteractionEnabled = true
@@ -122,6 +124,7 @@ class LoginController: UIViewController, UIGestureRecognizerDelegate, FBLoginVie
         
         let secondViewController:ViewController = ViewController()
         secondViewController.loggedIn = false
+        secondViewController.theLang = self.theLang
         self.presentViewController(secondViewController, animated: true, completion: nil)
         
     }
@@ -177,7 +180,7 @@ class LoginController: UIViewController, UIGestureRecognizerDelegate, FBLoginVie
             }, completion: {
                 (value: Bool) in
                 self.view.userInteractionEnabled = true
-                var alert = UIAlertView(title: "Oops!", message: "Could not connect with facebook!\nPlease try again later!", delegate: self, cancelButtonTitle: "OK")
+                var alert = UIAlertView(title: "Oops!", message: LanguagesManager.textLoginCouldNotConnectFacebook(self.theLang), delegate: self, cancelButtonTitle: "OK")
                 alert.show()
                 FBSession.activeSession().closeAndClearTokenInformation()
         })
@@ -264,6 +267,7 @@ class LoginController: UIViewController, UIGestureRecognizerDelegate, FBLoginVie
         secondViewController.theUsername = username
         secondViewController.theUseremail = useremail
         secondViewController.loggedIn = true
+        secondViewController.theLang = self.theLang
         self.presentViewController(secondViewController, animated: true, completion: nil)
     }
     
