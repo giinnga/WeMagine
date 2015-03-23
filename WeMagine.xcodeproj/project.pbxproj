@@ -24,6 +24,9 @@
 		5113A0151AC0633000F1C40E /* TutorialArrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5113A0121AC0633000F1C40E /* TutorialArrow@3x.png */; };
 		5113A0161AC0633000F1C40E /* TutorialArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5113A0131AC0633000F1C40E /* TutorialArrow@2x.png */; };
 		5113A0171AC0633000F1C40E /* TutorialArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 5113A0141AC0633000F1C40E /* TutorialArrow.png */; };
+		5113A01B1AC0818000F1C40E /* BackButtonPT@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5113A0181AC0818000F1C40E /* BackButtonPT@3x.png */; };
+		5113A01C1AC0818000F1C40E /* BackButtonPT@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5113A0191AC0818000F1C40E /* BackButtonPT@2x.png */; };
+		5113A01D1AC0818000F1C40E /* BackButtonPT.png in Resources */ = {isa = PBXBuildFile; fileRef = 5113A01A1AC0818000F1C40E /* BackButtonPT.png */; };
 		511FBC2E1AB7741000BFC694 /* MenuIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 511FBC2B1AB7741000BFC694 /* MenuIcon@3x.png */; };
 		511FBC2F1AB7741000BFC694 /* MenuIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 511FBC2C1AB7741000BFC694 /* MenuIcon@2x.png */; };
 		511FBC301AB7741000BFC694 /* MenuIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 511FBC2D1AB7741000BFC694 /* MenuIcon.png */; };
@@ -142,6 +145,9 @@
 		5113A0121AC0633000F1C40E /* TutorialArrow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TutorialArrow@3x.png"; sourceTree = "<group>"; };
 		5113A0131AC0633000F1C40E /* TutorialArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TutorialArrow@2x.png"; sourceTree = "<group>"; };
 		5113A0141AC0633000F1C40E /* TutorialArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TutorialArrow.png; sourceTree = "<group>"; };
+		5113A0181AC0818000F1C40E /* BackButtonPT@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BackButtonPT@3x.png"; sourceTree = "<group>"; };
+		5113A0191AC0818000F1C40E /* BackButtonPT@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BackButtonPT@2x.png"; sourceTree = "<group>"; };
+		5113A01A1AC0818000F1C40E /* BackButtonPT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackButtonPT.png; sourceTree = "<group>"; };
 		511FBC2B1AB7741000BFC694 /* MenuIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MenuIcon@3x.png"; sourceTree = "<group>"; };
 		511FBC2C1AB7741000BFC694 /* MenuIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MenuIcon@2x.png"; sourceTree = "<group>"; };
 		511FBC2D1AB7741000BFC694 /* MenuIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuIcon.png; sourceTree = "<group>"; };
@@ -326,6 +332,9 @@
 		94BF555B1AB2322500DA5CC0 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				5113A0181AC0818000F1C40E /* BackButtonPT@3x.png */,
+				5113A0191AC0818000F1C40E /* BackButtonPT@2x.png */,
+				5113A01A1AC0818000F1C40E /* BackButtonPT.png */,
 				5113A0121AC0633000F1C40E /* TutorialArrow@3x.png */,
 				5113A0131AC0633000F1C40E /* TutorialArrow@2x.png */,
 				5113A0141AC0633000F1C40E /* TutorialArrow.png */,
@@ -567,6 +576,7 @@
 				5113A00F1AC0546400F1C40E /* TutoCloud4@2x.png in Resources */,
 				51F598BD1AB8AE4600148DEE /* HappyPressedButton@2x.png in Resources */,
 				51BC697D1ABB192900BB5F9E /* BackButton.png in Resources */,
+				5113A01C1AC0818000F1C40E /* BackButtonPT@2x.png in Resources */,
 				94BF55591AB2322000DA5CC0 /* SadCloudButton@2x.png in Resources */,
 				51E3B2361ABF8E22004705A8 /* NewLogo@3x.png in Resources */,
 				51139FF61AC04E2100F1C40E /* TutoCloud2.png in Resources */,
@@ -584,7 +594,9 @@
 				51325DEE1ABE14D5001481D2 /* LoadCloud@2x.png in Resources */,
 				948382F11AB86C7700204542 /* LoginButton@3x.png in Resources */,
 				51F598B71AB8AE4600148DEE /* HappyUpCloud2@2x.png in Resources */,
+				5113A01D1AC0818000F1C40E /* BackButtonPT.png in Resources */,
 				948382EF1AB86C7700204542 /* LoginButton.png in Resources */,
+				5113A01B1AC0818000F1C40E /* BackButtonPT@3x.png in Resources */,
 				51F598CA1AB8E50E00148DEE /* HappyUpCloud1@3x.png in Resources */,
 				51139FE51AC0352400F1C40E /* BigCloud2.png in Resources */,
 				5113A0171AC0633000F1C40E /* TutorialArrow.png in Resources */,

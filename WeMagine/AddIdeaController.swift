@@ -173,11 +173,18 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
         
         tutorialText.frame = CGRectMake(x, y, width, height)
         tutorialText.text = LanguagesManager.textSendTutorial(self.theLang)
+        tutorialText.textColor = UIColor(red: 0.3191, green: 0.3191, blue: 0.3191, alpha: 1.0)
+        tutorialText.font = UIFont(name: "HelveticaNeue-Light", size: 21)
+        tutorialText.lineBreakMode = .ByWordWrapping
+        tutorialText.numberOfLines = 0
+        tutorialText.textAlignment = .Center
+        
+        self.view.addSubview(tutorialText)
         
         width = 13.0 * prop
         height = 109.0 * prop
         x = (sizeRect.size.width - width)/2
-        y = CloudY + (274.0 * prop) - 20.0
+        y = y - height - 10.0
         
         var tutoImage: UIImage = UIImage(named: "TutorialArrow@3x.png")!
         tutorial = UIImageView(image: tutoImage)
@@ -266,6 +273,7 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
     func textViewDidBeginEditing(textView: UITextView) {
         self.centerText()
         self.tutorial.alpha = 0
+        self.tutorialText.alpha = 0
     }
     
     func textViewDidChange(textView: UITextView) {
@@ -508,7 +516,7 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
                                 (value: Bool) in
                                 self.reloadView()
                                 
-                                var alert = UIAlertView(title: "Oops!", message: "Something went wrong!\nPlease try again!", delegate: self, cancelButtonTitle: "OK")
+                                var alert = UIAlertView(title: "Oops!", message: LanguagesManager.textSendError(self.theLang), delegate: self, cancelButtonTitle: "OK")
                                 alert.show()
                                 
                         })
@@ -524,7 +532,7 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
                 dispatch_async(dispatch_get_main_queue()) {
                     () -> Void in
                     
-                    var alert = UIAlertView(title: "Oops!", message: "Something went wrong!\nPlease try again!", delegate: self, cancelButtonTitle: "OK")
+                    var alert = UIAlertView(title: "Oops!", message: LanguagesManager.textSendError(self.theLang), delegate: self, cancelButtonTitle: "OK")
                     alert.show()
                     
                     self.reloadView()

@@ -118,4 +118,23 @@ class LanguagesManager: NSObject {
         return "Tap on the cloud to\nshare your idea!"
     }
     
+    class func textSendError(lan: String) -> String {
+        
+        if(lan == "pt-br") {
+            return "Algo deu errado!\nPor favor tente novamente!"
+        }
+        
+        return "Something went wrong!\nPlease try again!"
+    }
+    
+    class func imageBackButton(lan: String) -> String {
+        
+        if(lan == "pt-br") {
+            return "BackButtonPT@3x.png"
+        }
+        
+        return "BackButton@3x.png"
+        
+    }
+    
 }

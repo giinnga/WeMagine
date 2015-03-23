@@ -789,6 +789,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
             let secondViewController:AddIdeaController = AddIdeaController()
             secondViewController.useremail = theUseremail
             secondViewController.username = theUsername
+            secondViewController.theLang = self.theLang
             self.presentViewController(secondViewController, animated: true, completion: nil)
         }
         
