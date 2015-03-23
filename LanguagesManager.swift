@@ -12,7 +12,7 @@ class LanguagesManager: NSObject {
     
     class func textLoginEnterNoLoginButton(lan: String) -> String {
         
-        if(lan == "pt-br") {
+        if(lan == "pt") {
             return "Entrar sem fazer login"
         }
         
@@ -21,7 +21,7 @@ class LanguagesManager: NSObject {
     
     class func textLoginCouldNotConnectFacebook(lan: String) -> String {
         
-        if(lan == "pt-br") {
+        if(lan == "pt") {
             return "Não foi possível se conectar com o facebook!\nTente novamente mais tarde!"
         }
         
@@ -30,7 +30,7 @@ class LanguagesManager: NSObject {
     
     class func textMainNotLoggedInSend(lan: String) -> String {
         
-        if(lan == "pt-br") {
+        if(lan == "pt") {
             return "Você não pode enviar uma ideia sem estar logado. Por favor, entre com o facebook para poder fazer isso!"
         }
         
@@ -39,7 +39,7 @@ class LanguagesManager: NSObject {
     
     class func textMainNotLoggedInSee(lan: String) -> String {
         
-        if(lan == "pt-br") {
+        if(lan == "pt") {
             return "Você não pode ver suas ideias sem estar logado. Por favor, entre com o facebook para poder fazer isso!"
         }
         
@@ -48,7 +48,7 @@ class LanguagesManager: NSObject {
     
     class func textMainButtonOK(lan: String) -> String {
         
-        if(lan == "pt-br") {
+        if(lan == "pt") {
             return "Certo!"
         }
         
@@ -57,7 +57,7 @@ class LanguagesManager: NSObject {
     
     class func textMainButtonCancel(lan: String) -> String {
         
-        if(lan == "pt-br") {
+        if(lan == "pt") {
             return "Deixa pra lá"
         }
         
@@ -66,7 +66,7 @@ class LanguagesManager: NSObject {
     
     class func textMainMenuShareImagination(lan: String) -> String {
         
-        if(lan == "pt-br") {
+        if(lan == "pt") {
             return "Compartilhar ideia"
         }
         
@@ -75,7 +75,7 @@ class LanguagesManager: NSObject {
     
     class func textMainMenuMyIdeas(lan: String) -> String {
         
-        if(lan == "pt-br") {
+        if(lan == "pt") {
             return "Minhas ideias"
         }
         
@@ -84,7 +84,7 @@ class LanguagesManager: NSObject {
     
     class func textMainMenuTutorial(lan: String) -> String {
         
-        if(lan == "pt-br") {
+        if(lan == "pt") {
             return "Tutorial"
         }
         
@@ -93,7 +93,7 @@ class LanguagesManager: NSObject {
     
     class func textMainMenuExit(lan: String) -> String {
         
-        if(lan == "pt-br") {
+        if(lan == "pt") {
             return "Sair"
         }
         
@@ -102,7 +102,7 @@ class LanguagesManager: NSObject {
     
     class func textMainMenuLogOut(lan: String) -> String {
         
-        if(lan == "pt-br") {
+        if(lan == "pt") {
             return "Desconectar"
         }
         
@@ -111,11 +111,99 @@ class LanguagesManager: NSObject {
     
     class func textSendTutorial(lan: String) -> String {
         
-        if(lan == "pt-br") {
+        if(lan == "pt") {
             return "Toque na nuvem para\ncompartilhar sua ideia!"
         }
         
         return "Tap on the cloud to\nshare your idea!"
+    }
+    
+    class func textMyIdeasBigCloudText(lan: String) -> String {
+        if(lan == "pt") {
+            return "Minhas ideias"
+        }
+        
+        return "My shared ideas"
+    }
+    
+    class func textTutorialStep0(lan: String) -> String {
+        if(lan == "pt") {
+            return "Bem-vindo ao We magine!"
+        }
+        
+        return "Welcome to We magine!"
+    }
+    
+    class func textTutorialStep1(lan: String) -> String {
+        if(lan == "pt") {
+            return "Aqui você vai aprender a usar o aplicativo."
+        }
+        
+        return "Here you will learn how to use the app."
+    }
+    
+    class func textTutorialStep2(lan: String) -> String {
+        if(lan == "pt") {
+            return "Alguma ideia aleatória vai aparecer nesta nuvem!"
+        }
+        
+        return "Some random idea will appear in this cloud!"
+    }
+    
+    class func textTutorialStep3(lan: String) -> String {
+        if(lan == "pt") {
+            return "Clique aqui se gostar da ideia!"
+        }
+        
+        return "Tap here if you like the idea!"
+    }
+    
+    class func textTutorialStep4(lan: String) -> String {
+        if(lan == "pt") {
+            return "E se você não gostar, clique aqui."
+        }
+        
+        return "And if you don't like it, tap here."
+    }
+    
+    class func textTutorialStep5(lan: String) -> String {
+        if(lan == "pt") {
+            return "Se você estiver logado, você pode enviar sua ideia clicando nesta lâmpada."
+        }
+        
+        return "If you are logged in, you can send your ideas by tapping this lamp."
+    }
+    
+    class func textTutorialStep6(lan: String) -> String {
+        if(lan == "pt") {
+            return "Clique aqui para abrir o menu."
+        }
+        
+        return "Tap here to open the app menu."
+    }
+    
+    class func textTutorialStep7(lan: String) -> String {
+        if(lan == "pt") {
+            return "Aqui você pode ver todas as ideias que você enviou e desconectar se desejar."
+        }
+        
+        return "Here you can view all the ideas you've sent and log out if you want to."
+    }
+    
+    class func textTutorialStep8(lan: String) -> String {
+        if(lan == "pt") {
+            return "Você também pode assistir a esse tutorial novamente!"
+        }
+        
+        return "You can also watch this tutorial again!"
+    }
+    
+    class func textTutorialStep9(lan: String) -> String {
+        if(lan == "pt") {
+            return "Aproveite o aplicativo!\nE continue imaginando!"
+        }
+        
+        return "Enjoy the app!\nAnd keep imagining!"
     }
     
 }

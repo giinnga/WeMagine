@@ -25,7 +25,8 @@ class LoginController: UIViewController, UIGestureRecognizerDelegate, FBLoginVie
     
     var loggedIn: Bool = false
     
-    var theLang = "pt-br"
+    var theLang = String()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +40,12 @@ class LoginController: UIViewController, UIGestureRecognizerDelegate, FBLoginVie
         
         var barHeight:CGFloat = app.statusBarFrame.size.height
         var topHeight:CGFloat = (44.0*prop)
+        
+//        teste
+        
+        var pre: AnyObject = NSLocale.preferredLanguages()[0]
+        
+        self.theLang = pre as String
         
         // Do any additional setup after loading the view.
         

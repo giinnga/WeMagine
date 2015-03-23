@@ -391,6 +391,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
     func showTutorial() {
         closeMenu()
         let secondViewController:TutorialController = TutorialController()
+        secondViewController.theLang = self.theLang
         self.presentViewController(secondViewController, animated: true, completion: nil)
     }
 
@@ -796,6 +797,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         {
             let secondViewController:MySharedIdeas = MySharedIdeas()
             secondViewController.useremail = theUseremail
+            secondViewController.theLang = self.theLang
             self.presentViewController(secondViewController, animated: true, completion: nil)
         }
     }

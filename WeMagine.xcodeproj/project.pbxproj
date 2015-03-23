@@ -469,11 +469,11 @@
 				TargetAttributes = {
 					94BF55171AB22A3A00DA5CC0 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = N4F3C8PWS8;
+						DevelopmentTeam = H8UTHN35FS;
 					};
 					94BF552C1AB22A3A00DA5CC0 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = N4F3C8PWS8;
+						DevelopmentTeam = H8UTHN35FS;
 						TestTargetID = 94BF55171AB22A3A00DA5CC0;
 					};
 				};
