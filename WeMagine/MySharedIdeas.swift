@@ -104,6 +104,8 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
         tableViewApp.registerNib(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "blueCell")
         tableViewApp.registerNib(UINib(nibName: "BigCloud", bundle: nil), forCellReuseIdentifier: "bigCloud")
         
+        self.tableViewApp.scrollEnabled = false
+        
         self.view.addSubview(tableViewApp)
         
 //      Can't find ideas
@@ -186,6 +188,8 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
                 
                 if(theData["Status"] as String == "sucsessfullyLoadedIdeas") {
                     
+                    self.tableViewApp.scrollEnabled = true
+                    
                     dispatch_async(dispatch_get_main_queue()) {
                         () -> Void in
                         
@@ -207,6 +211,8 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
                     }
                     
                 } else if(theData["Status"] as String == "userEmptyIdeas") {
+                    
+                    self.tableViewApp.scrollEnabled = false
                     
                     dispatch_async(dispatch_get_main_queue()) {
                         () -> Void in
