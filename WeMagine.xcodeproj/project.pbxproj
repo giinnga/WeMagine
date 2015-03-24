@@ -28,6 +28,9 @@
 		5113A01C1AC0818000F1C40E /* BackButtonPT@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5113A0191AC0818000F1C40E /* BackButtonPT@2x.png */; };
 		5113A01D1AC0818000F1C40E /* BackButtonPT.png in Resources */ = {isa = PBXBuildFile; fileRef = 5113A01A1AC0818000F1C40E /* BackButtonPT.png */; };
 		5113A01F1AC0850E00F1C40E /* ReportDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5113A01E1AC0850E00F1C40E /* ReportDelegate.swift */; };
+		5113A0231AC0FCEE00F1C40E /* CryingCloud@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5113A0201AC0FCEE00F1C40E /* CryingCloud@3x.png */; };
+		5113A0241AC0FCEE00F1C40E /* CryingCloud@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5113A0211AC0FCEE00F1C40E /* CryingCloud@2x.png */; };
+		5113A0251AC0FCEE00F1C40E /* CryingCloud.png in Resources */ = {isa = PBXBuildFile; fileRef = 5113A0221AC0FCEE00F1C40E /* CryingCloud.png */; };
 		511FBC2E1AB7741000BFC694 /* MenuIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 511FBC2B1AB7741000BFC694 /* MenuIcon@3x.png */; };
 		511FBC2F1AB7741000BFC694 /* MenuIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 511FBC2C1AB7741000BFC694 /* MenuIcon@2x.png */; };
 		511FBC301AB7741000BFC694 /* MenuIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 511FBC2D1AB7741000BFC694 /* MenuIcon.png */; };
@@ -150,6 +153,9 @@
 		5113A0191AC0818000F1C40E /* BackButtonPT@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BackButtonPT@2x.png"; sourceTree = "<group>"; };
 		5113A01A1AC0818000F1C40E /* BackButtonPT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackButtonPT.png; sourceTree = "<group>"; };
 		5113A01E1AC0850E00F1C40E /* ReportDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportDelegate.swift; path = ../ReportDelegate.swift; sourceTree = "<group>"; };
+		5113A0201AC0FCEE00F1C40E /* CryingCloud@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CryingCloud@3x.png"; sourceTree = "<group>"; };
+		5113A0211AC0FCEE00F1C40E /* CryingCloud@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CryingCloud@2x.png"; sourceTree = "<group>"; };
+		5113A0221AC0FCEE00F1C40E /* CryingCloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CryingCloud.png; sourceTree = "<group>"; };
 		511FBC2B1AB7741000BFC694 /* MenuIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MenuIcon@3x.png"; sourceTree = "<group>"; };
 		511FBC2C1AB7741000BFC694 /* MenuIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MenuIcon@2x.png"; sourceTree = "<group>"; };
 		511FBC2D1AB7741000BFC694 /* MenuIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuIcon.png; sourceTree = "<group>"; };
@@ -335,6 +341,9 @@
 		94BF555B1AB2322500DA5CC0 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				5113A0201AC0FCEE00F1C40E /* CryingCloud@3x.png */,
+				5113A0211AC0FCEE00F1C40E /* CryingCloud@2x.png */,
+				5113A0221AC0FCEE00F1C40E /* CryingCloud.png */,
 				5113A0181AC0818000F1C40E /* BackButtonPT@3x.png */,
 				5113A0191AC0818000F1C40E /* BackButtonPT@2x.png */,
 				5113A01A1AC0818000F1C40E /* BackButtonPT.png */,
@@ -535,6 +544,7 @@
 				94BF554C1AB2322000DA5CC0 /* Cloud.png in Resources */,
 				94B369EA1AB78D1800A20AB3 /* CustomCell.xib in Resources */,
 				51139FF91AC04E2100F1C40E /* TutoCloud1.png in Resources */,
+				5113A0231AC0FCEE00F1C40E /* CryingCloud@3x.png in Resources */,
 				51E3B22B1ABF13B4004705A8 /* CancelPressedButton@2x.png in Resources */,
 				511FBC301AB7741000BFC694 /* MenuIcon.png in Resources */,
 				511FBC401AB7833600BFC694 /* HappyCloud@3x.png in Resources */,
@@ -554,6 +564,7 @@
 				51F598BE1AB8AE4600148DEE /* HappyPressedButton.png in Resources */,
 				511FBC3C1AB7832A00BFC694 /* SadCloud.png in Resources */,
 				51F598D11AB8E94F00148DEE /* SendPressedButton@2x.png in Resources */,
+				5113A0251AC0FCEE00F1C40E /* CryingCloud.png in Resources */,
 				94F4928E1AB7A2550052FAB4 /* BigCloud.xib in Resources */,
 				51E3B2311ABF7034004705A8 /* BlinkCloud@2x.png in Resources */,
 				511FBC3B1AB7832A00BFC694 /* SadCloud@2x.png in Resources */,
@@ -597,6 +608,7 @@
 				51325DEE1ABE14D5001481D2 /* LoadCloud@2x.png in Resources */,
 				948382F11AB86C7700204542 /* LoginButton@3x.png in Resources */,
 				51F598B71AB8AE4600148DEE /* HappyUpCloud2@2x.png in Resources */,
+				5113A0241AC0FCEE00F1C40E /* CryingCloud@2x.png in Resources */,
 				5113A01D1AC0818000F1C40E /* BackButtonPT.png in Resources */,
 				948382EF1AB86C7700204542 /* LoginButton.png in Resources */,
 				5113A01B1AC0818000F1C40E /* BackButtonPT@3x.png in Resources */,

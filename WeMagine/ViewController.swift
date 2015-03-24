@@ -22,6 +22,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
     
     var reportView = UIView()
     
+    var ideasAux = Bool()
+    
     var tutorial = Bool()
     
     var reporting = false
@@ -73,7 +75,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
 //      Top rectangle
         
         //println(theUsername)
-        //println(theUseremail)
+        println(theUseremail)
         
         width = (375.0 * prop) + 2
         height = (topHeight + barHeight) + 2
@@ -332,7 +334,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         width = 127.0 * prop
         height = 107.0 * prop
         x = ((sizeRect.size.width/2)-width)/2
-        y = newY + (4 * sizeRect.size.height/10) - 15
+        y = newY + (4 * sizeRect.size.height/10)
         
         var blinkCloud = UIImage(named: "BlinkCloud@3x.png")
         var blinkImageView = UIImageView(image: blinkCloud)
@@ -617,18 +619,25 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
             
             if let theData = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as? NSArray {
                 
-                self.theIdeas.addObjectsFromArray(theData)
-                
-                self.isLoading = false
-                
-                if (noideasleft == true) {
+                dispatch_async(dispatch_get_main_queue()) {
+                    () -> Void in
                     
-                    dispatch_async(dispatch_get_main_queue()) {
-                        () -> Void in
-                        self.showNextIdea()
+                    if(theData.count > 0) {
+                        self.theIdeas.addObjectsFromArray(theData)
+                        
+                        self.isLoading = false
+                        
+                        if (noideasleft == true) {
+                            
+                            self.showNextIdea()
+                        }
+                    } else {
+                        self.ideasAux = noideasleft
+                        var timer = NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: Selector("databaseEmpty"), userInfo: nil, repeats: false)
                     }
+                    
                 }
-
+                
             } else {
                 
                 //println("Some error has occurred!")
@@ -668,6 +677,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
     func getTheNextIdea() -> String {
         
         var idea: NSDictionary = theIdeas[0] as NSDictionary
+        
         var str = (idea["Text"] as String) + "\n\n-" + (idea["Name"] as String)
         
         ideaText = idea["Text"] as String
@@ -859,7 +869,9 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
         
         let theText = ideaText.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
         
-        var url = NSURL(string: "http://104.131.156.49/wemagine/reportIdea.php?id="+ideaId+"&text="+theText)
+        let finalText = theText.stringByReplacingOccurrencesOfString("&", withString: "%26", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        
+        var url = NSURL(string: "http://104.131.156.49/wemagine/reportIdea.php?id="+ideaId+"&text="+finalText)
         var session = NSURLSession.sharedSession()
         let task : NSURLSessionDataTask = session.dataTaskWithURL(url!, completionHandler: {(data, response, error) in
             
@@ -907,6 +919,10 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UIViewContr
             self.loadSprite.layer.zPosition = 9
             self.animateDislike()
         })
+    }
+    
+    func databaseEmpty() {
+        self.loadNewIdeas(ideasAux)
     }
     
 //  Segue

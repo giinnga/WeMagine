@@ -15,6 +15,9 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
     
     var loadSprite = UIImageView()
     var deleteView = UIImageView()
+    var cryCloud = UIImageView()
+    
+    var cryText = UILabel()
     
     var rotation:CGFloat = 0.0
     
@@ -88,7 +91,7 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
         weMagineLabel.layer.zPosition = 11
         self.view.addSubview(weMagineLabel)
         
-//        Table View
+//      Table View
         
         tableViewApp = UITableView(frame: CGRect(x: 0, y: barHeight + topHeight, width: sizeRect.size.width, height: sizeRect.size.height - (topHeight)))
         
@@ -102,6 +105,31 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
         tableViewApp.registerNib(UINib(nibName: "BigCloud", bundle: nil), forCellReuseIdentifier: "bigCloud")
         
         self.view.addSubview(tableViewApp)
+        
+//      Can't find ideas
+        
+        width = 325.0 * prop * 0.3
+        height = 274.9 * prop * 0.3
+        x = (sizeRect.size.width - width)/2
+        y = 206.0 + 120
+        
+        var cryImage = UIImage(named: "CryingCloud@2x.png")
+        cryCloud.image = cryImage
+        cryCloud.frame = CGRectMake(x, y, width, height)
+        cryCloud.alpha = 0
+        
+        self.view.addSubview(cryCloud)
+        
+        cryText.frame = CGRectMake((sizeRect.size.width - 250)/2, y + height - 25, 250, 100)
+        cryText.font = UIFont(name: "HelveticaNeue-Light", size: 16)
+        cryText.text = LanguagesManager.textMyIdeasNoIdeas(self.theLang)
+        cryText.lineBreakMode = .ByWordWrapping
+        cryText.numberOfLines = 10
+        cryText.textAlignment = .Center
+        cryText.textColor = UIColor(red: 0.1725, green: 0.3294, blue: 0.4784, alpha: 1.0)
+        cryText.alpha = 0
+        
+        self.view.addSubview(cryText)
         
 //      Delete View
         
@@ -146,7 +174,9 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
         
         let escapedEmail = useremail.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
         
-        let urlpath = "http://104.131.156.49/wemagine/getUserIdeas.php?email="+escapedEmail
+        let emailFinal = escapedEmail.stringByReplacingOccurrencesOfString("&", withString: "%26", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        
+        let urlpath = "http://104.131.156.49/wemagine/getUserIdeas.php?email="+emailFinal
         
         var url = NSURL(string: urlpath)
         var session = NSURLSession.sharedSession()
@@ -188,7 +218,7 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
                         }, completion: {
                                 
                             (value: Bool) in
-                                
+                            self.noIdeas()
 
                         })
 
@@ -211,6 +241,15 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
         
         datatask.resume()
         
+    }
+    
+    func noIdeas() {
+        UIView.animateWithDuration(0.5, animations: {
+            
+            self.cryCloud.alpha = 1
+            self.cryText.alpha = 1
+                
+        })
     }
     
     func verifyPosition(measure:CGFloat) -> CGFloat
@@ -363,6 +402,9 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
                                         self.deleteView.hidden = true
                                         self.view.userInteractionEnabled = true
                                         tableView.reloadData()
+                                        if(self.userIdeas.count <= 0) {
+                                            self.noIdeas()
+                                        }
                                     })
                                 }
                                 
@@ -417,8 +459,6 @@ class MySharedIdeas: UIViewController, UITableViewDataSource, UITableViewDelegat
                     task.resume()
                         
                 })
-                
-                
                 
             }
         }

@@ -226,6 +226,14 @@ class LanguagesManager: NSObject {
         return "My shared ideas"
     }
     
+    class func textMyIdeasNoIdeas(lan: String) -> String {
+        if(lan == "pt") {
+            return "Oh não! Você ainda não compartilhou nenhuma ideia!"
+        }
+        
+        return "Oh no! You haven't shared any ideas yet!"
+    }
+    
     class func textTutorialStep0(lan: String) -> String {
         if(lan == "pt") {
             return "Bem-vindo ao We magine!"

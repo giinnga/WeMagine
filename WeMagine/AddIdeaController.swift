@@ -477,7 +477,13 @@ class AddIdeaController: UIViewController, UIGestureRecognizerDelegate, UITextVi
         let userEmail = useremail.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
         let userName = username.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
         
-        let urlpath = "http://104.131.156.49/wemagine/postIdea.php?email="+userEmail+"&name="+userName+"&idea="+ideaText
+        let ideaFinal = ideaText.stringByReplacingOccurrencesOfString("&", withString: "%26", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        let emailFinal = userEmail.stringByReplacingOccurrencesOfString("&", withString: "%26", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        let nameFinal = userName.stringByReplacingOccurrencesOfString("&", withString: "%26", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        
+        println(ideaText)
+        
+        let urlpath = "http://104.131.156.49/wemagine/postIdea.php?email="+emailFinal+"&name="+nameFinal+"&idea="+ideaFinal
         
         var url = NSURL(string: urlpath)
         var session = NSURLSession.sharedSession()

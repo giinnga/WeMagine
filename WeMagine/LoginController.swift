@@ -217,7 +217,10 @@ class LoginController: UIViewController, UIGestureRecognizerDelegate, FBLoginVie
         let escapedName = user.name.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
         let escapedEmail = userEmail.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
         
-        let urlpath = "http://104.131.156.49/wemagine/getUser.php?email="+escapedEmail+"&name="+escapedName
+        let emailFinal = escapedEmail.stringByReplacingOccurrencesOfString("&", withString: "%26", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        let nameFinal = escapedName.stringByReplacingOccurrencesOfString("&", withString: "%26", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        
+        let urlpath = "http://104.131.156.49/wemagine/getUser.php?email="+emailFinal+"&name="+nameFinal
         
         var url = NSURL(string: urlpath)
         var session = NSURLSession.sharedSession()
