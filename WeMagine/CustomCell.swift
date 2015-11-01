@@ -35,8 +35,8 @@ class CustomCell: UITableViewCell {
     
     
     
-    func centerText()
-    {
+    func centerText() {
+    
         var tf: UITextView = self.theIdea as UITextView
         var size: CGSize = tf.sizeThatFits(CGSize(width: self.theIdea.bounds.width, height: 10000))
         var topCorrectFade = (self.theIdea.bounds.height - size.height * self.theIdea.zoomScale)/2
